@@ -1,2 +1,1 @@
-# note
-emacs-node 日常备份
+# GTD-manue1's  note

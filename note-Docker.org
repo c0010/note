@@ -1,0 +1,24 @@
+* Docker use note
+** Docker install
+   1. 图解Docker
+      [[http://7xpyfe.com1.z0.glb.clouddn.com/blog/20170607/115341763.png]]
+   2. [[https://docs.docker.com/engine/installation/][官网文档]] 有详细说明
+      国内网速很慢，采用了阿里云的[[https://yq.aliyun.com/articles/7695][镜像源]]
+      : curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/intranet | sh -
+
+      [[http://7xpyfe.com1.z0.glb.clouddn.com/blog/20170607/131800763.png]]
+   
+** Docker command
+   - service docker start/stop
+   - docker rmi ventz/cif
+   - docker images 命令查看本地的镜像列表
+   - docker inspect cif 查看指定镜像的详细信息
+   - docker ps -l 查看我们正在运行的容器 -l 最后状态  
+   - docker exec -it 9121af6cabed /bin/bash
+   - docker stop cif 停止容器
+   - docker rm -f cif  运行冲突 remove it using
+   - docker run --name cif -d -p 5000:5000 csirtgadgets/cif
+         
+         
+
+     

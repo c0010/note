@@ -1,0 +1,58 @@
+
+* spacemacs
+ALT-w    复制到系统粘贴板
+f1 note-gtd.org  f9 添加任务 TODO  f8 新建 deft
+** config Manage key
+SPC f e d 快速打开.spacemacs
+SPC f e R 同步配置文件
+** file Manage key
+SPC f f 打开文件夹搜索 C-h 
+SPC f r open recent file 
+SPC f R rename file 
+SPC f c copy file current file 
+SPC f j open dired 
+SPC p f 在当前文件夹下搜索文件名 
+SPC f t 打开/关闭侧边栏
+** Org-mode GTD key 
+alt+回车
+alt+left/right  切换上下层
+C-c C-s   添加开始时间
+C-c C-d   添加结束时间
+C-c .     添加时间段
+C-a       GTD 管理列表
+C-c C-t   TODO-DONE
+++1d      every day       
+<s TAB
+** windows Manage key
+SPC w s  水平分割
+SPC w v  垂直分割
+SPC n    跳转
+SPC w c  关闭当前窗口
+SPC 0    跳到侧边栏
+SPC '    打开/关闭 Shell   C-k C-j  前一条/后一条
+* Buffer related operations 
+SPC b b    search buffer
+SPC b k    关闭 buffer
+SPC b n/p  previous/next 
+SPC p b    当前相关 buffer
+** Layout replated operations
+SPC l o    custom layout
+SPC l L/s  load/save layout
+SPC l l    switch layout
+SPC l TAB  quick way to layout
+SPC l ?    open up the help 
+** Dired mode 
+SPC f j       open file
+D/C/R         删除/Copy/rename
+m             标记文件
++             新建目录
+** Deft 
+F8           deft
+,   d        delete
+,   n        new
+C-c RET      rename new 
+C-c C-l/c    open/clear filter
+
+** Git 
+* win10 shortcuts
+  win+ctrl+left/right 切换工作区

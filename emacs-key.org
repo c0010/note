@@ -1,0 +1,310 @@
+* keybinding
+** ,bindings
+#+begin_src 
+       "=" 'increase-default-font-height ; GUI emacs only
+       "-" 'decrease-default-font-height ; GUI emacs only
+       "bf" 'beginning-of-defun
+       "bu" 'backward-up-list
+       "bb" 'back-to-previous-buffer
+       "ef" 'end-of-defun
+       "mf" 'mark-defun
+       "em" 'erase-message-buffer
+       "eb" 'eval-buffer
+       "sd" 'sudo-edit
+       "sc" 'shell-command
+       "ee" 'eval-expression
+       "aa" 'copy-to-x-clipboard ; used frequently
+       "aw" 'ace-swap-window
+       "af" 'ace-maximize-window
+       "zz" 'paste-from-x-clipboard ; used frequently
+       "cy" 'strip-convert-lines-into-one-big-string
+       "bs" '(lambda () (interactive) (goto-edge-by-comparing-font-face -1))
+       "es" 'goto-edge-by-comparing-font-face
+       "ntt" 'neotree-toggle
+       "ntf" 'neotree-find ; open file in current buffer in neotree
+       "ntd" 'neotree-project-dir
+       "nth" 'neotree-hide
+       "nts" 'neotree-show
+       "fl" 'cp-filename-line-number-of-current-buffer
+       "fn" 'cp-filename-of-current-buffer
+       "fp" 'cp-fullpath-of-current-buffer
+       "dj" 'dired-jump ;; open the dired from current file
+       "ff" 'toggle-full-window ;; I use WIN+F in i3
+       "ip" 'find-file-in-project
+       "kk" 'find-file-in-project-by-selected
+       "fd" 'find-directory-in-project-by-selected
+       "trm" 'get-term
+       "tff" 'toggle-frame-fullscreen
+       "tfm" 'toggle-frame-maximized
+       "ti" 'fastdef-insert
+       "th" 'fastdef-insert-from-history
+       ;; "ci" 'evilnc-comment-or-uncomment-lines
+       ;; "cl" 'evilnc-comment-or-uncomment-to-the-line
+       ;; "cc" 'evilnc-copy-and-comment-lines
+       ;; "cp" 'evilnc-comment-or-uncomment-paragraphs
+       "epy" 'emmet-expand-yas
+       "epl" 'emmet-expand-line
+       "rd" 'evilmr-replace-in-defun
+       "rb" 'evilmr-replace-in-buffer
+       "tt" 'evilmr-tag-selected-region ;; recommended
+       "rt" 'evilmr-replace-in-tagged-region ;; recommended
+       "tua" 'artbollocks-mode
+       "cby" 'cb-switch-between-controller-and-view
+       "cbu" 'cb-get-url-from-controller
+       "ht" 'etags-select-find-tag-at-point ; better than find-tag C-]
+       "hp" 'etags-select-find-tag
+       "mm" 'counsel-bookmark-goto
+       "mk" 'bookmark-set
+       "yy" 'browse-kill-ring
+       "gf" 'counsel-git-find-file
+       "gc" 'counsel-git-find-file-committed-with-line-at-point
+       "gl" 'counsel-git-grep-yank-line
+       "gg" 'counsel-git-grep ; quickest grep should be easy to press
+       "ga" 'counsel-git-grep-by-author
+       "gm" 'counsel-git-find-my-file
+       "gs" 'counsel-git-show-commit
+       "sf" 'counsel-git-show-file
+       "df" 'counsel-git-diff-file
+       "rjs" 'run-js
+       "jsr" 'js-send-region
+       "rmz" 'run-mozilla
+       "rpy" 'run-python
+       "rlu" 'run-lua
+       "tci" 'toggle-company-ispell
+       "kb" 'kill-buffer-and-window ;; "k" is preserved to replace "C-g"
+       "it" 'issue-tracker-increment-issue-id-under-cursor
+       "ls" 'highlight-symbol
+       "lq" 'highlight-symbol-query-replace
+       "ln" 'highlight-symbol-nav-mode ; use M-n/M-p to navigation between symbols
+       "bm" 'pomodoro-start ;; beat myself
+       "ii" 'counsel-imenu-goto
+       "im" 'ido-imenu
+       "ij" 'rimenu-jump
+       "." 'evil-ex
+       ;; @see https://github.com/pidu/git-timemachine
+       ;; p: previous; n: next; w:hash; W:complete hash; g:nth version; q:quit
+       "tmt" 'git-timemachine-toggle
+       "tdb" 'tidy-buffer
+       "tdl" 'tidy-current-line
+       ;; toggle overview,  @see http://emacs.wordpress.com/2007/01/16/quick-and-dirty-code-folding/
+       "ov" 'my-overview-of-current-buffer
+       "or" 'open-readme-in-git-root-directory
+       "oo" 'compile
+       "c$" 'org-archive-subtree ; `C-c $'
+       ;; org-do-demote/org-do-premote support selected region
+       "c<" 'org-do-promote ; `C-c C-<'
+       "c>" 'org-do-demote ; `C-c C->'
+       "cam" 'org-tags-view ; `C-c a m': search items in org-file-apps by tag
+       "cxi" 'org-clock-in ; `C-c C-x C-i'
+       "cxo" 'org-clock-out ; `C-c C-x C-o'
+       "cxr" 'org-clock-report ; `C-c C-x C-r'
+       "qq" 'my-grep
+       "xc" 'save-buffers-kill-terminal
+       "rr" 'counsel-recentf-goto
+       "rh" 'counsel-yank-bash-history ; bash history command => yank-ring
+       "rf" 'counsel-goto-recent-directory
+       "da" 'diff-region-tag-selected-as-a
+       "db" 'diff-region-compare-with-b
+       "di" 'evilmi-delete-items
+       "si" 'evilmi-select-items
+       "jb" 'js-beautify
+       "jp" 'js2-print-json-path
+       "sep" 'string-edit-at-point
+       "sec" 'string-edit-conclude
+       "sea" 'string-edit-abort
+       "xe" 'eval-last-sexp
+       "x0" 'delete-window
+       "x1" 'delete-other-windows
+       "x2" 'split-window-vertically
+       "x3" 'split-window-horizontally
+       "rw" 'rotate-windows
+       "ru" 'undo-tree-save-state-to-register ; C-x r u
+       "rU" 'undo-tree-restore-state-from-register ; C-x r U
+       "xt" 'toggle-window-split
+       "uu" 'winner-undo
+       "UU" 'winner-redo
+       "to" 'toggle-web-js-offset
+       "sl" 'sort-lines
+       "ulr" 'uniquify-all-lines-region
+       "ulb" 'uniquify-all-lines-buffer
+       "lj" 'moz-load-js-file-and-send-it
+       "mr" 'moz-console-clear
+       "rnr" 'rinari-web-server-restart
+       "rnc" 'rinari-find-controller
+       "rnv" 'rinari-find-view
+       "rna" 'rinari-find-application
+       "rnk" 'rinari-rake
+       "rnm" 'rinari-find-model
+       "rnl" 'rinari-find-log
+       "rno" 'rinari-console
+       "rnt" 'rinari-find-test
+       "ss" 'swiper-the-thing ; http://oremacs.com/2015/03/25/swiper-0.2.0/ for guide
+       "hst" 'hs-toggle-fold
+       "hsa" 'hs-toggle-fold-all
+       "hsh" 'hs-hide-block
+       "hss" 'hs-show-block
+       "hd" 'describe-function
+       "hf" 'find-function
+       "hk" 'describe-key
+       "hv" 'describe-variable
+       "gt" 'ggtags-find-tag-dwim
+       "gr" 'ggtags-find-reference
+       "fb" 'flyspell-buffer
+       "fe" 'flyspell-goto-next-error
+       "fa" 'flyspell-auto-correct-word
+       "pe" 'flymake-goto-prev-error
+       "ne" 'flymake-goto-next-error
+       "fw" 'ispell-word
+       "bc" '(lambda () (interactive) (wxhelp-browse-class-or-api (thing-at-point 'symbol)))
+       "ma" 'mc/mark-all-like-this-in-defun
+       "mw" 'mc/mark-all-words-like-this-in-defun
+       "ms" 'mc/mark-all-symbols-like-this-in-defun
+       ;; "opt" is occupied by my-open-project-todo
+       ;; recommended in html
+       "md" 'mc/mark-all-like-this-dwim
+       "me" 'mc/edit-lines
+       "oag" 'org-agenda
+       "otl" 'org-toggle-link-display
+       "om" 'toggle-org-or-message-mode
+       "ut" 'undo-tree-visualize
+       "ar" 'align-regexp
+       "wrn" 'httpd-restart-now
+       "wrd" 'httpd-restart-at-default-directory
+       "bk" 'buf-move-up
+       "bj" 'buf-move-down
+       "bh" 'buf-move-left
+       "bl" 'buf-move-right
+       "so" 'sos
+       "0" 'select-window-0
+       "1" 'select-window-1
+       "2" 'select-window-2
+       "3" 'select-window-3
+       "4" 'select-window-4
+       "5" 'select-window-5
+       "6" 'select-window-6
+       "7" 'select-window-7
+       "8" 'select-window-8
+       "9" 'select-window-9
+       "xm" 'smex
+       "xx" 'er/expand-region
+       "xf" 'ido-find-file
+       "xb" 'ido-switch-buffer
+       "xh" 'mark-whole-buffer
+       "xk" 'ido-kill-buffer
+       "xs" 'save-buffer
+       "xz" 'suspend-frame
+       "vm" 'vc-rename-file-and-buffer
+       "vc" 'vc-copy-file-and-rename-buffer
+       "xvv" 'vc-next-action
+       "va" 'git-add-current-file
+       "xvp" 'git-push-remote-origin
+       "xvu" 'git-add-option-update
+       "xvg" 'vc-annotate
+       "vs" 'git-gutter:stage-hunk
+       "vr" 'git-gutter:revert-hunk
+       "vl" 'vc-print-log
+       "vv" 'git-messenger:popup-message
+       "v=" 'git-gutter:popup-hunk
+       "hh" 'cliphist-paste-item
+       "yu" 'cliphist-select-item
+       "nn" 'my-goto-next-hunk
+       "pp" 'my-goto-previous-hunk
+       "ww" 'narrow-or-widen-dwim
+       "xnw" 'widen
+       "xnd" 'narrow-to-defun
+       "xnr" 'narrow-to-region
+       "ycr" 'my-yas-reload-all
+       "wf" 'popup-which-function)
+#+end_src
+** SPC BinD
+#+begin_src 
+       "ss" 'wg-create-workgroup ; save windows layout
+       "ll" 'my-wg-switch-workgroup ; load windows layout
+       "kk" 'scroll-other-window
+       "jj" 'scroll-other-window-up
+       "yy" 'hydra-launcher/body
+       "gs" 'git-gutter:set-start-revision
+       "gh" 'git-gutter-reset-to-head-parent
+       "gr" 'git-gutter-reset-to-default
+       "ud" 'my-gud-gdb
+       "uk" 'gud-kill-yes
+       "ur" 'gud-remove
+       "ub" 'gud-break
+       "uu" 'gud-run
+       "up" 'gud-print
+       "ue" 'gud-cls
+       "un" 'gud-next
+       "us" 'gud-step
+       "ui" 'gud-stepi
+       "uc" 'gud-cont
+       "uf" 'gud-finish)
+#+end_src
+
+** ; Bind
+#+begin_src 
+       ";" 'avy-goto-subword-1
+       "db" 'sdcv-search-pointer ; in buffer
+       "dt" 'sdcv-search-input+ ;; in tip
+       "dd" 'my-lookup-dict-org
+       "dw" 'define-word
+       "dp" 'define-word-at-point
+       "mm" 'lookup-doc-in-man
+       "gg" 'w3m-google-search
+       "gf" 'w3m-google-by-filetype
+       "gd" 'w3m-search-financial-dictionary
+       "gj" 'w3m-search-js-api-mdn
+       "ga" 'w3m-java-search
+       "gh" 'w3mext-hacker-search ; code search in all engines with firefox
+       "gq" 'w3m-stackoverflow-search
+       "mm" 'mpc-which-song
+       "mn" 'mpc-next-prev-song
+       "mp" '(lambda () (interactive) (mpc-next-prev-song t)))
+ #+end_src
+** org config
+   #+BEGIN_SRC 
+(setq org-agenda-custom-commands
+        '(("o" "Overview Agenda"
+           ((tags "PRIORITY=\"A\""
+                  ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                   (org-agenda-overriding-header "High-priority unfinished tasks:")))
+            (agenda "")
+            (alltodo ""
+                     ((org-agenda-skip-function '(org-agenda-skip-entry-if 'nottodo '("TODO" "NEXT"))))
+                     )))
+          ("ct" "Todays Agenda"
+           ((tags-todo "STYLE=\"habit\"+SCHEDULED<=\"<today>\""
+                       ((org-agenda-overriding-header "Today's Habits:")
+                        (org-agenda-sorting-strategy
+                         '(priority-down time-down todo-state-down
+                                         effort-up category-keep))))
+           (tags-todo "work+DEADLINE<=\"<+2d>\""
+                       ((org-agenda-overriding-header "Today's Work: (with :work: & deadline in 2 days)")
+                        (org-agenda-sorting-strategy
+                         '(priority-down time-down todo-state-down
+                                         effort-up category-keep)))))
+           )
+          ("cw" "Work Hard. Play Hard."
+           ((agenda ""
+                    ((org-agenda-files
+                      (quote
+                       ("~/Documents/org-my-life/work.org")))))
+            (tags-todo "work"
+                       ((org-agenda-skip-function '(org-agenda-skip-entry-if 'nottodo '("WAITING")))))
+            ))
+          ("ch" "Hold & Waiting"
+           ((todo "HOLD"
+                  ((org-agenda-overriding-header "On HOLD~")))
+            (todo "WATIING"
+                  ((org-agenda-overriding-header "In Waiting...")))
+            ))
+
+          ;; ("h" "Habits"
+          ;;  ((agenda ""))
+          ;;  ((org-agenda-show-log t)
+          ;;   (org-agenda-ndays 7)
+          ;;   (org-agenda-log-mode-items '(state))
+          ;;   (org-agenda-skip-function '(org-agenda-skip-entry-if 'notregexp ":HABIT:"))))
+          ))
+
+   
+   #+END_SRC

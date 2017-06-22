@@ -1,0 +1,18 @@
+* note-elasticsearch-install&config
+** install
+ 安装环境: VMware12: 三台 ubuntu 14.04 内存 1g
+1. download es
+2. install java 8
+3. vim elasticsearch.yml
+    访问地址修改:
+    network.host : 192.168.67.128
+    http.port:9200
+4. sudo vi /etc/sysctl.conf
+    kernel.pid_max=999999
+    kernel.thread-max=999999
+    vm.max_map_count=999999
+    fs.file-max=999999
+   sysctl -a|grep vm.max_map_count
+5. ulimit -Hn 
+   /etc/security/limits.conf 配置修改为 65536  重启服务器 
+

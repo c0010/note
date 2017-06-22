@@ -1,0 +1,10 @@
+* Mongo 使用笔记
+** Mongo集群安装
+** 常用命令
+   1. 创建索引
+   
+     db.smrt.ensureIndex({"ip":1})
+
+   2. 聚合出字段种类
+
+     db.smrt.distinct("tags")
