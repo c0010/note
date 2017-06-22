@@ -94,7 +94,8 @@
    - State "TODO"       from "DONE"       [2017-06-05 Mon 18:53]
      
 ** TODO Early hours
-   SCHEDULED: <2017-06-12 Mon +1d>
+   SCHEDULED: <2017-06-13 Tue +1d>
+   - State "DONE"       from "TODO"       [2017-06-22 Thu 20:21]
    - State "UNDO"       from "TODO"       [2017-06-19 Mon 10:41] \\
      下午吃完晚饭回家，看电视看着看着睡着了，晚上想睡就完全没有了睡意，看白鹿原看得心潮澎湃，最近有这么不错的电视剧，居然被那些垃圾快餐剧淹没了。
      不能再熬夜看剧了，有这时间还真的不如看看书呢。
@@ -108,7 +109,7 @@
    - State "DONE"       from "TODO"       [2017-06-05 Mon 19:22] \\
      早睡早起身体好
    :PROPERTIES:
-   :LAST_REPEAT: [2017-06-19 Mon 10:41]
+   :LAST_REPEAT: [2017-06-22 Thu 20:21]
    :END:
    每天晚上12点之前睡，早上6点起床
 

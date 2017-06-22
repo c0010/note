@@ -1,7 +1,9 @@
 * note-Mysql
 ** commands
    1. 终端登录
+
       密码转义符\!
-      mysql -uroot -pqweO1\!k2ndP -h8.8.8.8
+
+      mysql -u manue1 -p qweO1\!k -h 8.8.8.8
    
    2. 
