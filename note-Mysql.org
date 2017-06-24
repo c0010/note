@@ -17,22 +17,22 @@
      mysql -u root -p 
 
    4. mysql 简单管理
-     启动 MySQL 服务： sudo service mysql start
 
-     停止 MySQL 服务： sudo stop mysql
+     启动 MySQL 服务：
 
-     修改 MySQL 的管理员密码：     sudo mysqladmin -u root password newpassword
+     sudo service mysql start
 
-     #+BEGIN_VERSE
-     
-          设置远程访问(正常情况下，mysql 占用的 3306 端口只是在 IP127.0.0.1 上监听，
-          拒绝了其他 IP 的访问（通过 netstat 可以查看到）。取消本地监听需要修改 
-          my.cnf 文件：    
-            sudo vi /etc/mysql/my.cnf
-            bind-address = 127.0.0.1 //找到此内容并且注释
-     #+END_VERSE
+     停止 MySQL 服务：
+
+     sudo stop mysql
+
+     修改 MySQL 的管理员密码：
+
+     sudo mysqladmin -u root password newpassword
+
 
    5. mysql 目录结构
+
      数据库存放目录：               /var/lib/mysql/
 
      相关配置文件存放目录：          /usr/share/mysql
@@ -41,25 +41,33 @@
 
      启动脚步存放目录：            /etc/rc.d/init.d/
 
-   6. mysql 大小写敏感问题
-
-     sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf 
-
-     在[mysqld]节下 添加
-     #+BEGIN_SRC 
-          lower_case_table_names=1 
-     #+END_SRC
-
-     (备注：为 0 时大小写敏感，为 1 时大小写不敏感，默认为 0)
 
    7. 常见问题
 
-      *  删除不掉数据库
+      * 删除不掉数据库
 
          mysql> drop database elvdou;
          #+BEGIN_SRC 
           ERROR 1010 (HY000): Error dropping database (can't rmdir './elvdou', errno: 39)
          #+END_SRC
+      * 设置远程访问
+        #+BEGIN_VERSE
+        正常情况下,mysql占用的3306端口只是在127.0.0.1上监听，
+        拒绝了其他IP的访问(通过netstat可以查看到)。
+        取消本地监听需要修改 my.cnf 文件：    
+        sudo vi /etc/mysql/my.cnf
+        bind-address = 127.0.0.1 //找到此内容并且注释
+        #+END_VERSE
+      * mysql 大小写敏感问题
+
+        sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf 
+
+        在[mysqld]节下 添加
+        #+BEGIN_SRC 
+          lower_case_table_names=1 
+        #+END_SRC
+
+        备注：为 0 时大小写敏感，为 1 时大小写不敏感，默认为 0
 
 ** commands
    1. 终端登录
