@@ -525,13 +525,16 @@
      - incremental :  /day
        
 *** antispam.imp.ch
+    imp.ch 的反垃圾邮件 共享feed项目,声称每15分钟更新一次
+
+    但已经停止更新了。
 **** spam
-     - tags: spam
+     - tags: Spam Sources
      - confidence ：9
      - source url :http://antispam.imp.ch/spamlist
-     - total :
-     - cycle : 1 day
-     - incremental :  /day
+     - total : 943
+     - cycle : 15 minutes
+     - incremental : 0/day
 *** dragonresearchgroup.org
 **** scanner
      - tags: scanner
