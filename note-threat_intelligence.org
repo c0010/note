@@ -314,9 +314,18 @@
 *** emergingthreats.net
     sum: 1289
 **** compromised-ips
-     - tags: scanner
+     - tags: botnet,C&C
      - confidence ：8 
-     - source url :http://rules.emergingthreats.net/blockrules/compromised-ips.txt
+     - source url :
+        https://rules.emergingthreats.net/blockrules/compromised-ips.txt,
+        https://rules.emergingthreats.net/blockrules/emerging-compromised.rules,
+        https://rules.emergingthreats.net/blockrules/emerging-botcc.excluded,
+        https://rules.emergingthreats.net/blockrules/emerging-compromised.suricata.rules,
+        https://rules.emergingthreats.net/blockrules/emerging-compromised.suricata.rules
+        https://rules.emergingthreats.net/blockrules/emerging-botcc.suricata.rules,
+        https://rules.emergingthreats.net/blockrules/emerging-botcc.rules
+        https://rules.emergingthreats.net/blockrules/emerging-botcc.portgrouped.rules,
+        https://rules.emergingthreats.net/blockrules/emerging-botcc.portgrouped.suricata.rules,
      - total : 1254
      - cycle : 1 day
      - incremental :  /day
@@ -524,7 +533,9 @@
      - cycle : 1 day
      - incremental :  /day
        
-*** antispam.imp.ch
+*** DONE antispam.imp.ch
+    CLOSED: [2017-06-28 Wed 10:38]
+    - State "DONE"       from ""           [2017-06-28 Wed 10:38]
     imp.ch 的反垃圾邮件 共享feed项目,声称每15分钟更新一次
 
     但已经停止更新了。

@@ -1,0 +1,4 @@
+* note scrapy
+** commond
+   1. NotImplementedError
+      parse()函数得存在
