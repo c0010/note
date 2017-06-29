@@ -2,20 +2,19 @@
 ** data source introduction
    - tags 标签说明
      #+BEGIN_VERSE
-    scanners     扫描源
-    spam         垃圾邮件
-    botnets      僵尸网络客户端
-    c&c          僵尸网络控制端
-    malware      恶意软件
-    phishing     钓鱼
-    whitelist    白名单
-    darknet      暗网
-    ddos         拒绝服务攻击
-    exploit      安全漏洞
-    honeypot     蜜罐
-    hijacked     劫持
-    suspicious   可疑
-    +Web Attacks  Web攻击+
+      0   Suspicious      可疑的
+      1   DDos            DDos攻击
+      2   Exploits        漏洞攻击
+      3   Spam Sources    垃圾邮件
+      4   Web Attacks     Web攻击
+      5   Scanners        扫描源
+      6   Botnets         僵尸网络被控端
+      7   C&C             僵尸网络控制端
+      8   Phishing        钓鱼
+      9   Proxy           代理
+      10  Malware         恶意软件
+      11  Whitelist       白名单
+      12  Honeypot        蜜罐
      #+END_VERSE                                                            
    - confidence  数据源的可信度
      #+BEGIN_VERSE
@@ -182,7 +181,8 @@
 
 #+END_SRC
 
-*** blocklist.de
+*** TODO blocklist.de
+    - State "TODO"       from ""           [2017-06-29 Thu 14:07]
     数据源提供 botnet scanner 数据
 
     扫描数据扫描端口
@@ -311,7 +311,9 @@
      - total : 1254
      - cycle : 1 day
      - incremental :  /day
-*** emergingthreats.net
+*** DONE emergingthreats.net
+    CLOSED: [2017-06-29 Thu 13:32]
+    - State "DONE"       from ""           [2017-06-29 Thu 13:32]
     sum: 1289
 **** compromised-ips
      - tags: botnet,C&C

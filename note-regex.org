@@ -1,2 +1,2 @@
 * note regex
-  1. 
+  1. findall(regexa,str)截取
