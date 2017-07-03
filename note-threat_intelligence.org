@@ -1,7 +1,7 @@
 * Threat Intelligence 
 ** data source introduction
    - data_type
-     ip          0    
+     ip          -1    
      domain      1
      url         2
      md5         3
@@ -20,6 +20,7 @@
       10  Malware         恶意软件
       11  Whitelist       白名单
       12  Honeypot        蜜罐
+      13  DGA             域名随机生成
      #+END_VERSE                                                            
    - confidence  数据源的可信度
      #+BEGIN_VERSE
@@ -114,7 +115,9 @@
      - cycle : 1 day
      - incremental : 0 /day
 
-*** TODO osint.bambenekconsulting.com
+*** DONE osint.bambenekconsulting.com
+    CLOSED: [2017-07-03 Mon 16:49]
+    - State "DONE"       from "TODO"       [2017-07-03 Mon 16:49]
     - State "TODO"       from ""           [2017-06-30 Fri 16:26]
     数据源爬取规则过老，需要修改规则或者重写爬虫
 
@@ -122,48 +125,17 @@
 
     http://osint.bambenekconsulting.com/feeds/
 
-
     sum: 865311
-    
-**** cryptolocker-fqdn
-     - tags: botnet
-     - confidence ：9  
-     - source url : http://osint.bambenekconsulting.com/feeds/dga-feed.txt
-     - total : 6000
-     - cycle : 1 day
-     - incremental : - /day
-    
-**** zeus-fqdn
-     - tags: botnet
+    C&C
+    1. http://osint.bambenekconsulting.com/feeds/c2-ipmasterlist.txt
+    2. http://osint.bambenekconsulting.com/feeds/c2-dommasterlist.txt
+
+     - tags: dga
      - confidence ：9  
      - source url : http://osint.bambenekconsulting.com/feeds/dga-feed.txt
      - total : 2000
      - cycle : 1 day
      - incremental : - /day
-
-**** tinba-fqdn
-     - tags: botnet
-     - confidence ：9  
-     - source url : http://osint.bambenekconsulting.com/feeds/dga-feed.txt
-     - total : 13w
-     - cycle : 1 day
-     - incremental : - /day
-#+BEGIN_SRC json
-{
-"_id" : ObjectId("593be9091d41c83f6aa07ba9"),
-"count" : 1,
-"indicator" : "209.15.13.134",
-"tlp" : "white",
-"group" : "everyone",
-"description" : "suppobox c&c",
-"tags" : "botnet",
-"rdata" : "",
-"confidence" : 6.5,
-"provider" : "osint.bambenekconsulting.com",
-"lasttime" : "2017-06-10T00:11:00.000000Z"
-}
-
-#+END_SRC
 
 *** DONE blocklist.de
     CLOSED: [2017-06-30 Fri 14:33]
@@ -355,8 +327,8 @@
      - total : 
      - cycle : 1 day
      - incremental :  /day
-**** botnet
-     - tags:botnet
+**** dga
+     - tags:dga
      - confidence ：7
      - source url :
 #+BEGIN_VERSE
