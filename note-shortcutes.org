@@ -1,58 +1,46 @@
-
-* spacemacs
-ALT-w    复制到系统粘贴板
-f1 note-gtd.org  f9 添加任务 TODO  f8 新建 deft
-** config Manage key
-SPC f e d 快速打开.spacemacs
-SPC f e R 同步配置文件
-** file Manage key
-SPC f f 打开文件夹搜索 C-h 
-SPC f r open recent file 
-SPC f R rename file 
-SPC f c copy file current file 
-SPC f j open dired 
-SPC p f 在当前文件夹下搜索文件名 
-SPC f t 打开/关闭侧边栏
-** Org-mode GTD key 
-alt+回车
-alt+left/right  切换上下层
-C-c C-s   添加开始时间
-C-c C-d   添加结束时间
-C-c .     添加时间段
-C-a       GTD 管理列表
-C-c C-t   TODO-DONE
-++1d      every day       
-<s TAB
-** windows Manage key
-SPC w s  水平分割
-SPC w v  垂直分割
-SPC n    跳转
-SPC w c  关闭当前窗口
-SPC 0    跳到侧边栏
-SPC '    打开/关闭 Shell   C-k C-j  前一条/后一条
-* Buffer related operations 
-SPC b b    search buffer
-SPC b k    关闭 buffer
-SPC b n/p  previous/next 
-SPC p b    当前相关 buffer
-** Layout replated operations
-SPC l o    custom layout
-SPC l L/s  load/save layout
-SPC l l    switch layout
-SPC l TAB  quick way to layout
-SPC l ?    open up the help 
-** Dired mode 
-SPC f j       open file
-D/C/R         删除/Copy/rename
-m             标记文件
-+             新建目录
-** Deft 
-F8           deft
-,   d        delete
-,   n        new
-C-c RET      rename new 
-C-c C-l/c    open/clear filter
-
-** Git 
 * win10 shortcuts
   win+ctrl+left/right 切换工作区
+* vim 
+1. 常用组合
+          不按 Esc 而是按^[或者^c，速度快很多
+          学会几个定位键的区别: C-^ 0, $, {, }, g, G, w, e, b...
+          o, O 分别是当前位置下面/上面插入一个新行并进入插入状态
+          Shift+V 选定几行，然后用 一起移动
+          Ctrl+V 选定行首或行尾的字符，然后用 shift+i 做插入，或者 shift+x 做删除
+          学会用 y,d 和 p, P 做粘贴剪切
+          学会用^W 的窗口操作。打开文件用 sp 或者 vs
+          学会记录宏的命令。用 q 加任意键开始录制，再按 q 保存。然后可用@加这个任意键回放，在@前加数字可定义回放次数。
+          "."重复上一个命令，"u"取消上一个命令,"^r"反取消
+          ^n, ^p 用 buf 里的关键词补全。
+          学会搜索替换":%s/要搜的东西/要换成的东西/g"
+          任何时候移到一个单词上按#的话可以高亮这个文档里所有一样的单词
+          用“/”做搜索, 按 n 或 N 上一个/下一个
+          ":!命令 &"可直接运行这个命令，用":!命令 %&"如果你想让这个命令对当前所编辑文件做操作。
+          任何时候可用":cd %:p:h"来切换目录到当前编辑文件所在目录。
+          ddp 呼唤行位置
+          r/R  # [N]这两个是替换字符的命令
+
+          :reg     "0p  寄存器使用
+
+          行内跳转:
+           fc 第一个 c   /str 查找定位到一个
+           80 l 向左移动 80 格子
+           80 | 直接移动到第 80 列
+
+          创建折叠:
+   zf zc zo
+2. 每行行首行尾插入
+   每行的行首都添加一个字符串：%s/^/要插入的字符串
+   每行的行尾都添加一个字符串：%s/$/要插入的字符串
+* commands
+查找文件比较大的
+find ~ -type f -exec du {} + > /tmp/size_report.txt
+sort -rn /tmp/size_report.txt | head -n20
+ 
+ 2042  curl 10.6.109.60:9200/_cat/indices
+ 2043  curl 10.6.109.60:9200/_cat/indices/vul*
+ 2044  sudo iftop -n
+  nload  查看进出流量
+* grep 
+   grep -r "y_T" /home/manue1/work/  查找代码
+  

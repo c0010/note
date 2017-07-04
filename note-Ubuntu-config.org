@@ -28,7 +28,7 @@
       只需要本地开发编码不报错，运行可以同步到服务器运行
       
       
-** vmware install ubuntu network conf
+0** vmware install ubuntu network conf
    作者写的很认真,[[http://www.cnblogs.com/objectorl/archive/2012/09/27/vmware-ubuntu-nat-static-ip-settings.html][参考链接]]
 
    1. vmwarenet8 开启

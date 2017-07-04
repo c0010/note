@@ -119,6 +119,7 @@
     CLOSED: [2017-07-03 Mon 16:49]
     - State "DONE"       from "TODO"       [2017-07-03 Mon 16:49]
     - State "TODO"       from ""           [2017-06-30 Fri 16:26]
+
     数据源爬取规则过老，需要修改规则或者重写爬虫
 
     目前库内只有7w
@@ -127,7 +128,9 @@
 
     sum: 865311
     C&C
+
     1. http://osint.bambenekconsulting.com/feeds/c2-ipmasterlist.txt
+
     2. http://osint.bambenekconsulting.com/feeds/c2-dommasterlist.txt
 
      - tags: dga
@@ -141,12 +144,14 @@
     CLOSED: [2017-06-30 Fri 14:33]
     - State "DONE"       from "TODO"       [2017-06-30 Fri 14:33]
     - State "TODO"       from ""           [2017-06-29 Thu 14:07]
+
     数据源提供 botnet scanner  spam 数据
 
     扫描数据扫描端口
 
     数据源提供更新时间属性
 
+    https://lists.blocklist.de/lists/ 目录下所有数据
     sum : 68711
 **** scanner 
      - tags: scanner
@@ -274,6 +279,7 @@
 *** DONE emergingthreats.net
     CLOSED: [2017-06-29 Thu 13:32]
     - State "DONE"       from ""           [2017-06-29 Thu 13:32]
+
     sum: 1289
 **** compromised-ips
      - tags: botnet,C&C
@@ -314,8 +320,9 @@
      - cycle : 1 day
      - incremental :  /day
        
-*** UNDO netlab.360.com
+*** DONE netlab.360.com
     CLOSED: [2017-06-30 Fri 16:02]
+    - State "DONE"       from "UNDO"       [2017-07-04 Tue 11:17]
     - State "UNDO"       from ""           [2017-06-30 Fri 16:02]
     Domain generation algorithms (DGA)
 
@@ -332,6 +339,9 @@
      - confidence ：7
      - source url :
 #+BEGIN_VERSE
+       ek
+       http://data.netlab.360.com/feeds/ek/magnitude.txt
+       dga
        http://data.netlab.360.com/feeds/dga/bamital.txt
        http://data.netlab.360.com/feeds/dga/banjori.txt
        http://data.netlab.360.com/feeds/dga/banjori.txt
@@ -503,7 +513,6 @@
     imp.ch 的反垃圾邮件 共享feed项目,声称每15分钟更新一次
 
     但已经停止更新了。
-**** spam
      - tags: Spam Sources
      - confidence ：9
      - source url :http://antispam.imp.ch/spamlist
