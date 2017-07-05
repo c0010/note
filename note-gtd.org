@@ -36,7 +36,8 @@
    :LAST_REPEAT: [2017-07-04 Tue 19:33]
    :END:
 ** TODO Daily word
-   SCHEDULED: <2017-06-11 Sun +1d>
+   SCHEDULED: <2017-06-12 Mon +1d>
+   - State "DONE"       from "TODO"       [2017-07-05 Wed 11:49]
    - State "UNDO"       from "TODO"       [2017-06-11 Sun 23:57]
    - State "UNDO"       from "TODO"       [2017-06-09 Fri 23:26]
    - State "UNDO"       from "TODO"       [2017-06-08 Thu 23:42] \\
@@ -44,16 +45,17 @@
    - State "DONE"       from "TODO"       [2017-06-07 Wed 10:05] \\
      手误将之前的gtd记录删除了，重新建了个任务
    :PROPERTIES:
-   :LAST_REPEAT: [2017-06-11 Sun 23:57]
+   :LAST_REPEAT: [2017-07-05 Wed 11:49]
    :END:
    完成百词斩任务
 
 ** TODO 统计学习方法
-   SCHEDULED: <2017-07-05 Wed +1d>
+   SCHEDULED: <2017-07-06 Thu +1d>
+   - State "DONE"       from "TODO"       [2017-07-05 Wed 11:49]
    - State "DONE"       from "TODO"       [2017-07-05 Wed 10:58] \\
      更加输入空间和输出空间的不同，预测问题被分为，回归、分类、标识
    :PROPERTIES:
-   :LAST_REPEAT: [2017-07-05 Wed 10:58]
+   :LAST_REPEAT: [2017-07-05 Wed 11:49]
    :END:
 
 * Writing List
@@ -79,8 +81,9 @@
    :END:
    每周六健身
 
-** TODO [#B] Early hours
-   SCHEDULED: <2017-06-15 Thu +1d>
+** TODO Early hours
+   SCHEDULED: <2017-06-16 Fri +1d>
+   - State "DONE"       from "TODO"       [2017-07-05 Wed 11:50]
    - State "UNDO"       from "TODO"       [2017-07-04 Tue 19:29]
    - State "DONE"       from "TODO"       [2017-06-30 Fri 10:30]
    - State "DONE"       from "TODO"       [2017-06-22 Thu 20:21]
@@ -97,7 +100,7 @@
    - State "DONE"       from "TODO"       [2017-06-05 Mon 19:22] \\
      早睡早起身体好
    :PROPERTIES:
-   :LAST_REPEAT: [2017-07-04 Tue 19:29]
+   :LAST_REPEAT: [2017-07-05 Wed 11:50]
    :END:
    每天晚上12点之前睡，早上6点起床
 

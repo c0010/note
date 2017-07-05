@@ -1,10 +1,14 @@
 * Threat Intelligence 
 ** data source introduction
-   - data_type
-     ip          -1    
+   - datai-type
+     #+BEGIN_VERSE
+     ip          0
      domain      1
      url         2
      md5         3
+     sha256      4
+     sha1        5
+     #+END_VERSE
    - tags 标签说明
      #+BEGIN_VERSE
       0   Suspicious      可疑的
@@ -285,6 +289,7 @@
      - tags: botnet,C&C
      - confidence ：8 
      - source url :
+       #+BEGIN_VERSE
         https://rules.emergingthreats.net/blockrules/compromised-ips.txt,
         https://rules.emergingthreats.net/blockrules/emerging-compromised.rules,
         https://rules.emergingthreats.net/blockrules/emerging-botcc.excluded,
@@ -294,6 +299,7 @@
         https://rules.emergingthreats.net/blockrules/emerging-botcc.rules
         https://rules.emergingthreats.net/blockrules/emerging-botcc.portgrouped.rules,
         https://rules.emergingthreats.net/blockrules/emerging-botcc.portgrouped.suricata.rules,
+       #+END_VERSE
      - total : 1254
      - cycle : 1 day
      - incremental :  /day
@@ -449,15 +455,19 @@
      - cycle : 1 day
      - incremental :  /day
 
-*** abuse.ch
+*** TODO abuse.ch
+    - State "TODO"       from ""           [2017-07-05 Wed 12:04]
     sum :16810
 **** sslbl.abuse.ch
+      15 分钟更新一次 botnet malware C&C 
      - tags: botnet
      - confidence ：10
      - source url :
-       1. https://sslbl.abuse.ch/blacklist/sslipblacklist.csv
-       2. https://sslbl.abuse.ch/blacklist/dyre_sslipblacklist.csv
-       3. https://sslbl.abuse.ch/blacklist/sslblacklist.csv
+       1. https://sslbl.abuse.ch/blacklist/sslblacklist.csv   C&C  sha1
+       1. https://sslbl.abuse.ch/blacklist/sslipblacklist.csv C&C  ip
+       1. https://sslbl.abuse.ch/blacklist/sslipblacklist_aggressive.csv C&C ip
+       2. https://sslbl.abuse.ch/blacklist/dyre_sslipblacklist.csv  C&C ip
+       2. https://sslbl.abuse.ch/blacklist/dyre_sslblacklist.csv  C&C sha1
      - total :2384 
      - cycle : 1 day
      - incremental :  /day
