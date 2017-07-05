@@ -49,7 +49,12 @@
    完成百词斩任务
 
 ** TODO 统计学习方法
-   SCHEDULED: <2017-07-04 Tue +1d>
+   SCHEDULED: <2017-07-05 Wed +1d>
+   - State "DONE"       from "TODO"       [2017-07-05 Wed 10:58] \\
+     更加输入空间和输出空间的不同，预测问题被分为，回归、分类、标识
+   :PROPERTIES:
+   :LAST_REPEAT: [2017-07-05 Wed 10:58]
+   :END:
 
 * Writing List
 ** TODO Weekly note 
@@ -61,19 +66,6 @@
    :LAST_REPEAT: [2017-06-30 Fri 10:30]
    :END:
    每周三记录下一周发生的事情
-
-** TODO Daily Math
-   SCHEDULED: <2017-06-12 Mon +1d>
-   - State "DONE"       from "TODO"       [2017-06-13 Tue 00:04]
-   - State "UNDO"       from "TODO"       [2017-06-11 Sun 23:58]
-   - State "DONE"       from "TODO"       [2017-06-09 Fri 23:26]
-   - State "UNDO"       from "TODO"       [2017-06-08 Thu 23:43]
-   - State "UNDO"       from "TODO"       [2017-06-07 Wed 23:45] \\
-     尝试处理，但是太多基础的忘记了 需要买一本基础的书看一看
-   :PROPERTIES:
-   :LAST_REPEAT: [2017-06-13 Tue 00:04]
-   :END:
-   每天五道习题练习
 
 * Body Building
 ** TODO Weekly fitness
@@ -87,7 +79,7 @@
    :END:
    每周六健身
 
-** TODO Early hours
+** TODO [#B] Early hours
    SCHEDULED: <2017-06-15 Thu +1d>
    - State "UNDO"       from "TODO"       [2017-07-04 Tue 19:29]
    - State "DONE"       from "TODO"       [2017-06-30 Fri 10:30]
@@ -110,12 +102,6 @@
    每天晚上12点之前睡，早上6点起床
 
 * Common List
-** DONE 周六去浦发银行
-   CLOSED: [2017-06-11 Sun 23:54] SCHEDULED: <2017-06-10 Sat>
-   - State "DONE"       from "TODO"       [2017-06-11 Sun 23:54] \\
-     信用卡不打算开户了 太多容易乱 还会忘记还款 vps的事情在想办法
-   - State "TODO"       from "DONE"       [2017-06-05 Mon 18:53]
-     
 ** DONE Docker learn & use
    CLOSED: [2017-06-12 Mon 11:11]
    - State "DONE"       from "SOMEDAY"    [2017-06-12 Mon 11:11] \\
@@ -127,4 +113,5 @@
 ** SOMEDAY 微信小程序开发测试
    
 ** TODO git 项目管理文章记录
+   X-plan
 
