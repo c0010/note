@@ -458,7 +458,9 @@
 *** TODO abuse.ch
     - State "TODO"       from ""           [2017-07-05 Wed 12:04]
     sum :16810
-**** sslbl.abuse.ch
+**** DONE sslbl.abuse.ch
+     CLOSED: [2017-07-06 Thu 16:13]
+     - State "DONE"       from ""           [2017-07-06 Thu 16:13]
       15 分钟更新一次 botnet malware C&C 
      - tags: botnet
      - confidence ：10
@@ -476,11 +478,13 @@
      - confidence ：9
      - source url :
 #+BEGIN_VERSE
-       http://zeustracker.abuse.ch/monitor.php?urlfeed=configs
-       http://zeustracker.abuse.ch/monitor.php?urlfeed=configs
-       http://zeustracker.abuse.ch/monitor.php?urlfeed=dropzones
-       http://zeustracker.abuse.ch/blocklist.php?download=domainblocklist
-       http://zeustracker.abuse.ch/blocklist.php?download=ipblocklist
+       https://zeustracker.abuse.ch/blocklist.php?download=baddomains   domain  C&C
+       https://zeustracker.abuse.ch/blocklist.php?download=domainblocklist domain C&C
+
+       https://zeustracker.abuse.ch/blocklist.php?download=badips   ip C&C
+       http://zeustracker.abuse.ch/blocklist.php?download=ipblocklist ip C&C
+
+       https://zeustracker.abuse.ch/blocklist.php?download=compromised url Botnets
 #+END_VERSE
      - total : 673
      - cycle : 1 day
