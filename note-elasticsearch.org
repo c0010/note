@@ -16,3 +16,190 @@
 5. ulimit -Hn 
    /etc/security/limits.conf 配置修改为 65536  重启服务器 
 
+** cat command
+   vim  /etc/security/limits.conf
+   vim   /etc/security/limits.d/def.conf
+  sudo netstat -anp |grep 9200
+  htop
+  show python
+  curl localhost:9200/_cat/shards/?v |grep -v STARTED |less
+  curl -XGET 'localhost:9200/_cat/recovery/webasset_scan?v'
+
+  ES 常用操作命令总结：
+  1.索引状态
+  curl localhost:9200/_cat/indices?v
+  2.文件描述符
+  curl localhost:9200/_nodes/stats/process?pretty | less
+  3.集群健康
+  curl localhost:9200/_cluster/health?pretty | less
+  curl 'localhost:9200/_cluster/health?level=indices&pretty' | less
+  curl localhost:9200/_cat/health?v| less
+
+  curl 'localhost:9200/_cat/allocation?v'
+  4.分片状态
+  curl localhost:9200/_cat/shards/formal_webasset_scan?v
+  5.当前任务
+  curl localhost:9200/_tasks?pretty | less
+  6.查看别名
+  curl localhost:9200/webasset*/_alias?pretty |less
+  7.查看 relocate 进度
+  curl -XGET 'localhost:9200/_cat/recovery/ipasset_seer4?v'
+  8.优化（慎用，会消耗全部可用资源，尤其是磁盘 io）
+  curl -XPOST 'localhost:9200/threat_ip2/_optimize?max_num_segments=3&pretty'
+  9.查看 segment
+  curl localhost:9200/_cat/segments/ipasset_seer4?v
+
+  新建索引
+  curl -XPUT 'localhost:9200/index_name/?pretty' -d '{"settings":{"number_of_replicas":0}}'
+  curl -XPOST localhost:9200/index_name/_mapping/type_name?pretty -d @mapping_file
+  动态改副本数量
+  curl -XPUT 'localhost:9200/index_name/_settings?pretty' -d '{"number_of_replicas":1}'
+  设置别名
+  curl -XPUT 'localhost:9200/index_name/_alias/alias_name?pretty'
+  修改别名
+  curl -XPOST 'localhost:9200/_aliases?pretty' -d '{"actions":[{"remove":{"index":"webasset_subdomain_v2","alias":"formal_webasset_subdomain"}},{"add":{"index":"webasset_subdomain_v1","alias":"formal_webasset_subdomain"}}]}'
+
+ 1. 允许自动分配分片(alloctattion disable  关掉) 重启 es 前需要关掉
+  curl -XPUT '10.24.45.94:9200/_settings' -d '{
+    "index.routing.allocation.disable_allocation": false
+  }'
+ 2. 
+    curl -XPUT 10.24.45.94:9200/_cluster/settings -d '
+      {
+          "transient" : {
+              "cluster.routing.allocation.enable": true
+          }
+      }'
+ 3. 最大恢复
+ curl -XPUT localhost:9200/_cluster/settings -d '{
+      "transient" : {
+          "indices.recovery.max_bytes_per_sec" : 80000000
+      }
+  }'
+ 1. 拉取数据后挂掉 先删除任务 (shard 重路由之前可以先尝试)
+    curl -XDELETE 10.24.45.94:9200/_search/scroll/_all
+ 2. reroute
+    curl -XPOST '10.24.45.94:9200/_cluster/reroute' -d @reroute.mapping
+ 3. 
+** Mapping
+1. 建立索引
+   curl -XPUT 'localhost:9200/threat_ip_history/?pretty' -d{"settings":{"number_of_shards":20}}
+   curl -XPUT '10.200.1.72:9200/ipasset_seer_lower/_settings'  -d {"number_of_replicas":1}
+2. 设置 mapping 
+   curl -XPOST 'localhost:9200/threat_ip_history/_mapping/ipv4?pretty' -d @mapping_file 
+
+   mapping 存放到文件内
+     #+BEGIN_SRC python 
+     
+          {
+            "ipv4": {
+                "dynamic_templates": [
+                    {
+                        "notanalyzed": {
+                            "mapping": {
+                                "index": "not_analyzed",
+                                "type": "string"
+                            },
+                            "match": "*",
+                            "match_mapping_type": "string"
+                        }
+                    }
+                ],
+                "properties": {
+                    "activity": {
+                        "include_in_parent": true,
+                        "properties": {
+                            "threat_type": {
+                                "index": "not_analyzed",
+                                "type": "string"
+                            },
+                            "update_time": {
+                                "format": "YYYY-MM-dd'T'HH:mm:ss",
+                                "type": "date"
+                            }
+                        },
+                        "type": "nested"
+                    },
+                    "ip": {
+                        "fields": {
+                            "raw": {
+                                "type": "ip"
+                            }
+                        },
+                        "type": "string"
+                    }
+                }
+            }
+          }
+     #+END_SRC
+3. 删除索引
+  curl -XDELETE localhost:9200/index_name
+
+** CURD
+ 1. 添加一条记录
+  curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d  '{_source 内容}'
+ 2. 删除一条记录
+    curl -XDELETE 'http://localhost:9200/twitter/tweet/1'
+** Query
+1. 基本查询
+
+  curl -XGET 'http://localhost:9200/ipasset_seer4/asset_from_seer/_search?pretty&q=ip:210.186.226.178'
+
+  curl -XGET  'localhost:9200/webasset_whois3/whois_info/_search?pretty&q=_id:PERSONALLICENCECOURSES.COM'
+2. DSL 查询
+   1.query bool must/filter match/term
+     #+BEGIN_SRC 
+  
+       {
+         "query": { 
+           "bool": { 
+             "must": [
+               { "match": { "title":   "Search"        }}, 
+               { "match": { "content": "Elasticsearch" }}  
+             ],
+             "filter": [ 
+               { "term":  { "status": "published" }}, 
+               { "range": { "publish_date": { "gte": "2015-01-01" }}} 
+             ]
+           }
+         }
+       }
+  
+     #+END_SRC
+   2.query/sort
+     #+BEGIN_SRC 
+     {
+            "query": {
+                "bool": {
+                    "must": [
+                        {
+                            "term": {
+                                "ip.raw": "210.186.226.178"
+                            }
+                        }
+                    ],
+                    "must_not": [ ],
+                    "should": [ ]
+                }
+            },
+            "sort": {
+              "started": "desc"
+            },
+        }
+     #+END_SRC
+** Alias
+
+1. 创建 alias
+ curl -XPOST 'localhost:9200/_aliases' -d '{"actions":[{"add":{"index" : "vulnerability_data_v4","alias" : "formal_vulnerability_data"}}]}'
+2. 删除 alias
+  curl -XPOST 'localhost:9200/_aliases' -d '{"actions":[{"remove":{"index" : "vulnerability_data_v4","alias" : "formal_vulnerability_data"}}]}'
+3. 创建映射多个索引:
+   #+BEGIN_SRC 
+    curl -XPOST 'http://localhost:9200/_aliases'-d '  
+    {  
+        "actions" : [  
+            { "add" : { "index" : "test1","alias" : "alias1" } },  
+            { "add" : { "index" : "test2","alias" : "alias1" } }  
+        ]  
+    }'  
+   #+END_SRC
