@@ -18,10 +18,10 @@
       4   Web Attacks     Web攻击
       5   Scanners        扫描源
       6   Botnets         僵尸网络被控端
-      7   C&C             僵尸网络控制端
+      7  Malware         恶意软件
       8   Phishing        钓鱼
       9   Proxy           代理
-      10  Malware         恶意软件
+      10   C&C             僵尸网络控制端
       11  Whitelist       白名单
       12  Honeypot        蜜罐
       13  DGA             域名随机生成
@@ -36,7 +36,7 @@
      (0-4)    Informational Data
      #+END_VERSE
    - 统计表
-
+     
        [[http://7xpyfe.com1.z0.glb.clouddn.com/blog/20170616/135122999.png]]
    - 数据库内存储格式
         + 录入机制:
@@ -455,7 +455,9 @@
      - cycle : 1 day
      - incremental :  /day
 
-*** TODO abuse.ch
+*** DONE abuse.ch
+    CLOSED: [2017-07-12 Wed 17:19]
+    - State "DONE"       from "TODO"       [2017-07-12 Wed 17:19]
     - State "TODO"       from ""           [2017-07-05 Wed 12:04]
     sum :16810
 **** DONE sslbl.abuse.ch
@@ -473,7 +475,9 @@
      - total :2384 
      - cycle : 1 day
      - incremental :  /day
-**** zeustracker.abuse.ch
+**** DONE zeustracker.abuse.ch
+     CLOSED: [2017-07-12 Wed 16:34]
+     - State "DONE"       from ""           [2017-07-12 Wed 16:34]
      - tags: botnet
      - confidence ：9
      - source url :
@@ -485,12 +489,16 @@
        http://zeustracker.abuse.ch/blocklist.php?download=ipblocklist ip C&C
 
        https://zeustracker.abuse.ch/blocklist.php?download=compromised url Botnets
+
+       https://zeustracker.abuse.ch/removals.php domain C&C
 #+END_VERSE
      - total : 673
      - cycle : 1 day
      - incremental :  /day
 
-**** feodotracker.abuse.ch
+**** DONE feodotracker.abuse.ch
+     CLOSED: [2017-07-12 Wed 16:58]
+     - State "DONE"       from ""           [2017-07-12 Wed 16:58]
     sum : 903
      - tags: botnet
      - confidence ：6-8 
@@ -502,10 +510,21 @@
      - total : 
      - cycle : 1 day
      - incremental :  /day
-**** ransomware.abuse.ch
+**** DONE ransomware.abuse.ch
+     CLOSED: [2017-07-12 Wed 17:19]
+     - State "DONE"       from ""           [2017-07-12 Wed 17:19]
      - tags:botnet
      - confidence ：9
-     - source url :http://ransomwaretracker.abuse.ch/feeds/csv
+     - source url :
+
+          http://ransomwaretracker.abuse.ch/downloads/RW_DOMBL.txt
+
+          http://ransomwaretracker.abuse.ch/downloads/RW_DOMBL.txt,
+
+          http://ransomwaretracker.abuse.ch/downloads/RW_URLBL.txt,
+
+          http://ransomwaretracker.abuse.ch/downloads/RW_IPBL.txt,
+       
      - total :12850
      - cycle : 1 day
      - incremental :  /day
