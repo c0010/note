@@ -1,0 +1,12 @@
+* note awk&sed
+** awk
+   1. kill 进程
+      ps aux|grep test.py|awk '{print $2}'|xargs kill -9
+   2. 两文件比较
+      awk -F ':' 'NR==FNR{a[$1]++}NR!=FNR{if($1 in a){print}}' 1 2 >3
+
+** sed
+   1. 删除包含Love的行
+      sed -i '/Love/d' 1.txt
+   2. 文件n行添加一行内容
+      cat file | sed -e "n i \<\!--more-->" -i file

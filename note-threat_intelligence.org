@@ -705,8 +705,6 @@ if not os.path.isfile(CONFIG_PATH):
     功能提取出来了[[https://github.com/csirtgadgets/csirtg-smrt-py][csirtg-smrt-py]] 项目
 
 
-
-    
 *** csirtg-smrt-py
     使用YAML来规范数据，爬取feed数据源
     
@@ -719,7 +717,6 @@ if not os.path.isfile(CONFIG_PATH):
  
     下载github project中的单个目录 可以通过[[https://github.com/MinhasKamal/DownGit][DownGit]] 创建下载链接
 
-    
 *** source list use
     利用pyyaml解析yml
 
