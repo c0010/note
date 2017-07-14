@@ -1,4 +1,4 @@
-* note-wx
+* note-robot
   微信机器人wxpy是在itchat的基础上,通过大量接口优化提升了模块的易用性，
 
   并进行丰富的功能扩展
@@ -12,7 +12,7 @@
    1. 机器人实例 
 
      下载地址 [[https://gist.github.com/youfou/03c1e0204ac092f873730f51671ce0a8][download]]
-
+      
    2. 开发环境
 
      最新项目源码采用 [[https://stackoverflow.com/questions/42662104/how-to-install-pip-for-python-3-6-on-ubuntu-16-10/44254088#44254088a][python3 环境]]
@@ -684,3 +684,6 @@ bot.dump_login_status()
 bot.join()
 
        #+END_SRC
+** TODO list
+   1. 添加暂停功能
+   2. 添加监控VPS信息

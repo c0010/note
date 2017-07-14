@@ -1,4 +1,4 @@
-* note-security
+* note-securiy
 ** What is “Kill Chain”?
    网络攻击链 cyber kill chain
 
