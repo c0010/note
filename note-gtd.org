@@ -70,6 +70,15 @@
    :LAST_REPEAT: [2017-07-05 Wed 11:49]
    :END:
 
+** TODO 比特币:一个虚幻而真实的金融世界
+   SCHEDULED: <2017-07-19 Wed +1d>
+   - State "DONE"       from "TODO"       [2017-07-18 Tue 11:06] \\
+     当财产都被先入比特币行业的人挖掘完了,如何再去保证财产的转移,比特币本身就存在大量问题,外加先入为主的局限性,成为未来货币?通用货币??
+     看不懂
+   :PROPERTIES:
+   :LAST_REPEAT: [2017-07-18 Tue 11:06]
+   :END:
+
 * Writing List
 ** TODO Weekly note 
    SCHEDULED: <2017-06-21 Wed +1w>
@@ -83,13 +92,15 @@
 
 * Body Building
 ** TODO Weekly fitness
-   SCHEDULED: <2017-06-24 Sat +1w>
+   SCHEDULED: <2017-07-01 Sat +1w>
+   - State "ABORT"      from "TODO"       [2017-07-18 Tue 11:10] \\
+     轮滑很好玩嘿嘿
    - State "UNDO"       from "TODO"       [2017-06-30 Fri 10:30]
    - State "UNDO"       from "TODO"       [2017-06-11 Sun 23:56] \\
      周五晚上写了一通宵的pywx代码的文件传输功能
      白天心态爆炸 没去锻炼
    :PROPERTIES:
-   :LAST_REPEAT: [2017-06-30 Fri 10:30]
+   :LAST_REPEAT: [2017-07-18 Tue 11:10]
    :END:
    每周六健身
 
