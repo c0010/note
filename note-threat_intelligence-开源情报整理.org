@@ -338,7 +338,9 @@
      - total : 943
      - cycle : 15 minutes
      - incremental : 0/day
-*** TODO alexa.com
+*** DONE alexa.com
+    CLOSED: [2017-07-19 Wed 15:38]
+    - State "DONE"       from "TODO"       [2017-07-19 Wed 15:38]
     - State "TODO"       from ""           [2017-07-14 Fri 19:54]
     亚马逊的alexa提供站点排名
 
@@ -367,6 +369,11 @@
 
 #+END_SRC
 
+*** TODO public-dns.info
+    - tags: whitelist
+    - confidence ：5  
+
+      https://public-dns.info/nameservers-all.txt
 *** TODO umbrella.cisco.com
     - State "TODO"       from ""           [2017-07-17 Mon 10:16]
     一级域名

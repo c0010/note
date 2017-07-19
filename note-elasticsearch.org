@@ -142,7 +142,7 @@
     curl -XDELETE 'http://localhost:9200/twitter/tweet/1'
 ** Query
 1. 基本查询
-
+   
   curl -XGET 'http://localhost:9200/ipasset_seer4/asset_from_seer/_search?pretty&q=ip:210.186.226.178'
 
   curl -XGET  'localhost:9200/webasset_whois3/whois_info/_search?pretty&q=_id:PERSONALLICENCECOURSES.COM'
