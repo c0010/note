@@ -369,7 +369,9 @@
 
 #+END_SRC
 
-*** TODO public-dns.info
+*** DONE public-dns.info
+    CLOSED: [2017-07-20 Thu 14:16]
+    - State "DONE"       from "TODO"       [2017-07-20 Thu 14:16]
     - tags: whitelist
     - confidence ：5  
 
