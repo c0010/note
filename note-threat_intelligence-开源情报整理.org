@@ -317,7 +317,9 @@
     - confidence ：5  
 
       https://public-dns.info/nameservers-all.txt
-*** TODO umbrella.cisco.com
+*** DONE umbrella.cisco.com
+    CLOSED: [2017-07-24 Mon 17:12]
+    - State "DONE"       from "TODO"       [2017-07-24 Mon 17:12]
     - State "TODO"       from ""           [2017-07-17 Mon 10:16]
     一级域名
 
