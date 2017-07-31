@@ -75,14 +75,44 @@
 
       使用此项目需要树莓派等硬件支持,恶意软件经常使用U盘来感染网络,在使用不明来源的u盘的时候,可以通过[[http://circl.lu/projects/CIRCLean/][定制的树莓派 ]]连接到你的网络
    3. Panopticon - 一个可信的代理服务
+      
       [[http://circl.lu/projects/panopticon/][Panopticon]] 为信任的合作伙伴提供能够隐藏源IP的代理服务
    4. AIL框架 - 信息泄漏分析框架
+      
       AIL框架是一个模块化框架,用于分析非结构化数据源泄漏数据的潜在信息,AIL框架是灵活,可以扩展其他功能来挖掘敏感信息
    5. BGP Ranking
+      
       提供python API接口 输入asn号查询,返回(rank,total)
-   6. [[https://github.com/CIRCL/pcapdj][pcapdj]] pcap大文件分割器  
-   7. urlquery python api
-      提供python接口查询 http://www.urlquery.net/ 提供的信息
-   8. cve-search
-** TODOLIST
-*** potiron部署
+   6. [[https://github.com/CIRCL/pcapdj][pcapdj]] 
+      
+      pcap大文件分割器  
+   7. url query 
+      
+      python [[https://github.com/CIRCL/urlquery_python_api][项目]] 查询  http://www.urlquery.net/ 提供的信息
+
+      使用：安装,导入urlquery包即可
+
+   8. [[https://github.com/adulau/cve-search][cve-search]]
+      
+      cve-search是在本地数据库中导入CVE和CPE的免费软件,用于索引,搜索和处理本地漏洞信息.
+   9. lnf-tools
+
+      [[https://github.com/CIRCL/lnf-tools][lnf-tools ]]是用来分析和处理大量Netflow记录的平台.
+      
+      该项目包括处理大量Netflow记录的各种组件(例如,索引,聚合,过滤器)
+   10. VirusTotal-tools
+       
+       [[https://github.com/CIRCL/vt-tools][vt-tools ]]工具集与VirusTotal的服务进行交互.
+
+       请求数通常限制在每5分钟20次.可应要求提供更高的间隔.
+   11. traceroute-circl
+       
+       [[https://github.com/CIRCL/traceroute-circl][traceroute-circl ]]是一种扩展的路由跟踪软件,用于支持CSIRT运营商的活动.
+
+       能够显示每一跳的滥用情况,显示BGP排名,RBL(Realtime Blackhole List)监测,ASN信息,Google Map绘图
+   12. IP-ASN-history
+
+       [[https://github.com/CIRCL/IP-ASN-history][IP-ASN-history]] 是一个服务端项目,用于存储BGP历史信息,支持快速查找ip信息的项目
+
+       当然circl也提供免费的[[http://bgpranking.circl.lu/ip_lookup?ip=8.8.8.8][web接口查询]]
+       

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>circl调研</title>
-<!-- 2017-07-27 Thu 14:54 -->
+<!-- 2017-07-31 Mon 18:15 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="manue1" />
@@ -268,7 +268,10 @@ CIRCL的使命:
 <div class="outline-text-3" id="text-1-3">
 <ol class="org-ol">
 <li>Early Detection Network
+
+<p>
 TR-16 - HoneyBot Services - Client Data Collection  蜜罐服务-客户端数据采集
+</p>
 
 <p>
 CIRCL HoneyBot服务包括CIRCL HoneyBots的分布式操作和开发. 这些服务是研究项目的一部分旨,在提高互联网的安全性.
@@ -294,6 +297,97 @@ CIRCL HoneyBot是在嵌入式设备上运行的低互动蜜罐,部署在CIRCL合
 此外,circl开发维护的<a href="https://github.com/CIRCL/potiron">potiron</a> 为部署蜜罐的合作伙伴访问HoneyBot数据提供方便,并可以访问其他合作伙伴的数据
 </p>
 </li>
+<li>CIRCLean - USB key sanitizer
+
+<p>
+此项目旨在服务部分用户经常收到来自不信任源的USB密钥,虽然他们不知道这些文件是否是安全的,但他们仍然有兴趣查看文件的内容.
+</p>
+
+<p>
+使用此项目需要树莓派等硬件支持,恶意软件经常使用U盘来感染网络,在使用不明来源的u盘的时候,可以通过<a href="http://circl.lu/projects/CIRCLean/">定制的树莓派 </a>连接到你的网络
+</p>
+</li>
+<li>Panopticon - 一个可信的代理服务
+
+<p>
+<a href="http://circl.lu/projects/panopticon/">Panopticon</a> 为信任的合作伙伴提供能够隐藏源IP的代理服务
+</p>
+</li>
+<li>AIL框架 - 信息泄漏分析框架
+
+<p>
+AIL框架是一个模块化框架,用于分析非结构化数据源泄漏数据的潜在信息,AIL框架是灵活,可以扩展其他功能来挖掘敏感信息
+</p>
+</li>
+<li>BGP Ranking
+
+<p>
+提供python API接口 输入asn号查询,返回(rank,total)
+</p>
+</li>
+<li><a href="https://github.com/CIRCL/pcapdj">pcapdj</a> 
+
+<p>
+pcap大文件分割器  
+</p>
+</li>
+<li>url query 
+
+<p>
+python <a href="https://github.com/CIRCL/urlquery_python_api">项目</a> 查询  <a href="http://www.urlquery.net/">http://www.urlquery.net/</a> 提供的信息
+</p>
+
+<p>
+使用：安装,导入urlquery包即可
+</p>
+</li>
+
+<li><a href="https://github.com/adulau/cve-search">cve-search</a>
+
+<p>
+cve-search是在本地数据库中导入CVE和CPE的免费软件,用于索引,搜索和处理本地漏洞信息.
+</p>
+</li>
+<li>lnf-tools
+
+<p>
+<a href="https://github.com/CIRCL/lnf-tools">lnf-tools </a>是用来分析和处理大量Netflow记录的平台.
+</p>
+
+<p>
+该项目包括处理大量Netflow记录的各种组件(例如,索引,聚合,过滤器)
+</p>
+</li>
+<li>VirusTotal-tools
+
+<p>
+<a href="https://github.com/CIRCL/vt-tools">vt-tools </a>工具集与VirusTotal的服务进行交互.
+</p>
+
+<p>
+请求数通常限制在每5分钟20次.可应要求提供更高的间隔.
+</p>
+</li>
+<li>traceroute-circl
+
+<p>
+<a href="https://github.com/CIRCL/traceroute-circl">traceroute-circl </a>是一种扩展的路由跟踪软件,用于支持CSIRT运营商的活动.
+</p>
+
+<p>
+能够显示每一跳的滥用情况,显示BGP排名,RBL(Realtime Blackhole List)监测,ASN信息,Google Map绘图
+</p>
+</li>
+<li>IP-ASN-history
+
+<p>
+<a href="https://github.com/CIRCL/IP-ASN-history">IP-ASN-history</a> 是一个服务端项目,用于存储BGP历史信息,支持快速查找ip信息的项目
+</p>
+
+<p>
+当然circl也提供免费的<a href="http://bgpranking.circl.lu/ip_lookup?ip=8.8.8.8">web接口查询</a>
+</p>
+</li>
 </ol>
 </div>
 </div>
@@ -301,7 +395,7 @@ CIRCL HoneyBot是在嵌入式设备上运行的低互动蜜罐,部署在CIRCL合
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: manue1</p>
-<p class="date">Created: 2017-07-27 Thu 14:54</p>
+<p class="date">Created: 2017-07-31 Mon 18:15</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
