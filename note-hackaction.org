@@ -1,0 +1,10 @@
+* hackaction
+** 1 day
+*** env conf
+    1. socat
+    
+*** data info
+**** logandreputation
+**** 
+*** tensorFlow
+    [[http://blog.jobbole.com/110558/][TensorFlow 资源大全中文版]]
