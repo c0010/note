@@ -8,3 +8,10 @@
 **** 
 *** tensorFlow
     [[http://blog.jobbole.com/110558/][TensorFlow 资源大全中文版]]
+*** data use
+    db.week_days_v1.find({"product":"waf"})
+    db.week_days_v1.find({"product":"waf","detail.waf_304_src_ip":{$exists: false},"detail.waf_3840_src_":{$exists:false}})
+
+    
+    \r\nHost: www.dgrb.cn\r\
+    r\nHost: wx12345.jinjiang.gov.cn\r\n
