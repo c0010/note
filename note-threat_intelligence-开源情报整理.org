@@ -396,7 +396,9 @@
      - cycle : 1 day
      - incremental :  /day
      
-*** TODO dataplane.org
+*** DONE dataplane.org
+    CLOSED: [2017-08-07 Mon 14:08]
+    - State "DONE"       from "TODO"       [2017-08-07 Mon 14:08]
     - State "TODO"       from ""           [2017-07-25 Tue 13:48]
 
     sum : 46710
@@ -412,7 +414,9 @@
      - total : 1254
      - cycle : 1 day
      - incremental :  /day
-*** TODO malc0de.com
+*** DONE malc0de.com
+    CLOSED: [2017-08-07 Mon 15:18]
+    - State "DONE"       from "TODO"       [2017-08-07 Mon 15:18]
     - State "TODO"       from ""           [2017-07-25 Tue 13:48]
     提取代码出现问题
 
@@ -425,7 +429,10 @@
      - cycle : 1 day
      - incremental :  /day
 
-*** TODO mirc.com
+*** UNDO mirc.com
+    CLOSED: [2017-08-07 Mon 15:43]
+    - State "UNDO"       from "TODO"       [2017-08-07 Mon 15:43]
+      提供了几十个irc聊天服务器的域名地址,而且是2016年就停止更新了
     - State "TODO"       from ""           [2017-07-25 Tue 13:48]
     sum : 191
 **** domains
@@ -436,7 +443,9 @@
      - cycle : 1 day
      - incremental :  /day
        
-*** TODO nothink.org
+*** DONE nothink.org
+    CLOSED: [2017-08-07 Mon 15:52]
+    - State "DONE"       from "TODO"       [2017-08-07 Mon 15:52]
     - State "TODO"       from "DONE"       [2017-07-25 Tue 13:49]
 **** scanner
      - tags:exploit malware 
@@ -445,7 +454,9 @@
      - total : 
      - cycle : 1 day
      - incremental :  /day
-*** TODO openphish.com
+*** DONE openphish.com
+    CLOSED: [2017-08-07 Mon 15:59]
+    - State "DONE"       from "TODO"       [2017-08-07 Mon 15:59]
     - State "TODO"       from ""           [2017-07-25 Tue 13:49]
 **** phishing
      - tags:phishing
