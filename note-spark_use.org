@@ -3,4 +3,11 @@
 ** spark shell
 
    resilient distributed dataset
-**
+** idea spark scala
+   scala 项目手动打包
+   删除scala 和spark的包
+
+   执行中 spark-submit --class com.nti.spark.SparkTags spark_scala_jar.jar
+   
+** idea spark java 
+   1. jre 1.5 换成1.8
