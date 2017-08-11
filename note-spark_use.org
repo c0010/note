@@ -8,6 +8,8 @@
    删除scala 和spark的包
 
    执行中 spark-submit --class com.nti.spark.SparkTags spark_scala_jar.jar
+
+   sbt 构建项目 需要等待sbt版本下载好才会生成src目录
    
 ** idea spark java 
    1. jre 1.5 换成1.8
