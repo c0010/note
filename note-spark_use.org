@@ -1,5 +1,7 @@
 * spark use
 ** spark install
+   函数式编程
+   shell下执行:paste
 ** spark shell
 
    resilient distributed dataset
@@ -13,3 +15,4 @@
    
 ** idea spark java 
    1. jre 1.5 换成1.8
+** rdd & dataframe
