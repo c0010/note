@@ -467,38 +467,58 @@
      - incremental :  /day
 *** TODO packetmail.net
     - State "TODO"       from "DONE"       [2017-08-15 Tue 09:57]
-**** scanner honeynet
-     - tags: honeynet
-     - confidence ：8
-     - source url :
-       1. https://www.packetmail.net/iprep.txt
-       2. https://www.packetmail.net/iprep_mail.txt
-       3. https://www.packetmail.net/iprep_ramnode.txt
-     - total : 
-     - cycle : 1 day
-     - incremental :  /day
+    - source url :
+      1. https://www.packetmail.net/iprep.txt
+      2. https://www.packetmail.net/iprep_mail.txt
+      3. https://www.packetmail.net/iprep_ramnode.txt
+    - indicator: IP
+    - confidence ：8
+    - data_type：0
+    - alive: true
+    - source: packetmail.net
+    - tag:5
+    - description:none
+    - updated_time:数据源提供时间(2017-06-30T14:22:44)
+    - created_time:当前时间(2017-06-30T14:22:44)
 
-*** phishtank.com
-**** phishing
-     - tags:phishing
-     - confidence ：9
-     - source url : http://data.phishtank.com/data/%7Btoken%7D/online-valid.json.gz
-     - total : 
-     - cycle : 1 day
-     - incremental :  /day
-*** isc.sans.edu
-**** scanner
-     - tags: scanner
-     - confidence ：7-9
-     - source url :
+*** TODO phishtank.com
+    - State "TODO"       from ""           [2017-08-21 Mon 16:16]
+    - source url :
+      1. http://data.phishtank.com/data/%7Btoken%7D/online-valid.json.gz
+    - data_type：2
+    - indicator: url
+    - confidence ：9
+    - alive: true
+    - source: phishtank.com
+    - tag:8
+    - description:none
+    - updated_time:数据源提供时间(2017-06-30T14:22:44)
+    - created_time:当前时间(2017-06-30T14:22:44)
+*** TODO isc.sans.edu
+    - State "TODO"       from ""           [2017-08-21 Mon 16:16]
+    - source url :
        1. https://isc.sans.edu/feeds/suspiciousdomains_Low.txt
        2. https://isc.sans.edu/feeds/suspiciousdomains_High.txt
        3. https://isc.sans.edu/feeds/suspiciousdomains_Medium.txt
        4. https://isc.sans.edu/feeds/block.txt
+    - data_type：0
+    - indicator: url
+    - confidence ：9
+    - alive: true
+    - source: phishtank.com
+    - tag:8
+    - description:none
+    - updated_time:数据源提供时间(2017-06-30T14:22:44)
+    - created_time:当前时间(2017-06-30T14:22:44)
+**** scanner
+     - tags: scanner
+     - confidence ：7-9
+     - source url :
      - total : 
      - cycle : 1 day
      - incremental :  /day
-*** spamhaus.org
+*** TODO spamhaus.org
+    - State "TODO"       from ""           [2017-08-21 Mon 16:16]
 **** hijacked 
      被劫持数据
      - tags: hijacked
@@ -511,7 +531,8 @@
      - total : 
      - cycle : 1 day
      - incremental :  /day
-*** vxvault.net 
+*** TODO vxvault.net 
+    - State "TODO"       from ""           [2017-08-21 Mon 16:16]
     爬虫有问题
 **** malware
      - tags: botnet
