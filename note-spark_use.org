@@ -1,10 +1,21 @@
 * spark use
+** spark base
+  rdd(resilient distributed dataset)
 ** spark install
    函数式编程
    shell下执行:paste
 ** spark shell
-
-   resilient distributed dataset
+   bin/spark-shell
+   - 创建RDD
+     sc.parallelize()
+   - RDD操作
+     + 转化操作
+       返回的是RDD
+       map()
+       filter()
+     + 行动操作
+       返回结果或把结果写入外部系统的操作,返回的是其他数据类型
+   
 ** idea spark scala
    scala 项目手动打包
    删除scala 和spark的包

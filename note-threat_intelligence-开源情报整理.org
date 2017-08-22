@@ -519,18 +519,20 @@
      - incremental :  /day
 *** TODO spamhaus.org
     - State "TODO"       from ""           [2017-08-21 Mon 16:16]
-**** hijacked 
-     被劫持数据
-     - tags: hijacked
-     - confidence ：9
-     - source url :
-       1. http://www.spamhaus.org/drop/drop.txt 
-       2. http://www.spamhaus.org/drop/edrop.txt
-       3. https://www.spamhaus.org/drop/dropv6.txt
-       4. https://www.spamhaus.org/drop/asndrop.txt
-     - total : 
-     - cycle : 1 day
-     - incremental :  /day
+    - source url :
+      1. http://www.spamhaus.org/drop/drop.txt 
+      2. http://www.spamhaus.org/drop/edrop.txt
+      3. https://www.spamhaus.org/drop/dropv6.txt
+      4. https://www.spamhaus.org/drop/asndrop.txt
+    - indicator: IP
+    - confidence ：9
+    - data_type：0
+    - alive: True
+    - source:www.spamhaus.org
+    - tag:3
+    - description:'none'
+    - updated_time:'none'
+    - created_time:当前时间(2017-06-30T14:22:44)
 *** TODO vxvault.net 
     - State "TODO"       from ""           [2017-08-21 Mon 16:16]
     爬虫有问题
