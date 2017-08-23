@@ -465,6 +465,22 @@
      - total : 
      - cycle : 1 day
      - incremental :  /day
+*** TODO spamhaus.org
+    - State "TODO"       from "TODO"       [2017-08-23 Wed 12:17]
+    - State "TODO"       from ""           [2017-08-21 Mon 16:16]
+    - source url :
+      1. http://www.spamhaus.org/drop/drop.txt 
+      2. http://www.spamhaus.org/drop/edrop.txt
+      3. https://www.spamhaus.org/drop/asndrop.txt
+    - indicator: IP
+    - confidence ：9
+    - data_type：0
+    - alive: False
+    - source:www.spamhaus.org
+    - tag:3
+    - description:'none'
+    - updated_time:'none'
+    - created_time:当前时间(2017-06-30T14:22:44)
 *** TODO packetmail.net
     - State "TODO"       from "DONE"       [2017-08-15 Tue 09:57]
     - source url :
@@ -481,19 +497,6 @@
     - updated_time:数据源提供时间(2017-06-30T14:22:44)
     - created_time:当前时间(2017-06-30T14:22:44)
 
-*** TODO phishtank.com
-    - State "TODO"       from ""           [2017-08-21 Mon 16:16]
-    - source url :
-      1. http://data.phishtank.com/data/%7Btoken%7D/online-valid.json.gz
-    - data_type：2
-    - indicator: url
-    - confidence ：9
-    - alive: true
-    - source: phishtank.com
-    - tag:8
-    - description:none
-    - updated_time:数据源提供时间(2017-06-30T14:22:44)
-    - created_time:当前时间(2017-06-30T14:22:44)
 *** TODO isc.sans.edu
     - State "TODO"       from ""           [2017-08-21 Mon 16:16]
     - source url :
@@ -517,32 +520,34 @@
      - total : 
      - cycle : 1 day
      - incremental :  /day
-*** TODO spamhaus.org
+*** TODO phishtank.com
     - State "TODO"       from ""           [2017-08-21 Mon 16:16]
     - source url :
-      1. http://www.spamhaus.org/drop/drop.txt 
-      2. http://www.spamhaus.org/drop/edrop.txt
-      3. https://www.spamhaus.org/drop/dropv6.txt
-      4. https://www.spamhaus.org/drop/asndrop.txt
-    - indicator: IP
+      1. http://data.phishtank.com/data/%7Btoken%7D/online-valid.json.gz
+    - data_type：2
+    - indicator: url
     - confidence ：9
-    - data_type：0
-    - alive: True
-    - source:www.spamhaus.org
-    - tag:3
-    - description:'none'
-    - updated_time:'none'
+    - alive: true
+    - source: phishtank.com
+    - tag:8
+    - description:none
+    - updated_time:数据源提供时间(2017-06-30T14:22:44)
     - created_time:当前时间(2017-06-30T14:22:44)
-*** TODO vxvault.net 
+*** DONE vxvazlt.net 
+    CLOSED: [2017-08-23 Wed 17:36]
+    - State "DONE"       from "TODO"       [2017-08-23 Wed 17:36]
     - State "TODO"       from ""           [2017-08-21 Mon 16:16]
-    爬虫有问题
-**** malware
-     - tags: botnet
-     - confidence ：10
-     - source url :http://vxvault.net/URL_List.php
-     - total : 
-     - cycle : 1 day
-     - incremental :  /day
+    - source url :
+      1.http://vxvault.net/URL_List.php
+    - data_type：2
+    - indicator: url
+    - confidence ：10
+    - alive: False
+    - source: phishtank.com
+    - tag:7
+    - description:none
+    - updated_time:"none"
+    - created_time:当前时间(2017-06-30T14:22:44)
 
 *** otx.alienvault.com
 **** otx 
