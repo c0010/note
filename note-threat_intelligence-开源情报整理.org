@@ -465,7 +465,24 @@
      - total : 
      - cycle : 1 day
      - incremental :  /day
-*** TODO spamhaus.org
+*** DONE vxvazlt.net 
+    CLOSED: [2017-08-23 Wed 17:36]
+    - State "DONE"       from "TODO"       [2017-08-23 Wed 17:36]
+    - State "TODO"       from ""           [2017-08-21 Mon 16:16]
+    - source url :
+      1.http://vxvault.net/URL_List.php
+    - data_type：2
+    - indicator: url
+    - confidence ：10
+    - alive: False
+    - source: phishtank.com
+    - tag:7
+    - description:none
+    - updated_time:"none"
+    - created_time:当前时间(2017-06-30T14:22:44)
+
+*** SOMEDAY spamhaus.org
+    需要代理 asn数据待入
     - State "TODO"       from "TODO"       [2017-08-23 Wed 12:17]
     - State "TODO"       from ""           [2017-08-21 Mon 16:16]
     - source url :
@@ -481,25 +498,22 @@
     - description:'none'
     - updated_time:'none'
     - created_time:当前时间(2017-06-30T14:22:44)
-*** DONE packetmail.net
-    CLOSED: [2017-08-24 Thu 09:51]
-    - State "DONE"       from "TODO"       [2017-08-24 Thu 09:51]
-    - State "TODO"       from "DONE"       [2017-08-15 Tue 09:57]
+*** TODO phishtank.com
+    实习生doning
+    - State "TODO"       from ""           [2017-08-21 Mon 16:16]
     - source url :
-      1. https://www.packetmail.net/iprep.txt
-      2. https://www.packetmail.net/iprep_mail.txt
-      3. https://www.packetmail.net/iprep_ramnode.txt
-    - indicator: IP
-    - confidence ：8
-    - data_type：0
+      1. http://data.phishtank.com/data/%7Btoken%7D/online-valid.json.gz
+    - data_type：2
+    - indicator: url
+    - confidence ：9
     - alive: true
-    - source: packetmail.net
-    - tag:5
+    - source: phishtank.com
+    - tag:8
     - description:none
     - updated_time:数据源提供时间(2017-06-30T14:22:44)
     - created_time:当前时间(2017-06-30T14:22:44)
-
 *** TODO isc.sans.edu
+    需要代理 
     - State "TODO"       from "DONE"       [2017-08-24 Thu 09:51]
     - State "DONE"       from "TODO"       [2017-08-24 Thu 09:51]
     - State "TODO"       from ""           [2017-08-21 Mon 16:16]
@@ -524,33 +538,23 @@
      - total : 
      - cycle : 1 day
      - incremental :  /day
-*** TODO phishtank.com
-    - State "TODO"       from ""           [2017-08-21 Mon 16:16]
+*** TODO packetmail.net
+    代理问题
+    - State "TODO"       from "DONE"       [2017-09-04 Mon 10:58]
+    - State "DONE"       from "TODO"       [2017-08-24 Thu 09:51]
+    - State "TODO"       from "DONE"       [2017-08-15 Tue 09:57]
     - source url :
-      1. http://data.phishtank.com/data/%7Btoken%7D/online-valid.json.gz
-    - data_type：2
-    - indicator: url
-    - confidence ：9
+      1. https://www.packetmail.net/iprep.txt
+      2. https://www.packetmail.net/iprep_mail.txt
+      3. https://www.packetmail.net/iprep_ramnode.txt
+    - indicator: IP
+    - confidence ：8
+    - data_type：0
     - alive: true
-    - source: phishtank.com
-    - tag:8
+    - source: packetmail.net
+    - tag:5
     - description:none
     - updated_time:数据源提供时间(2017-06-30T14:22:44)
-    - created_time:当前时间(2017-06-30T14:22:44)
-*** DONE vxvazlt.net 
-    CLOSED: [2017-08-23 Wed 17:36]
-    - State "DONE"       from "TODO"       [2017-08-23 Wed 17:36]
-    - State "TODO"       from ""           [2017-08-21 Mon 16:16]
-    - source url :
-      1.http://vxvault.net/URL_List.php
-    - data_type：2
-    - indicator: url
-    - confidence ：10
-    - alive: False
-    - source: phishtank.com
-    - tag:7
-    - description:none
-    - updated_time:"none"
     - created_time:当前时间(2017-06-30T14:22:44)
 
 *** otx.alienvault.com
@@ -565,7 +569,8 @@
      - cycle : 1 day
      - incremental :  /day
        
-*** dragonresearchgroup.org
+*** TODO dragonresearchgroup.org
+    - State "TODO"       from ""           [2017-09-04 Mon 11:00]
 **** scanner
      - tags: scanner
      - confidence ：9
@@ -575,7 +580,8 @@
      - total :
      - cycle : 1 day
      - incremental :  /day
-*** watcherlab.com
+*** TODO watcherlab.com
+    - State "TODO"       from ""           [2017-09-04 Mon 11:00]
 **** cc
      - tags: cc
      - confidence ：9
