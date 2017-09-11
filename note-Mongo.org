@@ -4,7 +4,7 @@
    1. 创建索引
    
      db.smrt.ensureIndex({"ip":1})
-
+      
    2.聚合出字段种类
 
      db.smrt.distinct("tags")
