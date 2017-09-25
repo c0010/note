@@ -481,7 +481,9 @@
     - updated_time:"none"
     - created_time:当前时间(2017-06-30T14:22:44)
 
-*** SOMEDAY spamhaus.org
+*** DONE spamhaus.org
+    CLOSED: [2017-09-25 Mon 14:33]
+    - State "DONE"       from "SOMEDAY"    [2017-09-25 Mon 14:33]
     需要代理 asn数据待入
     - State "TODO"       from "TODO"       [2017-08-23 Wed 12:17]
     - State "TODO"       from ""           [2017-08-21 Mon 16:16]
@@ -498,7 +500,9 @@
     - description:'none'
     - updated_time:'none'
     - created_time:当前时间(2017-06-30T14:22:44)
-*** TODO phishtank.com
+*** DONE phishtank.com
+    CLOSED: [2017-09-25 Mon 14:32]
+    - State "DONE"       from "TODO"       [2017-09-25 Mon 14:32]
     实习生doning
     - State "TODO"       from ""           [2017-08-21 Mon 16:16]
     - source url :
@@ -569,7 +573,9 @@
      - cycle : 1 day
      - incremental :  /day
        
-*** TODO dragonresearchgroup.org
+*** DONE dragonresearchgroup.org
+    CLOSED: [2017-09-25 Mon 14:32]
+    - State "DONE"       from "TODO"       [2017-09-25 Mon 14:32]
     - State "TODO"       from ""           [2017-09-04 Mon 11:00]
 **** scanner
      - tags: scanner
@@ -589,6 +595,9 @@
      - total :
      - cycle : 1 day
      - incremental :  /day
+*** TODO malwaredomainlist.com
+    - State "TODO"       from ""           [2017-09-25 Mon 14:35]
+      
 *** 统计表
  |------------------------------+---------+------+--------+-----+---------+----------+-----------+---------+------+---------+----------+----------+------------+-------------------+---------|
  |                              | scanner | spam | botnet | c&c | malware | phishing | whitelist | darknet | ddos | exploit | honeypot | hijacked | suspicious | data-type         |     sum |
