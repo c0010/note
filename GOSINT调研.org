@@ -1,2 +1,0 @@
-* GOSINT调研
-  GOSINT框架被用在采集,处理,导出高质量IOC(indicators of compromise)
