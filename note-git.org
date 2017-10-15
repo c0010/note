@@ -1,0 +1,33 @@
+蒋鑫. Git权威指南 机械工业出版社. Kindle 版本. 
+* git 独奏
+** git 初始化
+    - git init 
+      
+      初始化git项目
+    - .git
+      
+      版本库存放目录
+    - git config
+      修改配置文件
+      + git config -e 
+
+        修改 =.git/config=
+      + git config -e --global
+        
+        修改 =~/.gitconfig=
+      + git config -e --system
+
+        修改 =/etc/gitconfig=
+      + git config <session>.<key>
+      
+        读写配置文件的属性
+        =$GIT_CONF=test.ini git config a.b= 来处理其他配置文件
+      + git config --global alias.ci "commit -s"
+        设置别名
+    - git clone note  note-bak
+      备份项目
+     
+      
+** git 暂存区
+   - git status
+   
