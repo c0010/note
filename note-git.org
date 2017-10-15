@@ -29,9 +29,25 @@
      
       
 ** git 暂存区
+
+   [[http://7xpyfe.com1.z0.glb.clouddn.com/2017101515080826245091.png][工作区、暂存区、版本库]]
+
    - git status -s
    - git log --pretty=oneline
    - git add note-git.org 
+
+     添加到暂存区
+   - git checkout -- note-git.org
+
+     暂存区-->工作区
+   - git diff 
+
+     [[http://7xpyfe.com1.z0.glb.clouddn.com/20171015150808301278029.png][diff介绍]]
+     
+     diff 比较工作区、暂存区、版本库代码的比较
+   - git stash
+
+     保存进度，暂存状态?
 
 
    
