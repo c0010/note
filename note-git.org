@@ -29,5 +29,9 @@
      
       
 ** git 暂存区
-   - git status
+   - git status -s
+   - git log --pretty=oneline
+   - git add note-git.org 
+
+
    
