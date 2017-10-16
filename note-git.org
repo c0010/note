@@ -48,6 +48,9 @@
    - git stash
 
      保存进度，暂存状态?
+   - git reset --hard HEAD^
+     重置到父提交
+
 
 
    
