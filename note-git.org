@@ -89,7 +89,7 @@
 
      git reset --hard HEAD^ 重置上次提交的删除操作
 
-     git add-u 快速标记删除
+     git add-u 快速标记操作,下次提交会生效
      
    
 
