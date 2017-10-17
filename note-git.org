@@ -27,11 +27,10 @@
     - git clone note  note-bak
       备份项目
      
-      
 ** git 暂存区
 
-   [[http://7xpyfe.com1.z0.glb.clouddn.com/2017101515080826245091.png][工作区、暂存区、版本库]]
-
+   [[http://7xpyfe.com1.z0.glb.clouddn.com/2017101515080826245091.png]]
+   工作区、暂存区、版本库
    - git status -s
    - git log --pretty=oneline
    - git add note-git.org 
@@ -41,13 +40,72 @@
 
      暂存区-->工作区
    - git diff 
-
-     [[http://7xpyfe.com1.z0.glb.clouddn.com/20171015150808301278029.png][diff介绍]]
      
+     [[http://7xpyfe.com1.z0.glb.clouddn.com/20171015150808301278029.png]] 
+     diff介绍 
      diff 比较工作区、暂存区、版本库代码的比较
    - git stash
-
+     
      保存进度，暂存状态?
+** git reset 重置
 
+     1. git reset HEAD<path>  相当于取消 git add <paths> 操作
+
+     2. git reset --hard master@{2}  重置master所有位置为两次改变之前的值
+
+                  --soft       只改变引用的指向，不改变暂存区和工作区
+
+                  --mixed      更改引用的指向，重置暂存区，不改变工作区
+
+   - git reset --soft HEAD^ 放弃最新的提交
+   - git reset HEAD filename
+
+** git 检出
+   
+   - git checkout branch_name
+
+     git branch -v
+   - git checkout--filename  用暂存区的文件覆盖工作区的 取消上次add
+** git 恢复进度
+   
+   - git stash
+     
+     git stash list
+     
+     git stash pop 从最近保持的进度恢复
+
+     git stash drop 默认删除最新的进度
+
+     git stash clear 删除所有进度
+
+     git stash branch <branchname>  基于进度创建分支
+
+** git 基础操作
+   - rm file
+
+     git ls-files 查看暂存区文件
+
+     git rm filename 删除暂存区文件
+
+     git reset --hard HEAD^ 重置上次提交的删除操作
+
+     git add-u 快速标记删除
+     
+   
+
+* [[http://mazhuang.org/wiki/git/][common questions]]
+** git ls-files 乱码问题
+
+   在 =~/.gitconfig= 中添加如下内容
+   #+BEGIN_SRC 
+    [core]
+       quotepath = false
+    [gui]
+       encoding = utf-8
+    [i18n]
+       commitencoding = utf-8
+    [svn]
+       pathnameencoding = utf-8
+   #+END_SRC
 
    
