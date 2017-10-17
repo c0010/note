@@ -133,18 +133,51 @@
      
 
 
-   
 ** git tools
    版本库浏览器能更好看提交关系图
-   - gitk
-   - gitg
-   - qgit
-   - 命令行
-     git config --global alias.glog "log --graph"  使用:git glog --oneline
+   1. gitk
+   2. gitg
+   3. qgit
+   4. 命令行
+      - git log 
+
+        git config --global alias.glog "log --graph"  使用:git glog --oneline
+      - 文件追溯
+
+        git blame filename 逐行显示谁编辑的 追踪bug!
+      - 二分查找
+
+        找到一个好版本和坏版本,在中间版本的master上执行
+
+        git bisect start
+
+
+** 改变历史
+   - 单步悔棋
+
+     git commit --amend  修改commit原因
+
+     git checkout HEAD^ --filepath 还原删除的文件到暂存区
+   - 多步悔棋
+     git reset --soft HEAD^^ 后退两个版本到暂存区
+     
+     git commit -m "new reason "
+     
+
+** git克隆
+   - git clone
+     git clone <rep> dir
+     
+     git clone --bare <rep> dir
+
+     git clone --mirror <rep> dir
+   - git push
+   - git pull
 
 
 
-
+* git 和声
+   
 * [[http://mazhuang.org/wiki/git/][common questions]]
 ** git ls-files 乱码问题
 
