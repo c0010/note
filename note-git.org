@@ -26,7 +26,14 @@
         设置别名
     - git clone note  note-bak
       备份项目
+<<<<<<< HEAD
       
+** git 暂存区
+
+   [[http://7xpyfe.com1.z0.glb.clouddn.com/2017101515080826245091.png]]
+
+=======
+     
 ** git 暂存区
 
    [[http://7xpyfe.com1.z0.glb.clouddn.com/2017101515080826245091.png]]
@@ -55,7 +62,6 @@
      git diff HEAD 比较工作区和HEAD
 
      git diff <commit1><commit2> -- <paths>  比较不同版本文件的差异
-
    - git stash
      
      保存进度，暂存状态
@@ -130,9 +136,6 @@
 
      git archive -o partial.tar HEAD src doc  只归档两个文件夹
      
-     
-
-
 ** git tools
    版本库浏览器能更好看提交关系图
    1. gitk
@@ -151,7 +154,6 @@
 
         git bisect start
 
-
 ** 改变历史
    - 单步悔棋
 
@@ -163,9 +165,9 @@
      
      git commit -m "new reason "
      
-
 ** git克隆
    - git clone
+
      git clone <rep> dir
      
      git clone --bare <rep> dir
@@ -173,7 +175,6 @@
      git clone --mirror <rep> dir
    - git push
    - git pull
-
 
 
 * git 和声
@@ -195,3 +196,11 @@
    #+END_SRC
 
    
+=======
+     
+     [[http://7xpyfe.com1.z0.glb.clouddn.com/20171015150808301278029.png]] 
+     diff介绍 
+     diff 比较工作区、暂存区、版本库代码的比较
+   - git stash
+     
+     保存进度，暂存状态?

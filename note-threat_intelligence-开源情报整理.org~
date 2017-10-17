@@ -1,94 +1,22 @@
+# -*- mode: org; -*-
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/htmlize.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/bigblow.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/hideshow.css"/>
+
+#+HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-1.11.0.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+
+#+HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.localscroll-min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.zclip.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/bigblow.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/hideshow.js"></script>
++HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+#+OPTIONS: toc:2
+#+OPTIONS: ^:nil
 * Threat Intelligence 
 ** data source introduction
-*** base info
-   - datai-type
-     #+BEGIN_VERSE
-     ip          0
-     domain      1
-     url         2
-     md5         3
-     sha256      4
-     sha1        5
-     #+END_VERSE
-   - tags 标签说明
-     #+BEGIN_VERSE
-      0   Suspicious      可疑的
-      1   DDos            DDos攻击
-      2   Exploits        漏洞攻击
-      3   Spam Sources    垃圾邮件
-      4   Web Attacks     Web攻击
-      5   Scanners        扫描源
-      6   Botnets         僵尸网络被控端
-      7  Malware         恶意软件
-      8   Phishing        钓鱼
-      9   Proxy           代理
-      10   C&C             僵尸网络控制端
-      11  Whitelist       白名单
-      12  Honeypot        蜜罐
-      13  DGA             域名随机生成
-     #+END_VERSE                                                            
-   - confidence  数据源的可信度
-     #+BEGIN_VERSE
-     (9-10)   Certain
-     (7-8)    Very Confident
-     (6-7)    Somewhat Confident
-     (5-6)    Not Confident
-     (5)      "50/50 shot"
-     (0-4)    Informational Data
-     #+END_VERSE
-   - 统计表
-     
-       [[http://7xpyfe.com1.z0.glb.clouddn.com/blog/20170616/135122999.png]]
-   - 数据库内存储格式
-        + 录入机制:
-          同一数据源来的数据，威胁类型不变时，
-
-          只更新该类型记录更新时间,created_time不会变化
-     
-          当indicator 和 tag都变化的时候，才会录入一条新的数据
-        + 更新机制
-          每天通过created_time获取新怎么的数据
-          
-     #+BEGIN_SRC json
-     {
-        "indicator":"1.180.74.58",
-        "data_type":0,
-        "confidence":7,
-        "alive":true,
-        "updated_time":"2017-06-30T14:22:44",
-        "source":"blocklist.de",
-        "tag":5,
-        "created_time":"2017-06-30T14:22:44"
-     }
-     #+END_SRC
-*** alexa.com
-    亚马逊的alexa提供站点排名
-
-    sum：1529
-**** top-1000
-     - tags: whitelist
-     - confidence ：5  
-     - source url : http://s3.amazonaws.com/alexa-static/top-1m.csv.zip 
-     - total : 1529
-     - cycle : 1 day
-     - incremental : 100+ /day
-#+BEGIN_SRC json
-{
-"_id" : ObjectId("593ba272256c1046ad056f91"),
-"confidence" : 5,
-"count" : 1,
-"description" : "alexa #972",//站点排名
-"group" : "everyone",
-"indicator" : "11st.co.kr", //域名信息
-"lasttime" : "",
-"provider" : "alexa.com",
-"rdata" : "",
-"tags" : "whitelist",
-"tlp" : "green"
-}
-
-#+END_SRC
-
 *** DONE reputation.alienvault.com
     CLOSED: [2017-07-14 Fri 15:45]
     - State "DONE"       from ""           [2017-07-14 Fri 15:45]
@@ -99,14 +27,14 @@
     AlienVault unifies all of your essential security tools in one location and combines them with real-time threat intelligence.
     sum: 31978
 #+END_VERSE
-    #+BEGIN_CENTER
+    #+BEGIN_VERSE
      tags: scanner spam malware/suspicious
      confidence ：7  
      source url : https://reputation.alienvault.com/reputation.data
      total : 0
      cycle : 1 day
      incremental : 0 /day
-    #+END_CENTER
+    #+END_VERSE
 
 *** DONE osint.bambenekconsulting.com
     CLOSED: [2017-07-03 Mon 16:49]
@@ -184,91 +112,6 @@
 }
 
 #+END_SRC
-*** umbrella.cisco.com
-    一级域名
-
-    sum：1134
-**** top-1000
-     - tags: whitelist
-     - confidence ：5  
-     - source url : http://s3-us-west-1.amazonaws.com/umbrella-static/top-1m.csv.zip
-     - total : 1134
-     - cycle : 1 day
-     - incremental : 100+ /day
-#+BEGIN_SRC json
-{
-"_id" : ObjectId("593be90a1d41c83fa8a07c1b"),
-"confidence" : 5,
-"count" : 1,
-"description" : "cisco umbrella #401",
-"group" : "everyone",
-"indicator" : "t.co",
-"lasttime" : "",
-"provider" : "umbrella.cisco.com",
-"rdata" : "",
-"tags" : "whitelist",
-"tlp" : "green"
-} 
-
-#+END_SRC 
-
-*** csirtg.io
-    Unsolicited Commercial Email(UCE)商业垃圾邮件
-
-    https://csirtg.io/users/csirtgadgets/feeds/uce-urls
-
-    feed有限制250条 需要继续观察数据量
-    sum: 1037
-**** scanner
-     - tags: scanner
-     - confidence ：9 
-     - source url : https://csirtg.io/api/users/csirtgadgets/feeds/port-scanners.csv
-     - total : -
-     - cycle : 1 day
-     - incremental :  /day
-**** uce
-     - tags: spam
-     - confidence ：9  
-     - source url : 
-       1. https://csirtg.io/api/users/csirtgadgets/feeds/uce-urls.csv
-       2. https://csirtg.io/api/users/csirtgadgets/feeds/uce-email-addresses.csv
-       3. https://csirtg.io/api/users/csirtgadgets/feeds/uce-ip.csv
-     - total : -
-     - cycle : 1 day
-     - incremental :  /day
-**** darknet
-     - tags: darknet
-     - confidence ：9 
-     - source url :https://csirtg.io/api/users/wes/feeds/darknet.csv
-     - total : -
-     - cycle : 1 day
-     - incremental :  /day
-     
-*** danger.rulez.sk
-     sum : 1254
-**** scanner
-     - tags: scanner
-     - confidence ：9 
-     - source url :http://danger.rulez.sk/projects/bruteforceblocker/blist.php
-     - total : 1254
-     - cycle : 1 day
-     - incremental :  /day
-
-*** dataplane.org
-
-    sum : 46710
-**** scanner
-     - tags: scanner
-     - confidence ：9 
-     - source url :
-       1. https://dataplane.org/sshclient.txt
-       2. https://dataplane.org/sshpwauth.txt
-       3. https://dataplane.org/sipquery.txt
-       4. https://dataplane.org/sipinvitation.txt
-       5. https://dataplane.org/sipregistration.txt
-     - total : 1254
-     - cycle : 1 day
-     - incremental :  /day
 *** DONE emergingthreats.net
     CLOSED: [2017-06-29 Thu 13:32]
     - State "DONE"       from ""           [2017-06-29 Thu 13:32]
@@ -293,28 +136,6 @@
      - cycle : 1 day
      - incremental :  /day
 
-*** malc0de.com
-    提取代码出现问题
-
-    sum : 0
-**** malware
-     - tags: malware
-     - confidence ：9
-     - source url :http://malc0de.com/rss/
-     - total : 
-     - cycle : 1 day
-     - incremental :  /day
-
-*** mirc.com
-    sum : 191
-**** domains
-     - tags: whitelist
-     - confidence ：8
-     - source url :http://www.mirc.com/servers.ini
-     - total : 
-     - cycle : 1 day
-     - incremental :  /day
-       
 *** DONE netlab.360.com
     CLOSED: [2017-06-30 Fri 16:02]
     - State "DONE"       from "UNDO"       [2017-07-04 Tue 11:17]
@@ -369,77 +190,6 @@
        http://data.netlab.360.com/feeds/dga/vawtrak.txt
        http://data.netlab.360.com/feeds/dga/vidro.txt
 #+END_VERSE
-     - total : 
-     - cycle : 1 day
-     - incremental :  /day
-
-*** nothink.org
-**** scanner
-     - tags:exploit malware 
-     - confidence ：7
-     - source url :http://www.nothink.org/blacklist/blacklist_ssh_day.txt
-     - total : 
-     - cycle : 1 day
-     - incremental :  /day
-*** openphish.com
-**** phishing
-     - tags:phishing
-     - confidence ：9
-     - source url :https://openphish.com/feed.txt
-     - total : 
-     - cycle : 1 day
-     - incremental :  /day
-*** packetmail.net
-**** scanner honeynet
-     - tags: honeynet
-     - confidence ：8
-     - source url :
-       1. https://www.packetmail.net/iprep.txt
-       2. https://www.packetmail.net/iprep_mail.txt
-       3. https://www.packetmail.net/iprep_ramnode.txt
-     - total : 
-     - cycle : 1 day
-     - incremental :  /day
-
-*** phishtank.com
-**** phishing
-     - tags:phishing
-     - confidence ：9
-     - source url : http://data.phishtank.com/data/%7Btoken%7D/online-valid.json.gz
-     - total : 
-     - cycle : 1 day
-     - incremental :  /day
-*** isc.sans.edu
-**** scanner
-     - tags: scanner
-     - confidence ：7-9
-     - source url :
-       1. https://isc.sans.edu/feeds/suspiciousdomains_Low.txt
-       2. https://isc.sans.edu/feeds/suspiciousdomains_High.txt
-       3. https://isc.sans.edu/feeds/suspiciousdomains_Medium.txt
-       4. https://isc.sans.edu/feeds/block.txt
-     - total : 
-     - cycle : 1 day
-     - incremental :  /day
-*** spamhaus.org
-**** hijacked 
-     被劫持数据
-     - tags: hijacked
-     - confidence ：9
-     - source url :
-       1. http://www.spamhaus.org/drop/drop.txt 
-       2. http://www.spamhaus.org/drop/edrop.txt
-       3. https://www.spamhaus.org/drop/dropv6.txt
-       4. https://www.spamhaus.org/drop/asndrop.txt
-     - total : 
-     - cycle : 1 day
-     - incremental :  /day
-*** vxvault.net 
-    爬虫有问题
-**** malware
-     - tags: botnet
-     - confidence ：10
-     - source url :http://vxvault.net/URL_List.php
      - total : 
      - cycle : 1 day
      - incremental :  /day
@@ -517,18 +267,6 @@
      - total :12850
      - cycle : 1 day
      - incremental :  /day
-*** otx.alienvault.com
-**** otx 
-     - tags: DDos ,C&C,Malware,Proxy,Phishing,Scanner,suspicious
-     - confidence ：5
-     - source url :
-       1. https://sslbl.abuse.ch/blacklist/sslipblacklist.csv
-       2. https://sslbl.abuse.ch/blacklist/dyre_sslipblacklist.csv
-       3. https://sslbl.abuse.ch/blacklist/sslblacklist.csv
-     - total :
-     - cycle : 1 day
-     - incremental :  /day
-       
 *** DONE antispam.imp.ch
     CLOSED: [2017-06-28 Wed 10:38]
     - State "DONE"       from ""           [2017-06-28 Wed 10:38]
@@ -541,8 +279,247 @@
      - total : 943
      - cycle : 15 minutes
      - incremental : 0/day
-*** dragonresearchgroup.org
+*** DONE alexa.com
+    CLOSED: [2017-07-19 Wed 15:38]
+    - State "DONE"       from "TODO"       [2017-07-19 Wed 15:38]
+    - State "TODO"       from ""           [2017-07-14 Fri 19:54]
+    亚马逊的alexa提供站点排名
+
+    sum：1529
+**** top-1000
+     - tags: whitelist
+     - confidence ：5  
+     - source url : http://s3.amazonaws.com/alexa-static/top-1m.csv.zip 
+     - total : 1529
+     - cycle : 1 day
+     - incremental : 100+ /day
+#+BEGIN_SRC json
+{
+"_id" : ObjectId("593ba272256c1046ad056f91"),
+"confidence" : 5,
+"count" : 1,
+"description" : "alexa #972",//站点排名
+"group" : "everyone",
+"indicator" : "11st.co.kr", //域名信息
+"lasttime" : "",
+"provider" : "alexa.com",
+"rdata" : "",
+"tags" : "whitelist",
+"tlp" : "green"
+}
+
+#+END_SRC
+
+*** DONE public-dns.info
+    CLOSED: [2017-07-20 Thu 14:16]
+    - State "DONE"       from "TODO"       [2017-07-20 Thu 14:16]
+    - tags: whitelist
+    - confidence ：5  
+
+      https://public-dns.info/nameservers-all.txt
+*** DONE umbrella.cisco.com
+    CLOSED: [2017-07-24 Mon 17:12]
+    - State "DONE"       from "TODO"       [2017-07-24 Mon 17:12]
+    - State "TODO"       from ""           [2017-07-17 Mon 10:16]
+    一级域名
+
+    sum：1134
+**** top-1000
+     - tags: whitelist
+     - confidence ：5  
+     - source url : http://s3-us-west-1.amazonaws.com/umbrella-static/top-1m.csv.zip
+     - total : 1134
+     - cycle : 1 day
+     - incremental : 100+ /day
+#+BEGIN_SRC json
+{
+"_id" : ObjectId("593be90a1d41c83fa8a07c1b"),
+"confidence" : 5,
+"count" : 1,
+"description" : "cisco umbrella #401",
+"group" : "everyone",
+"indicator" : "t.co",
+"lasttime" : "",
+"provider" : "umbrella.cisco.com",
+"rdata" : "",
+"tags" : "whitelist",
+"tlp" : "green"
+} 
+
+#+END_SRC 
+
+*** DONE danger.rulez.sk
+    CLOSED: [2017-07-25 Tue 11:12]
+    - State "DONE"       from "TODO"       [2017-07-25 Tue 11:12]
+    - State "TODO"       from ""           [2017-07-17 Mon 10:16]
+     sum : 1254
 **** scanner
+     - tags: scanner
+     - confidence ：9 
+     - source url :http://danger.rulez.sk/projects/bruteforceblocker/blist.php
+     - total : 1254
+     - cycle : 1 day
+     - incremental :  /day
+
+*** DONE csirtg.io
+    CLOSED: [2017-07-25 Tue 13:48]
+    - State "DONE"       from "TODO"       [2017-07-25 Tue 13:48]
+    - State "TODO"       from ""           [2017-07-17 Mon 10:16]
+    Unsolicited Commercial Email(UCE)商业垃圾邮件
+
+    https://csirtg.io/users/csirtgadgets/feeds/uce-urls
+
+    feed有限制250条 需要继续观察数据量
+    sum: 1037
+**** scanner
+     - tags: scanner
+     - confidence ：9 
+     - source url : https://csirtg.io/api/users/csirtgadgets/feeds/port-scanners.csv
+     - total : -
+     - cycle : 1 day
+     - incremental :  /day
+**** uce
+     - tags: spam
+     - confidence ：9  
+     - source url : 
+       1. https://csirtg.io/api/users/csirtgadgets/feeds/uce-urls.csv
+       2. https://csirtg.io/api/users/csirtgadgets/feeds/uce-email-addresses.csv
+       3. https://csirtg.io/api/users/csirtgadgets/feeds/uce-ip.csv
+     - total : -
+     - cycle : 1 day
+     - incremental :  /day
+**** darknet
+     - tags: darknet
+     - confidence ：9 
+     - source url :https://csirtg.io/api/users/wes/feeds/darknet.csv
+     - total : -
+     - cycle : 1 day
+     - incremental :  /day
+     
+*** DONE dataplane.org
+    CLOSED: [2017-08-07 Mon 14:08]
+    - State "DONE"       from "TODO"       [2017-08-07 Mon 14:08]
+    - State "TODO"       from ""           [2017-07-25 Tue 13:48]
+
+    sum : 46710
+**** scanner
+     - tags: scanner
+     - confidence ：9 
+     - source url :
+       1. https://dataplane.org/sshclient.txt
+       2. https://dataplane.org/sshpwauth.txt
+       3. https://dataplane.org/sipquery.txt
+       4. https://dataplane.org/sipinvitation.txt
+       5. https://dataplane.org/sipregistration.txt
+     - total : 1254
+     - cycle : 1 day
+     - incremental :  /day
+*** DONE malc0de.com
+    CLOSED: [2017-08-07 Mon 15:18]
+    - State "DONE"       from "TODO"       [2017-08-07 Mon 15:18]
+    - State "TODO"       from ""           [2017-07-25 Tue 13:48]
+    提取代码出现问题
+
+    sum : 0
+**** malware
+     - tags: malware
+     - confidence ：9
+     - source url :http://malc0de.com/rss/
+     - total : 
+     - cycle : 1 day
+     - incremental :  /day
+
+*** UNDO mirc.com
+    CLOSED: [2017-08-07 Mon 15:43]
+    - State "UNDO"       from "TODO"       [2017-08-07 Mon 15:43]
+      提供了几十个irc聊天服务器的域名地址,而且是2016年就停止更新了
+    - State "TODO"       from ""           [2017-07-25 Tue 13:48]
+    sum : 191
+**** domains
+     - tags: whitelist
+     - confidence ：8
+     - source url :http://www.mirc.com/servers.ini
+     - total : 
+     - cycle : 1 day
+     - incremental :  /day
+       
+*** DONE nothink.org
+    CLOSED: [2017-08-07 Mon 15:52]
+    - State "DONE"       from "TODO"       [2017-08-07 Mon 15:52]
+    - State "TODO"       from "DONE"       [2017-07-25 Tue 13:49]
+**** scanner
+     - tags:exploit malware 
+     - confidence ：7
+     - source url :http://www.nothink.org/blacklist/blacklist_ssh_day.txt
+     - total : 
+     - cycle : 1 day
+     - incremental :  /day
+*** DONE openphish.com
+    CLOSED: [2017-08-07 Mon 15:59]
+    - State "DONE"       from "TODO"       [2017-08-07 Mon 15:59]
+    - State "TODO"       from ""           [2017-07-25 Tue 13:49]
+**** phishing
+     - tags:phishing
+     - confidence ：9
+     - source url :https://openphish.com/feed.txt
+     - total : 
+     - cycle : 1 day
+     - incremental :  /day
+*** DONE vxvazlt.net 
+    CLOSED: [2017-08-23 Wed 17:36]
+    - State "DONE"       from "TODO"       [2017-08-23 Wed 17:36]
+    - State "TODO"       from ""           [2017-08-21 Mon 16:16]
+    - source url :
+      1.http://vxvault.net/URL_List.php
+    - data_type：2
+    - indicator: url
+    - confidence ：10
+    - alive: False
+    - source: phishtank.com
+    - tag:7
+    - description:none
+    - updated_time:"none"
+    - created_time:当前时间(2017-06-30T14:22:44)
+
+*** DONE spamhaus.org
+    CLOSED: [2017-09-25 Mon 14:33]
+    - State "DONE"       from "SOMEDAY"    [2017-09-25 Mon 14:33]
+    需要代理 asn数据待入
+    - State "TODO"       from "TODO"       [2017-08-23 Wed 12:17]
+    - State "TODO"       from ""           [2017-08-21 Mon 16:16]
+    - source url :
+      1. http://www.spamhaus.org/drop/drop.txt 
+      2. http://www.spamhaus.org/drop/edrop.txt
+      3. https://www.spamhaus.org/drop/asndrop.txt
+    - indicator: IP
+    - confidence ：9
+    - data_type：0
+    - alive: False
+    - source:www.spamhaus.org
+    - tag:3
+    - description:'none'
+    - updated_time:'none'
+    - created_time:当前时间(2017-06-30T14:22:44)
+*** DONE phishtank.com
+    CLOSED: [2017-09-25 Mon 14:32]
+    - State "DONE"       from "TODO"       [2017-09-25 Mon 14:32]
+    实习生doning
+    - State "TODO"       from ""           [2017-08-21 Mon 16:16]
+    - source url :
+      1. http://data.phishtank.com/data/%7Btoken%7D/online-valid.json.gz
+    - data_type：2
+    - indicator: url
+    - confidence ：9
+    - alive: true
+    - source: phishtank.com
+    - tag:8
+    - description:none
+    - updated_time:数据源提供时间(2017-06-30T14:22:44)
+    - created_time:当前时间(2017-06-30T14:22:44)
+*** DONE dragonresearchgroup.org
+    CLOSED: [2017-09-25 Mon 14:32]
+    - State "DONE"       from "TODO"       [2017-09-25 Mon 14:32]
+    - State "TODO"       from ""           [2017-09-04 Mon 11:00]
      - tags: scanner
      - confidence ：9
      - source url :
@@ -551,7 +528,12 @@
      - total :
      - cycle : 1 day
      - incremental :  /day
-*** watcherlab.com
+*** DONE watcherlab.com
+    CLOSED: [2017-10-10 Tue 17:44]
+    - State "DONE"       from "TODO"       [2017-10-10 Tue 17:44]
+    - State "TODO"       from "DONE"       [2017-10-10 Tue 17:27]
+    - State "DONE"       from "DONE"       [2017-10-10 Tue 17:27]
+    - State "TODO"       from ""           [2017-09-04 Mon 11:00]
 **** cc
      - tags: cc
      - confidence ：9
@@ -559,6 +541,139 @@
      - total :
      - cycle : 1 day
      - incremental :  /day
+*** TODO isc.sans.edu
+    需要代理 
+    - State "TODO"       from "DONE"       [2017-08-24 Thu 09:51]
+    - State "DONE"       from "TODO"       [2017-08-24 Thu 09:51]
+    - State "TODO"       from ""           [2017-08-21 Mon 16:16]
+    - source url :
+       1. https://isc.sans.edu/feeds/suspiciousdomains_Low.txt
+       2. https://isc.sans.edu/feeds/suspiciousdomains_High.txt
+       3. https://isc.sans.edu/feeds/suspiciousdomains_Medium.txt
+       4. https://isc.sans.edu/feeds/block.txt
+    - data_type：0
+    - indicator: url
+    - confidence ：9
+    - alive: true
+    - source: phishtank.com
+    - tag:8
+    - description:none
+    - updated_time:数据源提供时间(2017-06-30T14:22:44)
+    - created_time:当前时间(2017-06-30T14:22:44)
+**** scanner
+     - tags: scanner
+     - confidence ：7-9
+     - source url :
+     - total : 
+     - cycle : 1 day
+     - incremental :  /day
+*** TODO packetmail.net
+    代理问题
+    - State "TODO"       from "DONE"       [2017-09-04 Mon 10:58]
+    - State "DONE"       from "TODO"       [2017-08-24 Thu 09:51]
+    - State "TODO"       from "DONE"       [2017-08-15 Tue 09:57]
+    - source url :
+      1. https://www.packetmail.net/iprep.txt
+      2. https://www.packetmail.net/iprep_mail.txt
+      3. https://www.packetmail.net/iprep_ramnode.txt
+    - indicator: IP
+    - confidence ：8
+    - data_type：0
+    - alive: true
+    - source: packetmail.net
+    - tag:5
+    - description:none
+    - updated_time:数据源提供时间(2017-06-30T14:22:44)
+    - created_time:当前时间(2017-06-30T14:22:44)
+*** TODO otx.alienvault.com
+    - State "TODO"       from ""           [2017-10-10 Tue 15:22]
+**** otx 
+     - tags: DDos ,C&C,Malware,Proxy,Phishing,Scanner,suspicious
+     - confidence ：5
+     - source url :
+       1. https://sslbl.abuse.ch/blacklist/sslipblacklist.csv
+       2. https://sslbl.abuse.ch/blacklist/dyre_sslipblacklist.csv
+       3. https://sslbl.abuse.ch/blacklist/sslblacklist.csv
+     - total :
+     - cycle : 1 day
+     - incremental :  /day
+*** TODO malwaredomainlist.com
+    - State "TODO"       from ""           [2017-09-25 Mon 14:35]
+      
+*** badips.com
+     source url : 1.https://www.badips.com/get/list/any/2?age=7d
+     data_type: 0
+     indicator: ip
+     tags: scanners
+     source: badips.com
+
+*** raw.githubusercontent.com
+    source url: 
+    1.https://raw.githubusercontent.com/firehol/blocklist-ipsets/master/botscout_1d.ipset
+    2.https://raw.githubusercontent.com/firehol/blocklist-ipsets/master/cruzit_web_attacks.ipset
+    data_type:0
+    indicator:ip
+    tags:
+    source: raw.githubusercontent.com
+
+*** cinsscore.com
+    source url: 1.http://cinsscore.com/list/ci-badguys.txt
+    data_type:0
+    indicator: ip
+    tags: scanner
+    source: cinsscore.com
+
+*** cybercrime-tracker.net
+    source url: 1.http://cybercrime-tracker.net/ccam.php
+    data_type: 1
+    indicator: domain
+    tags:
+    source: cybercrime-tracker.net
+    注：数据既有ip又有domain
+
+*** dataplane.org
+
+    source url: 1.https://dataplane.org/dnsrd.txt
+              2.https://dataplane.org/dnsrd.txt
+              3.https://dataplane.org/dnsversion.txt
+              4.https://dataplane.org/vncrfb.txt
+     data_type: 0
+     indicator: ip
+     tags: scanner
+     confidence：9
+     source: dataplane.org
+
+*** blocklist.greensnow.co
+
+    source url: 1.http://blocklist.greensnow.co/greensnow.txt
+    data_type:0
+    indicator: ip
+    tags: scanner
+    source: blocklist.greensnow.co
+
+*** malwaredomainlist.com
+
+    source url: 1.http://www.malwaredomainlist.com/hostslist/ip.txt
+    data_type:0
+    indicator: ip
+    tags: scanner
+    source: malwaredomainlist.com
+
+*** maxmind.com
+    source url: 1.https://www.maxmind.com/en/high-risk-ip-sample-list
+    data_type:0
+    indicator: ip
+    tags: 
+    source: www.maxmind.com
+
+*** rutgers.edu
+
+    source url: 1.https://report.cs.rutgers.edu/DROP/attackers
+    data_type:0
+    indicator: ip
+    tags: scanner
+    source: rutgers.edu
+
 *** 统计表
  |------------------------------+---------+------+--------+-----+---------+----------+-----------+---------+------+---------+----------+----------+------------+-------------------+---------|
  |                              | scanner | spam | botnet | c&c | malware | phishing | whitelist | darknet | ddos | exploit | honeypot | hijacked | suspicious | data-type         |     sum |
@@ -614,6 +729,62 @@
  | sum                          |         |      |        |     |         |          |           |         |      |         |          |          |            |                   | 1976443 |
  |------------------------------+---------+------+--------+-----+---------+----------+-----------+---------+------+---------+----------+----------+------------+-------------------+---------|
 #+TBLFM: @36$14='(+ @1$14..@36$14);N
+       
+*** base info
+   - data-type
+      | ip     | 0 |
+      | domain | 1 |
+      | url    | 2 |
+      | md5    | 3 |
+      | sha256 | 4 |
+      | sha1   | 5 |
+   - tags 标签说明
+     |  0 | Suspicious   | 可疑的         |
+     |  1 | DDos         | DDos攻击       |
+     |  2 | Exploits     | 漏洞攻击       |
+     |  3 | Spam Sources | 垃圾邮件       |
+     |  4 | Web  Attacks | Web攻击        |
+     |  5 | Scanners     | 扫描源         |
+     |  6 | Botnets      | 僵尸网络被控端 |
+     |  7 | Malware      | 恶意软件       |
+     |  8 | Phishing     | 钓鱼           |
+     |  9 | Proxy        | 代理           |
+     | 10 | C&C          | 僵尸网络控制端 |
+     | 11 | Whitelist    | 白名单         |
+     | 12 | Honeypot     | 蜜罐           |
+     | 13 | DGA          | 域名随机生成   |
+   - confidence  数据源的可信度
+     | (9-10) | Certain            |
+     | (7-8)  | Very Confident     |
+     | (6-7)  | Somewhat Confident |
+     | (5-6)  | Not Confident      |
+     | (5)    | "50/50 shot"       |
+     | (0-4)  | Informational Data |
+   - 统计表
+     
+     [[http://7xpyfe.com1.z0.glb.clouddn.com/blog/20170616/135122999.png]]
+   - 数据库内存储格式
+        + 录入机制:
+          同一数据源来的数据，威胁类型不变时，
+
+          只更新该类型记录更新时间,created_time不会变化
+     
+          当indicator 和 tag都变化的时候，才会录入一条新的数据
+        + 更新机制
+          每天通过created_time获取新怎么的数据
+          
+     #+BEGIN_SRC json
+     {
+        "indicator":"1.180.74.58",
+        "data_type":0,
+        "confidence":7,
+        "alive":true/false,
+        "updated_time":"2017-06-30T14:22:44"/"none",
+        "source":"blocklist.de",
+        "tag":5,
+        "created_time":"2017-06-30T14:22:44"
+     }
+     #+END_SRC
 *** TODO other source 
     - State "TODO"       from ""           [2017-06-16 Fri 13:11]
     1. spamhaustech
@@ -628,3 +799,5 @@
 
        提供数据分享的方式 https://sourceforge.net/projects/ecrisp-x/
     4. http://txt.proxyspy.net/proxy.txt
+       http://www.malwareurl.com
+       http://www.malwaredomainlist.com/mdl.php
