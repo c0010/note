@@ -26,10 +26,11 @@
         设置别名
     - git clone note  note-bak
       备份项目
-     
+      
 ** git 暂存区
 
    [[http://7xpyfe.com1.z0.glb.clouddn.com/2017101515080826245091.png]]
+
    工作区、暂存区、版本库
    - git status -s
    - git log --pretty=oneline
@@ -37,16 +38,27 @@
 
      添加到暂存区
    - git checkout -- note-git.org
-
+     
      暂存区-->工作区
    - git diff 
      
      [[http://7xpyfe.com1.z0.glb.clouddn.com/20171015150808301278029.png]] 
+
      diff介绍 
-     diff 比较工作区、暂存区、版本库代码的比较
+
+     diff 比较工作区、暂存区、版本库代码
+
+     git diff 比较工作区和暂存区
+
+     git diff --cached 比较暂存区和HEAD
+
+     git diff HEAD 比较工作区和HEAD
+
+     git diff <commit1><commit2> -- <paths>  比较不同版本文件的差异
+
    - git stash
      
-     保存进度，暂存状态?
+     保存进度，暂存状态
 ** git reset 重置
 
      1. git reset HEAD<path>  相当于取消 git add <paths> 操作
@@ -81,7 +93,7 @@
      git stash branch <branchname>  基于进度创建分支
 
 ** git 基础操作
-   - rm file
+   - 删除文件
 
      git ls-files 查看暂存区文件
 
@@ -90,8 +102,48 @@
      git reset --hard HEAD^ 重置上次提交的删除操作
 
      git add-u 快速标记操作,下次提交会生效
+   - 恢复文件
      
+     git show HEAD~1:circl.html > circl.html
+
+     git checkout HEAD~1 -- circl.html
+   - 移动文件
+     
+     git mv a b
+   - 选择性添加
+     
+     git add -i 交互窗口
+   - 文件忽略
+
+     在工作目录下添加.gitignore
+
+     =*.pyc=
+
+     git status --ignored -s 可以查看哪些文件被忽略了
+
+     git add -f filename 或略的文件强制更新
+     
+     git commit -a -m  "偷懒了 直接提交 不用 git add"
+   - 文件归档
+
+     git archive -o lastest.zip HEAD  最新归档
+
+     git archive -o partial.tar HEAD src doc  只归档两个文件夹
+     
+     
+
+
    
+** git tools
+   版本库浏览器能更好看提交关系图
+   - gitk
+   - gitg
+   - qgit
+   - 命令行
+     git config --global alias.glog "log --graph"  使用:git glog --oneline
+
+
+
 
 * [[http://mazhuang.org/wiki/git/][common questions]]
 ** git ls-files 乱码问题
