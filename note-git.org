@@ -26,14 +26,7 @@
         设置别名
     - git clone note  note-bak
       备份项目
-<<<<<<< HEAD
       
-** git 暂存区
-
-   [[http://7xpyfe.com1.z0.glb.clouddn.com/2017101515080826245091.png]]
-
-=======
-     
 ** git 暂存区
 
    [[http://7xpyfe.com1.z0.glb.clouddn.com/2017101515080826245091.png]]
