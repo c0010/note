@@ -21,6 +21,12 @@
       目前最大的公开仓库是Docker Hub 国内 Docker Pool
 
       Registry 注册服务器包含众多Repository
+
+   - ubuntu14.04 uninstall & install
+     #+BEGIN_SRC 
+sudo apt-get remove docker/docker.io
+     
+     #+END_SRC
       
 * Docker use note
 ** Docker install
