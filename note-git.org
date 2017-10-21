@@ -26,14 +26,6 @@
         设置别名
     - git clone note  note-bak
       备份项目
-<<<<<<< HEAD
-      
-** git 暂存区
-
-   [[http://7xpyfe.com1.z0.glb.clouddn.com/2017101515080826245091.png]]
-
-=======
-     
 ** git 暂存区
 
    [[http://7xpyfe.com1.z0.glb.clouddn.com/2017101515080826245091.png]]
@@ -66,14 +58,14 @@
      
      保存进度，暂存状态
 ** git reset 重置
+   
+   1. git reset HEAD<path>  相当于取消 git add <paths> 操作
 
-     1. git reset HEAD<path>  相当于取消 git add <paths> 操作
+   2. git reset --hard master@{2}  重置master所有位置为两次改变之前的值
 
-     2. git reset --hard master@{2}  重置master所有位置为两次改变之前的值
+                --soft       只改变引用的指向，不改变暂存区和工作区
 
-                  --soft       只改变引用的指向，不改变暂存区和工作区
-
-                  --mixed      更改引用的指向，重置暂存区，不改变工作区
+                --mixed      更改引用的指向，重置暂存区，不改变工作区
 
    - git reset --soft HEAD^ 放弃最新的提交
    - git reset HEAD filename
@@ -196,11 +188,3 @@
    #+END_SRC
 
    
-=======
-     
-     [[http://7xpyfe.com1.z0.glb.clouddn.com/20171015150808301278029.png]] 
-     diff介绍 
-     diff 比较工作区、暂存区、版本库代码的比较
-   - git stash
-     
-     保存进度，暂存状态?
