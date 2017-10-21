@@ -1,5 +1,26 @@
 杨保华 Docker技术入门与实战
-* 
+* Docker入门
+** 初识Docker
+   可以简单的将Docker容器理解为一种沙盒，每个容器内运行一个应用，不同的容器互相隔离，容器之间可以建立通信机制。容器的创建和停止都十分快速，容器自身对资源的需求也十分有限，远远低于虚拟机。
+   
+   与传统虚拟机比较，Docker容器快，对系统资源需求少，一台主机可以运行数千个Docker容器,docker通过git的操作管理减少学习成本，通过Dockerfile配置文件来灵活自动化创建和部署
+
+   传统方式是硬件层面实现虚拟化，需要有额外的虚拟机管理应用和虚拟机操作系统层，Docker容器是操作系统层面上实现的虚拟化，直接复用本地主机的操作系统，因此更加轻量级
+
+   [[http://7xpyfe.com1.z0.glb.clouddn.com/blog/20171018/113219426.png]]
+  
+** Docker核心概念
+   1. Image
+   2. Container
+
+      镜像自身是只读的，容器从镜像启动的时候，Docker会在镜像的最上层创建一个可写层，镜像本身将保持不变
+   3. Repository
+
+      Docker集中存放镜像文件的场所
+
+      目前最大的公开仓库是Docker Hub 国内 Docker Pool
+
+      Registry 注册服务器包含众多Repository
 
 * Docker use note
 ** Docker install
@@ -24,4 +45,8 @@
          
          
 
-     
+* common problem
+  1. ImportError: No module named apt_pkg
+     安装docker 执行 sudo add-apt-repository 的时候报错
+     Solve it by this:
+     /usr/lib/python3/dist-packages# cp apt_pkg.cpython-34m-x86_64-linux-gnu.so apt_pkg.so
