@@ -22,6 +22,83 @@
 
       Registry 注册服务器包含众多Repository
 
+** Docker Image
+   - sudo docker pull ubuntu  
+
+     download ubuntu image  and create container 
+   - sudo docker run -t -i ubuntu /bin/bash
+   - sudo docker images
+
+     查看本地镜像
+   - sudo docker inspect 747cb2d60bbe
+
+     查看镜像信息
+   - sudo docker search mysql
+
+     search images
+   - sudo docker rmi ubuntu:latest
+     
+     use tag to remove image
+
+     image 创建的容器存在的时候，是无法删除删除的 -f 强制删除
+   - docker run ubuntu:16.04 echo 'hello mm'
+   - docker ps -a 
+
+     删除images需要先删除容器 : docker rm 004
+   - create docker image
+     1. 基于已有image的容器创建
+        - docker commit
+
+          -a 作者 -m  提交信息 -p 暂停提交 
+
+          docker commit -m "add a test" -a 'manue1' 836  查看本地镜像会发现多出一个
+     2. 基于本地模版导入
+     3. 基于Dockerfile创建
+   - dacker save / docker load 
+     
+     docker save -o ubuntu-16.04.tar ubuntu:latest
+
+     docker load --input ubuntu-16.04.tar
+   - docker tag 9f2  test:u_test
+     利用id添加tag
+   - docker push
+     push 需要先修改本地仓库name为远程仓库名
+     - docker tag test:u_test manue1sec/test:u_test
+     - docker push manue1sec/test
+
+** Docker Container
+   - create docker container
+     
+     docker create -it ubuntu
+
+     docker start d3e
+
+     docker run -it ubuntu /bin/bash  创建并启动容器，-t启动一个虚拟终端，-i保持终端 -d 在后台守护运行
+   - docker stop ce5 
+     
+     docker kill ce5 
+
+     docker ps -a -q 停止状态的容器
+   - into container
+
+     docker attach 18a
+    
+     docker exec -ti /bin/bash  (推荐)
+   - remove container
+
+     docker rm 18a
+   - docker export / import
+
+     导入导出容器
+
+     docker export 18a > ubuntu_container.tar  作为镜像
+
+     docker import a.tar
+   - exit
+
+   
+     
+
 * Docker use note
 ** Docker install
    1. 图解Docker
