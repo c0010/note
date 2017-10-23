@@ -7,3 +7,4 @@
   
    sudo service redis-server restart 
    redis-cli -a manue1sec
+** docker build a cluster
