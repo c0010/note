@@ -170,7 +170,27 @@
 
 
 * git 和声
-   
+** git 工作协调   
+   - 支持的协议
+     智能协议: 数据传输过程中有清晰的进度显示,按需传输，传输量小，速度快 (ssh,git,file//)  
+     哑协议: 创术速度慢，传输进度不可见，不知道什么时候完成数据传输(ftp,rsync)
+   - 强制非快进式推送
+
+     git rev-list HEAD  本地版本库最新提交
+
+     git ls-remote origin 远程版本库的引用
+
+     git push 报non-fast-forward updates were rejected 不可以git push -f 强制更新
+   - 合并后推送
+      
+     git pull 获取远程版本库最新提交，以及将获取的远程提交与本地提交进行合并
+
+     git log --graph --oneline
+
+     git push
+     
+     
+** git 冲突解决
 
 * [[http://mazhuang.org/wiki/git/][common questions]]
 ** git ls-files 乱码问题

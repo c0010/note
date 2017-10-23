@@ -9,7 +9,7 @@
 
    [[http://7xpyfe.com1.z0.glb.clouddn.com/blog/20171018/113219426.png]]
   
-** Docker核心概念
+* Docker核心概念
    1. Image
    2. Container
 
@@ -24,7 +24,7 @@
 
 ** Docker Image
    - sudo docker pull ubuntu  
-
+     
      download ubuntu image  and create container 
    - sudo docker run -t -i ubuntu /bin/bash
    - sudo docker images
@@ -98,7 +98,6 @@
 
    
      
-
 * Docker use note
 ** Docker install
    1. 图解Docker
@@ -121,7 +120,6 @@
    - docker run --name cif -d -p 5000:5000 csirtgadgets/cif
          
          
-
 * common problem
   1. ImportError: No module named apt_pkg
      安装docker 执行 sudo add-apt-repository 的时候报错
