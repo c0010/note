@@ -28,7 +28,7 @@
      download ubuntu image  and create container 
    - sudo docker run -t -i ubuntu /bin/bash
    - sudo docker images
-
+     
      查看本地镜像
    - sudo docker inspect 747cb2d60bbe
 
