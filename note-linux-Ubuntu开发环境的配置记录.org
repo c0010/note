@@ -65,12 +65,20 @@
    
       #+BEGIN_VERSE
          m  帮助信息  
+         n 创建分区
          e 扩展分区    +5G  pppp/pppe
          p 打印分区
          t 分区类型 L  (lvm)
          w 写入保存分区
       #+END_VERSE
+
    3. 格式化 分区
+
+   - LVM
+     pv --> vg --> lv
+     参考: http://blog.sina.com.cn/s/blog_b77735d20101e5cn.html
+
+
 ** pinyin input
   1. install chinese language pack
 

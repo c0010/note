@@ -1,6 +1,26 @@
+Spark快速大数据分析[美] 卡劳（Holden Karau）
+* what is spark
+  spark 是一个用来实现快速而通用的集群计算的平台
+  - spark core
+  - spark sql
+  - spark streaming
+  - MLlib
+  - GraphX
+  - 集群管理器
+    - 自带简易调度器，独立调度器
+    - Hadoop YARN
+    - Apache Mesos
+  - Spark的存储层次
+    - 支持本地文件,HDFS,Hive,HBase
+    - 文件格式:文本文件,SequenceFile,Avro,Parquet
+  - shell
+    spark shell 可用来与分布式存储在许多机器的内存或者硬盘上的数据进行交互
+    python shell / scala shell
+* RDD
+  RDD(resilient distributed dataset)
 * spark use
 ** spark base
-  rdd(resilient distributed dataset)
+   rdd(resilient distributed dataset)
 ** spark install
    函数式编程
    shell下执行:paste
@@ -27,3 +47,4 @@
 ** idea spark java 
    1. jre 1.5 换成1.8
 ** rdd & dataframe
+
