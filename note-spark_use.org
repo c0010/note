@@ -16,6 +16,8 @@ Spark快速大数据分析[美] 卡劳（Holden Karau）
   - shell
     spark shell 可用来与分布式存储在许多机器的内存或者硬盘上的数据进行交互
     python shell / scala shell
+  - SparkContext
+    每个Sparkyingy
 * RDD
   RDD(resilient distributed dataset)
 * spark use
