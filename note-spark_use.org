@@ -20,6 +20,9 @@ Spark快速大数据分析[美] 卡劳（Holden Karau）
     每个Sparkyingy
 * RDD
   RDD(resilient distributed dataset)
+** RDD基础
+   Spark中的RDD是一个不可变的分布式对象集合
+  
 * spark use
 ** spark base
    rdd(resilient distributed dataset)
