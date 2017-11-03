@@ -19,6 +19,7 @@
 ** cat command
    vim  /etc/security/limits.conf
    vim   /etc/security/limits.d/def.conf
+
   sudo netstat -anp |grep 9200
   htop
   show python
