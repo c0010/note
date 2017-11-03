@@ -188,3 +188,8 @@ b.txt
       
 
     
+*** https 和 http区别
+    
+    https 443 tls加密 加密传输身份认证的网络协议
+
+    http  80  明文  无状态连接
