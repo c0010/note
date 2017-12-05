@@ -1,0 +1,17 @@
+* java
+** collection
+*** ArrayList
+    http://wangkuiwu.github.io/2012/02/03/collection-03-arraylist/
+
+    ArrayList 是一个数组队列，相当于 动态数组 能动态增长
+
+    ArrayList 继承了AbstractList，实现了List。它是一个数组队列，提供了相关的添加、删除、修改、遍历等功能
+
+    和Vector不同，ArrayList中的操作不是线程安全的！所以，建议在单线程中才使用ArrayList
+*** LinkedList
+    http://wangkuiwu.github.io/2012/02/05/collection-05-linkedlist/
+    双向链表
+    (01) LinkedList继承于AbstractSequentialList，并且实现了Dequeue接口。
+    (02) LinkedList包含两个重要的成员：header 和 size。
+** Q&A
+*** 什么是序列化
