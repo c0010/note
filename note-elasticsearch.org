@@ -2,6 +2,7 @@
 ** install
  安装环境: VMware12: 三台 ubuntu 14.04 内存 1g
 1. download es
+   https://www.elastic.co/downloads/elasticsearch
 2. install java 8
 3. vim elasticsearch.yml
     访问地址修改:
@@ -292,3 +293,5 @@
       2. discovery.zen.ping.timeout
 
          等待ping响应的超时时间，默认值是3秒。如果网络缓慢或拥塞，建议略微调大这个值
+*** es pipeline
+    https://www.felayman.com/articles/2017/11/24/1511527532643.html#b3_solo_h4_22
