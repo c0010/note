@@ -1,4 +1,7 @@
 * java
+** base
+   overload  重载  类
+   overriding  super hidden 重写 继承
 ** collection
 *** ArrayList
     http://wangkuiwu.github.io/2012/02/03/collection-03-arraylist/
@@ -13,5 +16,45 @@
     双向链表
     (01) LinkedList继承于AbstractSequentialList，并且实现了Dequeue接口。
     (02) LinkedList包含两个重要的成员：header 和 size。
+
+** concurrent
+   http://wangkuiwu.github.io/2012/08/01/threads-index/
+*** 基础概念
+   - 线程五种状态
+     1. new
+        新建状态
+        Thread thread = new Thread()
+     2. runnable
+        就绪状态
+        thread.start() 随时可能被CPU调度执行
+     3. running
+        运行状态
+        线程获取CPU权限进行执行,线程只能从runnable --> running
+     4. blocked 
+        阻塞状态
+        是线程放弃CPU使用权
+
+        + 阻塞分三种情况:
+          - 等待阻塞
+            调用wait()等待某工作完成
+          - 同步阻塞
+            synchroized 同步锁被其他线程占用
+          - 其他阻塞
+            sleep() or join() or 发I/O请求
+     5. dead
+        死亡状态
+        线程执行结束 or 异常退出run()方法
+        
+   wait()  休眠
+
+   notify() 唤醒
+
+   notifyAll()
+*** 常用的实现多线程的两种方式
+    Thread 和 Runnable 的相同点：都是“多线程的实现方式”。
+Thread 和 Runnable 的不同点：
+Thread 是类，而Runnable是接口；Thread本身是实现了Runnable接口的类。我们知道“一个类只能有一个父类，但是却能实现多个接口”，因此Runnable具有更好的扩展性。
+此外，Runnable还可以用于“资源的共享”。即，多个线程都是基于某一个Runnable对象建立的，它们会共享Runnable对象上的资源。
+通常，建议通过“Runnable”实现多线程！
 ** Q&A
 *** 什么是序列化
