@@ -75,14 +75,5 @@
     1. 同步锁 
         获取到同步锁的线程就能进行CPU调度，从而在CPU上执行；而没有获取到同步锁的线程，必须进行等待，
     2. JUC包中的锁
-       - Lock
-       - ReadWriteLock
-
-*** 线程池
-    Executor --> ExecutorService --> AbstractExecutorService --> ThreadPoolExecutor
-
-    Executors是个静态工厂类。它通过静态工厂方法返回ExecutorService、ScheduledExecutorService、ThreadFactory 和 Callable 等类的对象
-
-    
 ** Q&A
 *** 什么是序列化
