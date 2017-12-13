@@ -83,6 +83,35 @@
 
     Executors是个静态工厂类。它通过静态工厂方法返回ExecutorService、ScheduledExecutorService、ThreadFactory 和 Callable 等类的对象
 
-    
 ** Q&A
 *** 什么是序列化
+*** 装饰器
+    java pyhon
+*** shell read函数
+*** netstat 参数
+*** 爬楼梯算法
+*** arraylist linkedlist currentArraylist
+*** ps aux 
+*** grep awk
+    grep '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' 111.txt  IP
+*** shell 
+14.某个目录下有两个文件a.txt和b.txt,文件格式为（ip，username）,
+
+列如：
+
+a.txt
+127.0.0.1 zhangsan
+127.0.0.1 wangxiaoer
+127.0.0.2 lisi
+127.0.0.3 wangwu
+
+b.txt
+127.0.0.4 lixiaolu
+127.0.0.1 lisi
+
+每个文件至少100万行，请使用Linux命令完成如下工作：
+
+1）每个文件各自的ip数
+2）出现在b.txt而没有出现在a.txt的ip
+3）每个user出现的次数以及每个user对应的ip数
+*** linux env bash 执行顺序
