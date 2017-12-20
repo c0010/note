@@ -87,13 +87,8 @@
 *** 什么是序列化
 *** 装饰器
     java pyhon
-*** shell read函数
-*** netstat 参数
 *** 爬楼梯算法
 *** arraylist linkedlist currentArraylist
-*** ps aux 
-*** grep awk
-    grep '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' 111.txt  IP
 *** shell 
 14.某个目录下有两个文件a.txt和b.txt,文件格式为（ip，username）,
 
@@ -114,4 +109,67 @@ b.txt
 1）每个文件各自的ip数
 2）出现在b.txt而没有出现在a.txt的ip
 3）每个user出现的次数以及每个user对应的ip数
+**** ps aux 
+**** grep awk
+    grep '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' 111.txt  IP
+
+**** netstat  
+ a 所有 n 不逆向确认 t/u tcp udp 
+ p 端口 -c 持续监听
+
+**** nethogs
+
+    监控每个进程占用多少流量 
+**** tcpdump
+ root下
+ -i eth0
+ -D 显示有多少网卡
+ -w 文件内
+ -vv 显式详细的信息
+ -n 不进行域名反解析 都是IP地址
+ -c 10 十个包
+ tcpdump -A 以assic码显式，数据包内容是二进制的，所以现在的会有乱码现象
+ tcpdump -X 以两种 16进制和 assic形式
+
+ ---
+ 局域网 dns 等 多是使用udp协议  
+
+ 协议 tcpdump tcp/icmp/udp 
+      tcpdump -i eth0 'ip proto \tcp or \udp'
+ 端口 tcpdump port 80  
+      tcpdump portrange 1-1024
+      tcpdump src port 80
+      tcpdump host www.baidu.com/192.168.1.1
+ 数据包大小
+      tcpdump less 100
+      tcpdump greater 100
+ 服务器受到攻击,如何判断流量来自哪里?
+
+---
+  and / or 组合
+
+  tcpdump tcp and src 192.168.67.1 and port 53867
+
+  tcpdump tcp or udp
+
+  tcpdump tcp and not port 80
+ 
+ 
+**** iptables
+     linux 内核 通过netfilter模块 实现网络访问控制功能
+     iptables --> netfilter模块
+     对流量 允许 丢弃 修改等操作
+
+     src dst 接口  tcp udp 端口号 连接状态(new,ESTABLISHED)
+
+     chain  过滤点: input forward output prerouting postrouting
+     table :  filter nat mangle
+
+     filter(chain) 对数据进行过滤
+     nat 用以对数据包的源、目标地址进行修改
+     mangle 用以对数据包的高级修改
+**** namp
+
 *** linux env bash 执行顺序
+*** socket
+
