@@ -65,7 +65,6 @@
      push 需要先修改本地仓库name为远程仓库名
      - docker tag test:u_test manue1sec/test:u_test
      - docker push manue1sec/test
-
 ** Docker Container
    - create docker container
      
@@ -97,7 +96,6 @@
    - exit
 
    
-     
 * Docker use note
 ** Docker install
    1. 图解Docker
@@ -118,7 +116,6 @@
    - docker stop cif 停止容器
    - docker rm -f cif  运行冲突 remove it using
    - docker run --name cif -d -p 5000:5000 csirtgadgets/cif
-         
          
 * common problem
   1. ImportError: No module named apt_pkg

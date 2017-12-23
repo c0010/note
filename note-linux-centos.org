@@ -1,0 +1,406 @@
+* download
+  http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso
+* ip
+  * 联网方式: 配置三张网卡
+    virtualBox 中 NAT 和 Host-only 两种模式不能同时并存，测试只能联网的时候关掉另一张网卡
+    1. NAT 
+      网卡1 用来连接外网 
+    2. Host-only
+      用来配置静态IP 配置集群服务的时候不需要修改IP
+      vi /etc/sysconfig/network-scripts/  
+       #+BEGIN_SRC 
+         #static assignment
+         ONBOOT=yes
+         BOOTPROTO=static
+         IPADDR=192.168.56.10
+         NETMASK=255.255.255.0
+         GATEWAY=192.168.56.1
+       #+END_SRC
+    3. Bridge
+      vbox 自动配置IP，也很方便 
+       
+    这边计算使用网卡三的桥接模式连接外网下载更新系统,断掉外网用网卡二的主机模式搭建集群
+     
+  * ip tool
+
+    Ip  [选项]  操作对象{link|addr|route...}
+
+    # ip link show                           # 显示网络接口信息
+    
+    # ip link set eth0 up                   # 开启网卡
+    
+    # ip link set eth0 down                  # 关闭网卡
+    
+    # ip link set eth0 promisc on            # 开启网卡的混合模式
+    
+    # ip link set eth0 promisc offi          # 关闭网卡的混个模式
+    
+    # ip link set eth0 txqueuelen 1200       # 设置网卡队列长度
+    
+    # ip link set eth0 mtu 1400              # 设置网卡最大传输单元
+    
+    # ip addr show                           # 显示网卡IP信息
+    
+    # ip addr add 192.168.0.1/24 dev eth0    # 设置eth0网卡IP地址192.168.0.1
+    
+    # ip addr del 192.168.0.1/24 dev eth0    # 删除eth0网卡IP地址
+    
+    # ------
+    
+    # ip route list                                            # 查看路由信息
+    
+    # ip route add 192.168.4.0/24  via  192.168.0.254 dev eth0 # 设置192.168.4.0网段的网关为192.168.0.254,数据走eth0接口
+    
+    # ip route add default via  192.168.0.254  dev eth0        # 设置默认网关为192.168.0.254
+    
+    # ip route del 192.168.4.0/24                              # 删除192.168.4.0网段的网关
+    
+    # ip route del default                                     # 删除默认路由
+      
+    sudo service network restart
+
+  * VboxManage
+
+    - 无界面启动vms
+      VBoxManage startvm Centos701 --type headless
+
+* hostname
+  永久修改主机名字
+  sudo hostnamectl --static set-hostname master
+
+  sudo vi /etc/hosts
+
+  [manue1@localhost ~]$ cat /etc/hostname
+   master
+  [manue1@localhost ~]$ cat /etc/hosts
+   127.0.0.1 master
+   ::1 master
+* yum source
+
+  sudo yum -y install wget
+  
+  - 备份
+    sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+
+  - 设置aliyun source
+    sudo wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+
+  - 设置EPLEPEL source
+    
+    sudo wget -P /etc/yum.repos.d/ http://mirrors.aliyun.com/repo/epel-7.repo
+
+    添加后可以像fedora上 yum install packname
+
+  - 清理缓存并生成新的缓存
+
+    sudo yum clean all  
+    sudo yum makecache  
+
+* firewallds
+  
+  - 查看状态
+    systemctl status firewalld
+  - 关闭
+    systemctl stop firewalld
+  - 禁用
+    systemctl disable firewalld
+* disable selinux
+  一款为了提高系统安全性的软件：对系统服务，文件权限，网络端口访问有极其严格的限制，
+  例如：如果对一个文件没有正确安全上下文配置， 甚至你是root用户，你也不能启动某服务
+
+  sudo vi /etc/sysconfig/selinux
+   selinux = disable
+* java  & scala
+  基础环境用root 配置在/etc/profile 自启动环境文件内
+  refer : https://www.mtyun.com/library/how-to-setup-scala-on-centos7
+  - java rpm install
+
+    1. download
+       http://www.oracle.com/technetwork/java/javase/downloads/index.html
+    2. install
+       sudo rpm -ivh jdk-8u144-linux-x64.rpm
+       sudo rpm -aq | grep jdk
+       
+       sudo rpm -e jdk   无效
+       sudo yum remove jdk  
+       
+       sudo vi /etc/profile
+       #+BEGIN_SRC 
+         #JAVA_HOME
+         export JAVA_HOME=/usr/java/jdk1.8.0_144
+         export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+         export PATH=$PATH:$JAVA_HOME/bin
+       #+END_SRC
+  - java 离线包安装
+
+    tar -zxvf jdk-8u151-linux-x64.tar.gz
+
+    vi /etc/profile
+    #+BEGIN_SRC 
+#JAVA_HOME
+JAVA_HOME=/home/manue1/opt/jdk8
+PATH=$PATH:$JAVA_HOME/bin
+export JAVA_HOME PATH
+    #+END_SRC
+  - scala 离线包安装
+    当前最新版本
+    tar zxvf scala-2.11.7.tgz
+
+    #+BEGIN_SRC 
+    SCALA_HOME=/home/manue1/opt/scala-2.11.7
+    PATH=$PATH:$SCALA_HOME/bin
+    export SCALA_HOME PATH
+    #+END_SRC
+    
+* hadoop hbase spark 版本选择
+
+  
+  + hbase 支持 hadoop 版本对照表
+
+     The 1.2.x series is the current stable release line
+    
+     http://www-us.apache.org/dist/hbase/
+    
+     下面查看1.2.x 需要的hadoop版本
+
+     http://hbase.apache.org/book.html#arch.overview
+
+     crtl + F  "s" 搜索页面
+
+    选择 Hadoop-2.7.1+
+    
+  + spark 支持 hadoop
+    
+    http://spark.apache.org/downloads.html
+    
+    官方下载页面可以手动选择
+
+  + hive 支持 hadoop
+    
+    https://hive.apache.org/downloads.html
+
+    稳定版下载地址
+    
+    http://mirrors.shuosc.org/apache/hive/stable-2/
+
+  + zookeeper
+    
+    下载稳定版即可
+    
+    http://mirrors.shuosc.org/apache/zookeeper/stable/
+* hadoop 集群配置
+  1. 环境准备
+     三台vbox 虚拟centos7 配置 java scala 环境 关闭防火墙和selinux
+     
+     - cluster
+       | hostname |            ip |
+       |----------+---------------|
+       | master   | 192.168.56.10 |
+       | slave01  | 192.168.56.11 |
+       | slave02  | 192.168.56.12 |
+
+     - disable ipv6
+
+       sudo vi /etc/sysctl.conf
+       
+       添加下面内容
+       
+       #+BEGIN_SRC 
+
+# disable ipv6
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+       
+       #+END_SRC
+
+       解决master:50070 页面找不到live node 
+
+       解决 connection exception
+       
+       #+BEGIN_SRC 
+17/12/23 23:19:48 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+ls: Call From slave01/127.0.0.1 to master:9000 failed on connection exception: java.net.ConnectException: 拒绝连接; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused
+       
+       #+END_SRC
+
+     - hostname & host
+       三台主机都要
+       修改主机名
+       修改/etc/hosts 互相添加hostname访问别名
+       注意； #127.0.0.1 master 这样的映射一定要注释掉,master:8088无法访问最终定位到这里了
+       #+BEGIN_SRC 
+#centos7 cluster
+192.168.56.10 master
+192.168.56.11 slave01
+192.168.56.12 slave02
+       #+END_SRC
+
+     - 免登录验证
+       ssh-keygen -t rsa
+       ssh-copy-id -i ~/.ssh/id_rsa.pub manue1@slave01 
+       ssh-copy-id -i ~/.ssh/id_rsa.pub manue1@slave02 
+       ssh-copy-id -i ~/.ssh/id_rsa.pub manue1@master
+       
+     - download hadoop
+       tar -zxvf hadoop-2.7.5.tar.gz
+  2. 配置hadoop cluster
+     
+    - hadoop_home
+      三台节点都需要配置
+      vi .bashrc
+      #+BEGIN_SRC 
+# Hadoop Environment Variables
+export HADOOP_HOME=/home/manue1/opt/hadoop-2.7.5
+export HADOOP_INSTALL=$HADOOP_HOME
+export HADOOP_MAPRED_HOME=$HADOOP_HOME
+export HADOOP_COMMON_HOME=$HADOOP_HOME
+export HADOOP_HDFS_HOME=$HADOOP_HOME
+export YARN_HOME=$HADOOP_HOME
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
+export HADOOP_OPTS="$HADOOP_OPTS -Djava.library.path=$HADOOP_HOME/lib/native" #解决WARN util.NativeCodeLoader: Unable to load native-hadoop library
+      
+      #+END_SRC
+
+    - master
+      
+      /home/manue1/opt/hadoop-2.7.5/etc/hadoop/ 下6个配置文件
+      1. core-site.xml
+
+         #+BEGIN_SRC 
+<configuration>
+    <!-- 指定HDFS老大（namenode）的通信地址 -->
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://master:9000</value>
+    </property>
+    <!-- 指定hadoop运行时产生文件的存储路径 -->
+    <property>
+        <name>hadoop.tmp.dir</name>
+        <value>file:/home/manue1/opt/hadoop-2.7.5/tmp</value>
+    </property>
+</configuration>
+
+         
+         #+END_SRC
+
+      2. hdfs-site.xml
+         
+         #+BEGIN_SRC 
+<configuration>
+        <!-- 设置namenode的http通讯地址 -->
+        <property>
+                <name>dfs.namenode.secondary.http-address</name>
+                <value>master:50090</value>
+        </property>
+        <!-- 设置hdfs副本数量 -->
+        <property>
+                <name>dfs.replication</name>
+                <value>1</value>
+        </property>
+         <!-- 设置namenode存放的路径 -->
+        <property>
+                <name>dfs.namenode.name.dir</name>
+                <value>file:/home/manue1/opt/hadoop-2.7.5/tmp/dfs/name</value>
+        </property>
+         <!-- 设置datanode存放的路径 -->
+        <property>
+                <name>dfs.datanode.data.dir</name>
+                <value>file:/home/manue1/opt/hadoop-2.7.5/tmp/dfs/data</value>
+        </property>
+</configuration>
+
+         
+         #+END_SRC
+
+      3. mapred-site.xml
+         
+         mv mapred-site.xml.template mapred-site.xml
+
+         #+BEGIN_SRC 
+<configuration>
+        <!-- 通知框架MR使用YARN -->
+        <property>
+                <name>mapreduce.framework.name</name>
+                <value>yarn</value>
+        </property>
+        <property>
+                <name>mapreduce.jobhistory.address</name>
+                <value>master:10020</value>
+        </property>
+        <property>
+                <name>mapreduce.jobhistory.webapp.address</name>
+                <value>master:19888</value>
+        </property>
+</configuration>
+         
+         #+END_SRC
+         
+      4. yarn-site.xml
+         
+         #+BEGIN_SRC 
+<configuration>
+ <!-- 设置 resourcemanager 在哪个节点-->
+<!-- Site specific YARN configuration properties -->
+        <property>
+                <name>yarn.resourcemanager.hostname</name>
+                <value>master</value>
+        </property>
+         <!-- reducer取数据的方式是mapreduce_shuffle -->
+        <property>
+                <name>yarn.nodemanager.aux-services</name>
+                <value>mapreduce_shuffle</value>
+        </property>
+
+</configuration>
+         
+         #+END_SRC
+
+      5. slaves
+         
+         #+BEGIN_SRC 
+slave01
+slave02
+         #+END_SRC
+
+      6. hadoop-env.sh
+
+         修改
+         export JAVA_HOME=/home/manue1/opt/jdk8
+         
+    - slaves
+      
+      tar -zcvf hadoop-2.7.5_conf_finshed.tar.gz hadoop-2.7.5/
+
+      scp hadoop-2.7.5_conf_finshed.tar.gz manue1@slave02:/home/manue1/opt/
+  3. 启动hadoop
+     hdfs namenode -format #第一次启动要执行格式化，之后启动不用执行这个
+     start-dfs.sh
+     start-yarn.sh
+     mr-jobhistory-daemon.sh start historyserver  ??
+
+     - master
+       #+BEGIN_SRC 
+manue1@master sbin]$ jps
+2034 NameNode
+2483 Jps
+1652 ResourceManager
+2188 SecondaryNameNode
+2447 JobHistoryServer
+       
+       #+END_SRC
+
+     - slaves
+       #+BEGIN_SRC 
+[manue1@slave01 hadoop]$ jps
+1360 DataNode
+1430 NodeManager
+1516 Jps
+       #+END_SRC
+
+  hadoop cluster状态展示界面
+  http://master:50070/
+
+  yarn 管理界面
+  http://master:8088
