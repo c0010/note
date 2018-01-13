@@ -779,7 +779,8 @@ path.data: /Home/Manue1/Opt/Elasticsearch-6.1.1/Els/Data  #数据存储目录
 
 path.logs: /home/manue1/opt/elasticsearch-6.1.1/els/log   #日志存储目录
 
-network.host: 192.168.56.10     #当前节点IP 安全起见，默认采用”0.0.0.0”，允许所有设备访问
+network.bind_host: 0.0.0.0   #���master节点配置 ”0.0.0.0”，允许所有网络接口访问
+network.publish_host: master # 集群通信
 
 gateway.recover_after_nodes: 3  #值为n，网关控制在n个节点启动之后才恢复整个集群, 3节>点启动后1分钟
 gateway.recover_after_time: 1m
@@ -811,7 +812,6 @@ http.port: 9200                 # 对外提供服务的端口，9300为集群服
        
    3. 启动elasticsearch
       
-
       su – manue1
 
       vi  /home/manue1/opt/elasticsearch-6.1.1/bin/elasticsearch
@@ -822,20 +822,20 @@ MAX_OPEN_FILES=262144
       
      nohup ./bin/elasticsearch -d 
 
-     关闭 ps -ef |grep /elasticsearch|awk '{print $2}'|xargs kill -9
+     关闭 ps -ef |grep elasticsearch|awk '{print $2}'|xargs kill -9
 ** kibana
 
    配置在es的非数据节点上: 192.168.56.10
 
    修改 config/kibana.yml
    #+BEGIN_SRC 
-server.host: "master"
+server.host: "0.0.0.0" #不同网卡网段能够访问
 elasticsearch.url: "http://master:9200"
    #+END_SRC
 
    启动： nohup  bin/kibana  &
 
-   关闭: ps -ef |grep /kibana |awk '{print $2}'|xargs kill -9
+   关闭: ps -ef |grep kibana |awk '{print $2}'|xargs kill -9
 
    ss -lnp | grep 5601
 
@@ -846,7 +846,7 @@ elasticsearch.url: "http://master:9200"
       
       - 创建logstash-conf 目录
         beat的配置文件
-        vi metricbeat.conf
+        vi beats.conf
         #+BEGIN_SRC 
 input {
   beats {
@@ -862,7 +862,7 @@ input {
 
 output {
   elasticsearch {
-    hosts => "localhost:9200"
+    hosts => "master:9200"
     manage_template => false
     index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}" 
   }
@@ -874,14 +874,17 @@ output {
         修改 xms xmx 最大最小jvm 为256M 比es测试集群吃内存多 
 
       - logstash.yml
+
    3. start logstash
 
      -  bin/logstash -e 'input { stdin { } } output { stdout {} }'
         测试启动
 
-     - ./bin/logstash -f logstash-conf/metricbeat.conf &
-
+     - ./bin/logstash -f logstash-conf/beats.conf &
+       
        配置文件启动
+
+       sudo netstat -anp | grep 5044
 ** beats
 *** topbeat
     5.x版本后弃用了
@@ -1090,7 +1093,7 @@ output.logstash:
        sudo chown root packetbeat.yml 
 
        nohup /home/manue1/opt/packetbeat-6.1.1-linux-x86_64/packetbeat -e -c  /home/manue1/opt/packetbeat-6.1.1-linux-x86_64/packetbeat.yml -d "publish" &
-
+       
 * hive 
   
   hadoop namenode上安装,datanode上无需安装
