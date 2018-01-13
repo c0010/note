@@ -1,6 +1,284 @@
-* download
+* VboxManage
+   
+  - vms 基本信息
+
+    VBoxManage showvminfo Centos701
+
+  - 无界面启动vms
+
+    VBoxManage startvm Centos701 --type headless
+
+  - 修改vms内存总量
+
+    VBoxManage modifyvm Centos701 --memory 1024
+    
+  - 修改vms磁盘容量
+
+    VBoxManage modifyhd Centos702.vdi --resize 7168
+
+  - 创建快照
+    
+    VBoxManage snapshot ubuntu01 take ubuntu_basic_ssh
+    
+
+
+    
+#+BEGIN_SRC 
+
+查看当前虚拟机  VBoxManage list vms  
+
+查看当前正在运行的虚拟机  VBoxManage list runningvms  
+
+启动虚拟机  VBoxManage startvm 虚拟机名  
+
+无前端图形界面方式启动虚拟机  VBoxManage startvm 虚拟机名 --type headless  
+
+使用 VRDP 方式通过命令行启动虚拟机： (3389)  
+VBoxManage startvm 虚拟机名 --type vrdp  
+
+关闭虚拟机  VBoxManage controlvm 虚拟机名 poweroff  
+
+VBoxManage [-v|-version]         显示virtualbox的版本号  
+VBoxManage -nologo               隐藏logo  
+VBoxManage -convertSettings      允许自动转换设置文件  
+VBoxManage -convertSettingsBackup 允许自动转换设置文件，并在转换前作备份  
+VBoxManage -convertSettingsIgnore 允许自动转换设置文件，但是不保存结果  
+
+VBoxManage list vms|runningvms   显示列表虚拟机|正在运行的虚拟机  
+               |ostypes|hostdvds virtualbox支持的系统类型|宿主机的光盘驱动器  
+               |hostfloppies     宿主机的软盘驱动器  
+               |hostifs|hostinfo 宿主机的网络接口|宿主机的信息  
+               |hdds|dvds        已注册的虚拟硬盘|已注册的虚拟光盘  
+               |floppies|usbhost 已注册的虚拟软盘|宿主机的USB设备  
+               |usbfilters       USB筛选器  
+               |systemproperties 虚拟机的基本信息  
+VBoxManage showvminfo <uuid>|<name>     显示指定虚拟机的信息  
+                     [-details]         显示详细信息  
+                     [-statistics]      显示统计信息  
+                     [-machinereadable] 以清晰的格式显示虚拟机信息  
+VBoxManage registervm <filename>       将指定文件所在的虚拟机添加到列表  
+VBoxManage unregistervm <uuid>|<name>   从虚拟机列表清除指定的虚拟机  
+                        [-delete]       从虚拟机列表删除指定的虚拟机  
+VBoxManage createvm     -name <name>    创建指定名称的虚拟机  
+                        [-register]      将创建的虚拟机添加到列表  
+                        [-basefolder <path> 指定虚拟机的基础目录  
+                        [-settingsfile <path>] 指定虚拟机配置文件的基础目录  
+                        [-uuid <uuid>] 创建指定uuid的虚拟机  
+VBoxManage modifyvm     <uuid|name>       编辑指定的虚拟机的配置  
+                        [-name <name>]    修改虚拟机的名称  
+                        [-ostype <ostype>]修改虚拟机的操作系统类型  
+                        [-memory <memorysize>]   修改虚拟机的内存大小  
+                        [-vram <vramsize>]       修改虚拟机的显存大小  
+                        [-acpi on|off]           启动或禁止acpi电源管理接口  
+                        [-ioapic on|off]         启动或禁止I/O APIC电源管理接口  
+                        [-pae on|off]            启动或禁止CPU的PAE支持，PAE是  
+Physical Address Extension : 物理地址扩展  
+                        [-hwvirtex on|off|default]启动或禁止CPU的硬件虚拟化支持  
+                        [-nestedpaging on|off]    开启或关闭CPU的嵌套页面列表支持  
+                        [-monitorcount <number>] 设置显示器数目，VRDP多用户模式时  
+                        [-bioslogofadein on|off] 开启或关闭bioslogo渐显效果  
+                        [-bioslogofadeout on|off] 开启或关闭bioslogo渐隐效果  
+                        [-bioslogodisplaytime <msec>]设置bioslogo显示时间（以毫秒为单位)  
+                        [-bioslogoimagepath <imagepath>]设置bioslogo图像路径，用于自定义bioslogo  
+                        [-biosbootmenu disabled| 设置是否显示bios启动菜单 关闭  
+                                       menuonly| 只菜单  
+                                       messageandmenu] 信息和菜单  
+                        [-biossystemtimeoffset <msec>] 设置bios系统时间补偿（以毫秒为单位）  
+                        [-biospxedebug on|off] 打开或关闭biospxe调试  
+                        [-boot<1-4> none|floppy|dvd|disk|net>] 设置启动顺序  
+                        [-hd<a|b|d> none|<uuid>|<filename>] 为虚拟机添加三个IDE设备之一（第2个主盘被vm保留作为光驱，不能占用）在三个IDE中，你可以指定（硬盘）的vdi文件名或者它的UUID  
+                        [-idecontroller PIIX3|PIIX4] 设置IDE控制器的类型  
+                        [-sata on|off] 开启或关闭SATA硬盘控制器  
+                        [-sataportcount <1-30>] 设置虚拟机最多支持的SATA控制器数目  
+                        [-sataport<1-30> none| 没有硬盘连接到SATA控制器  
+                                       <uuid>| 指定uuid的硬盘连接到SATA控制器  
+                                       <filename>] 指定文件名的硬盘连接到SATA控制器  
+                        [-sataideemulation<1-4> <1-30>] 指定一个SATA设备工作在IDE兼容模式，IDE设备编号是1-4，SATA设备编号是1-30  
+                        [-dvd none| 不连接DVD光驱  
+                            <uuid>| 指定UUID的DVD光驱连接  
+                        <filename>| 将指定的光盘映像文件挂接到DVD光驱  
+                      host:<drive>] 将宿主机的DVD光驱挂接到虚拟机的DVD光驱  
+                        [-dvdpassthrough on|off]打开|关闭虚拟机里光盘的刻录功能  
+                        [-floppy disabled| 不连接软驱  
+                                    empty| 连接软驱但不插入软盘  
+                                   <uuid>| 指定UUID的软驱连接  
+                               <filename>| 将指定的软盘映像文件挂接到软驱驱  
+                             host:<drive>] 将宿主机的软驱驱挂接到虚拟机的软驱  
+                        [-nic<1-N> none| 虚拟机不添加网卡  
+                                   null| 虚拟机有网卡但不连接  
+                                    nat| 网络连接使用NAT模式  
+                                 hostif| 网络连接使用桥接模式  
+                                 intnet] 网络连接使用内部网络模式  
+                        [-nictype<1-N> Am79C970A| 虚拟机连接AMD PCNet PCI II网卡  
+                                        Am79C973| 虚拟机连接AMD PCNet FAST III网卡（默认）  
+                                         82540EM| 虚拟机连接Intel PRO/1000 MT Desktop网卡  
+                                         82543GC] 虚拟机连接Intel PRO/1000 T Server网卡  
+                        [-cableconnected<1-N> on|off]插入或拔出网线  
+                        [-nictrace<1-N> on|off] 开启或关闭网络追踪  
+                        [-nictracefile<1-N> <filename>] 将网络流量追踪数据保存到文件  
+                        [-nicspeed<1-N> <kbps>] 设置网络连接的速度  
+                        [-hostifdev<1-N> none| 不连接到主机网络接口  
+                                 <devicename>] 桥接模式下连接到指定的主机接口  
+                        [-intnet<1-N> <network name>] 内网模式下为虚拟机指定内部网络名称  
+                        [-natnet<1-N> <network>| 配置NAT网络接口的地址  
+                                        default] 默认NAT网络接口的地址是10.0.x.0/24  
+                        [-macaddress<1-N> auto| 自动生成虚拟网卡的MAC地址  
+                                         <mac>] 指定虚拟网卡的MAC地址  
+                        [-uart<1-N> off| 不启用虚拟串口  
+                        <I/O base> <IRQ>]启用虚拟串口，并设置虚拟串口的I/O参数和IRQ参数  
+                        [-uartmode<1-N> disconnected| 启用虚拟串口，但不连接到宿主机的串口  
+                                       server <pipe>| 在宿主机创建PIPE通道，并将虚拟机串口连接到这个通道  
+                                       client <pipe>| 不创建PIPE通道，而是将虚拟机串口连接到已存在的通道  
+                                       <devicename>] 将虚拟机串口连接到宿主机的串口  
+                        [-gueststatisticsinterval <seconds>] 配置虚拟机静态时间间隔  
+                        [-audio none| 虚拟机不连接声卡  
+                                null| 将虚拟机的声卡连接到空的声音设备  
+                              dsound] 将虚拟机的声卡连接到宿主机的声卡  
+                        [-audiocontroller ac97| 将虚拟机声卡虚拟为ICH AC97声卡  
+                                          sb16] 将虚拟机声卡虚拟为soundblaster 16声卡  
+                        [-clipboard disabled| 不共享剪贴板  
+                                 hosttoguest| 将宿主机的剪贴板共享给虚拟机  
+                                 guesttohost| 将虚拟机的剪贴板共享给宿主机  
+                               bidirectional] 宿主机和虚拟机共使用一个剪贴板  
+                        [-vrdp on|off] 开启|关闭virtualbox内置的VRDP服务器  
+                        [-vrdpport default| 使用默认的vrdp端口3389  
+                                    <port>] 指定vrdp端口  
+                        [-vrdpaddress <host>] 指定VRDP主机地址  
+                        [-vrdpauthtype null| 不用授权，任何客户机都可以连接到VRDP服务器  
+                                   external| 只有宿主机的用户才可以连接到VRDP服务器  
+                                      guest] 只有虚拟机的用户才可以连接到VRDP服务器  
+                        [-vrdpmulticon on|off] 打开|关闭VRDP多用户连接模式  
+                        [-vrdpreusecon on|off] 打开|关闭VRDP断线重连  
+                        [-usb on|off] 打开|关闭虚拟USB控制器  
+                        [-usbehci on|off] 打开|关闭虚拟USB2.0控制器  
+                        [-snapshotfolder default| 将系统快照保存到默认文件夹  
+                                          <path>] 将系统快照保存到指定文件夹  
+VBoxManage startvm      <uuid>|<name> 开启指定UUID|名称的虚拟机  
+                        [-type gui|vrdp] 设置虚拟机标准显示设备GUI界面|VRDP  
+VBoxManage controlvm    <uuid>|<name> 改变正在运行的虚拟机的状态  
+                         pause| 暂停，这时虚拟机窗口显示灰色  
+                        resume| 恢复暂停的虚拟机  
+                         reset| 复位  
+                      poweroff| 强行关闭  
+               acpipowerbutton| 关机  
+               acpisleepbutton| 使虚拟机处于睡眠状态  
+                     savestate| 保存状态然后关闭，相当于休眠  
+           keyboardputscancode <hex> [<hex> ...] 键盘扫描码设置  
+               setlinkstate<1-4> on|off 连接|断开网络连接  
+               usbattach <uuid>|<address> 连接到指定UUDI|地址的USB设备   
+               usbdetach <uuid>|<address> 断开指定UUDI|地址的USB设备     
+               dvdattach none| 不连接虚拟DVD光驱  
+                       <uuid>| 连接到指定UUID的DVD光驱  
+                   <filename>| 连接到指定名称的DVD映像文件  
+                  host:<drive> 连接到宿主机的DVD光驱  
+               floppyattach none| 不连接虚拟软驱  
+                          <uuid>| 连接到指定UUID的虚拟软驱  
+                      <filename>| 连接到指定名称的软盘映像文件  
+                     host:<drive> 连接到宿主机的软驱  
+               setvideomodehint <xres> 设置虚拟机的屏幕分辨率 水平像素  
+                                <yres> 垂直像素  
+                                 <bpp> 颜色深度  
+                             [display] 刷新频率  
+               setcredentials <username> 指定VRDP自动连接参数 用户名  
+                              <password> 密码  
+                                <domain> 域  
+             [-allowlocallogon <yes|no>] 允许|禁止本地登陆  
+VBoxManage discardstate     <uuid>|<name> 丢弃指定UUID|名称的虚拟机的保存状态  
+VBoxManage adoptstate       <uuid>|<name> <state_file> 将虚拟机从指定的保存状态中恢复  
+VBoxManage snapshot         <uuid>|<name> 为指定的虚拟机拍快照  
+                            take <name> 为快照取名  
+                        [-desc <desc>]| 给快照添加描述  
+                        discard <uuid>|<name> | 丢弃指定的快照   
+                        discardcurrent -state| 恢复到最近的快照  
+                                        -all | 恢复到倒数第二个快照  
+                        edit <uuid>|<name>| 编辑指定的快照  
+                                   -current 编辑当前快照  
+                          [-newname <name>] 修改快照名称  
+                          [-newdesc <desc>] 修改快照描述  
+                        showvminfo <uuid>|<name> 显示快照的虚拟机信息  
+VBoxManage registerimage    disk|dvd|floppy <filename> 注册硬盘、光盘、软盘映像文件  
+                            [-type normal| 注册为普通类型（可创建快照，可读写）  
+                                immutable| 注册为只读类型（相当于加了硬盘卡）  
+                             writethrough] 注册为可写类型（这种类型不能创建快照）  
+                               (disk only) (注册类型选项只适用于硬盘）  
+VBoxManage unregisterimage disk| 从虚拟介质管理器删除指定的硬盘  
+                             dvd| 从虚拟介质管理器删除指定的DVD光盘   
+                           floppy 从虚拟介质管理器删除指定的软盘  
+                          <uuid>| 删除时指定UUID  
+                       <filename> 删除时指定映像文件  
+VBoxManage showvdiinfo      <uuid>|<filename> 显示指定UUID|名称虚拟硬盘的信息  
+  
+VBoxManage createvdi        -filename <filename> 创建指定名称的虚拟硬盘  
+                            -size <megabytes> 指定虚拟硬盘的大小（以兆为单位）  
+                            [-static] 创建固定大小的虚拟硬盘  
+                            [-comment <comment>] 添加一段解释性文字  
+                            [-register] 注册新创建的虚拟硬盘  
+                            [-type normal| 注册类型 普通（可以创建快照）  
+                             writethrough] 注册类型 可写（不能创建快照）  
+                          (default: normal) 默认是普通类型  
+VBoxManage modifyvdi        <uuid>|<filename> compact 压缩指定的虚拟硬盘  
+VBoxManage clonevdi         <uuid>|<filename> <outputfile> 克隆指定的VDI虚拟硬盘  
+VBoxManage convertdd        [-static] <filename> <outputfile> 将raw硬盘转换成vdi虚拟硬盘  
+VBoxManage convertdd        [-static] stdin <outputfile> <bytes> 将标准输入参数指定的设备转换成vdi虚拟硬盘，比如：dd if=/dev/sda1 | VBoxManage convertdd stdin /media/disk/C.vdi 62277025792  
+
+#+END_SRC
+
+* centos7 basic environment
+  centos7 download
   http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso
-* ip
+
+** lvm 
+   在文件中添加要挂载的分区和文件目录可以修改文件
+
+   /etc/fstab
+
+   /dev/sda5/    media/win    ntfs    defaults   02
+
+   然后 mount -a
+
+   1. 查看几块硬盘
+   
+      sudo fdisk -l |grep sd
+   
+   2. 创建分区
+   
+      虚拟机现有20g的硬盘,使用fdisk划分磁盘
+       
+      sudo fdisk /dev/sda
+   
+      #+BEGIN_VERSE
+         m  帮助信息  
+         n 创建分区
+         e 扩展分区    +5G  pppp/pppe
+         p 打印分区
+         t 分区类型 L  (lvm)
+         w 写入保存分区
+      #+END_VERSE
+
+   3. 格式化 分区
+
+   - LVM
+     pv --> vg --> lv
+     参考: http://blog.sina.com.cn/s/blog_b77735d20101e5cn.html
+     http://aurthurxlc.github.io/Aurthur-2017/Centos-7-extend-lvm-volume.html
+
+#+BEGIN_SRC 
+  fdisk -l | grep sd
+  fdisk /dev/sda
+  partprobe
+  pvdisplay
+  pvcreate /dev/sda3
+  vgdisplay
+  vgextend centos /dev/sda3
+  lvdisplay
+  lvcreate -L 3.31G -n manue1 centos
+  mkfs.xfs /dev/centos/manue1
+  lvremove -f /dev/centos/manue1
+  lvextend -l +100%FREE /dev/centos/root
+  df -Th
+  xfs_growfs /dev/centos/root
+#+END_SRC
+** ip
   * 联网方式: 配置三张网卡
     virtualBox 中 NAT 和 Host-only 两种模式不能同时并存，测试只能联网的时候关掉另一张网卡
     1. NAT 
@@ -19,12 +297,14 @@
     3. Bridge
       vbox 自动配置IP，也很方便 
        
-    这边计算使用网卡三的桥接模式连接外网下载更新系统,断掉外网用网卡二的主机模式搭建集群
-     
+    这边打算使用网卡1 nat模式连接外网，网卡3的桥接模式与局域网内其他主机通信,网卡二的主机模式搭建集群
+
+    注意： 网卡二和网卡三的 gateway 字段要注释掉
+    
   * ip tool
 
     Ip  [选项]  操作对象{link|addr|route...}
-
+    
     # ip link show                           # 显示网络接口信息
     
     # ip link set eth0 up                   # 开启网卡
@@ -58,13 +338,16 @@
     # ip route del default                                     # 删除默认路由
       
     sudo service network restart
+    
+** sshd
+  ssh 连接异常慢
+  sudo vi /etc/ssh/sshd_config
 
-  * VboxManage
+  #+BEGIN_SRC 
+  UseDNS no
+  #+END_SRC
 
-    - 无界面启动vms
-      VBoxManage startvm Centos701 --type headless
-
-* hostname
+** hostname
   永久修改主机名字
   sudo hostnamectl --static set-hostname master
 
@@ -75,7 +358,7 @@
   [manue1@localhost ~]$ cat /etc/hosts
    127.0.0.1 master
    ::1 master
-* yum source
+** yum source
 
   sudo yum -y install wget
   
@@ -96,7 +379,7 @@
     sudo yum clean all  
     sudo yum makecache  
 
-* firewallds
+** firewallds
   
   - 查看状态
     systemctl status firewalld
@@ -104,13 +387,13 @@
     systemctl stop firewalld
   - 禁用
     systemctl disable firewalld
-* disable selinux
+** disable selinux
   一款为了提高系统安全性的软件：对系统服务，文件权限，网络端口访问有极其严格的限制，
   例如：如果对一个文件没有正确安全上下文配置， 甚至你是root用户，你也不能启动某服务
 
   sudo vi /etc/sysconfig/selinux
    selinux = disable
-* java  & scala
+** java  & scala
   基础环境用root 配置在/etc/profile 自启动环境文件内
   refer : https://www.mtyun.com/library/how-to-setup-scala-on-centos7
   - java rpm install
@@ -152,43 +435,43 @@ export JAVA_HOME PATH
     export SCALA_HOME PATH
     #+END_SRC
     
-* hadoop hbase spark 版本选择
-
-  
-  + hbase 支持 hadoop 版本对照表
-
-     The 1.2.x series is the current stable release line
-    
-     http://www-us.apache.org/dist/hbase/
-    
-     下面查看1.2.x 需要的hadoop版本
-
-     http://hbase.apache.org/book.html#arch.overview
-
-     crtl + F  "s" 搜索页面
-
-    选择 Hadoop-2.7.1+
-    
-  + spark 支持 hadoop
-    
-    http://spark.apache.org/downloads.html
-    
-    官方下载页面可以手动选择
-
-  + hive 支持 hadoop
-    
-    https://hive.apache.org/downloads.html
-
-    稳定版下载地址
-    
-    http://mirrors.shuosc.org/apache/hive/stable-2/
-
-  + zookeeper
-    
-    下载稳定版即可
-    
-    http://mirrors.shuosc.org/apache/zookeeper/stable/
 * hadoop 集群配置
+  
+   * hadoop hbase spark 版本选择
+     + hbase 支持 hadoop 版本对照表
+   
+        The 1.2.x series is the current stable release line
+       
+        http://www-us.apache.org/dist/hbase/
+       
+        下面查看1.2.x 需要的hadoop版本
+   
+        http://hbase.apache.org/book.html#arch.overview
+   
+        crtl + F  "s" 搜索页面
+   
+       选择 Hadoop-2.7.1+
+       
+     + spark 支持 hadoop
+       
+       http://spark.apache.org/downloads.html
+       
+       官方下载页面可以手动选择
+   
+     + hive 支持 hadoop
+       
+       https://hive.apache.org/downloads.html
+   
+       稳定版下载地址
+       
+       http://mirrors.shuosc.org/apache/hive/stable-2/
+   
+     + zookeeper
+       
+       下载稳定版即可
+       
+       http://mirrors.shuosc.org/apache/zookeeper/stable/
+
   1. 环境准备
      三台vbox 虚拟centos7 配置 java scala 环境 关闭防火墙和selinux
      
@@ -196,8 +479,11 @@ export JAVA_HOME PATH
        | hostname |            ip |
        |----------+---------------|
        | master   | 192.168.56.10 |
+       |----------+---------------|
        | slave01  | 192.168.56.11 |
+       |----------+---------------|
        | slave02  | 192.168.56.12 |
+       |----------+---------------|
 
      - disable ipv6
 
@@ -260,6 +546,7 @@ export YARN_HOME=$HADOOP_HOME
 export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
 export HADOOP_OPTS="$HADOOP_OPTS -Djava.library.path=$HADOOP_HOME/lib/native" #解决WARN util.NativeCodeLoader: Unable to load native-hadoop library
+export CATALINA_BASE=$HADOOP_HOME/share/hadoop/httpfs/tomcat #支持httpfs rest api
       
       #+END_SRC
 
@@ -281,6 +568,18 @@ export HADOOP_OPTS="$HADOOP_OPTS -Djava.library.path=$HADOOP_HOME/lib/native" #�
         <value>file:/home/manue1/opt/hadoop-2.7.5/tmp</value>
     </property>
 </configuration>
+    <!--开启httpfs实现一种匿名的方式登陆hdfs文件系统 端口14000
+        manue1用户为hdfs的超级用户 hive启动用户
+    -->
+
+    <property>
+         <name>hadoop.proxyuser.manue1.hosts</name>
+         <value>*</value>
+    </property>
+    <property>
+        <name>hadoop.proxyuser.manue1.groups</name>
+        <value>*</value>
+    </property>
 
          
          #+END_SRC
@@ -379,18 +678,21 @@ slave02
      start-dfs.sh
      start-yarn.sh
      mr-jobhistory-daemon.sh start historyserver  ??
+     httpfs.sh start
+
 
      - master
        #+BEGIN_SRC 
 manue1@master sbin]$ jps
 2034 NameNode
 2483 Jps
+15754 Bootstrap  #httpfs
 1652 ResourceManager
 2188 SecondaryNameNode
 2447 JobHistoryServer
        
        #+END_SRC
-
+       
      - slaves
        #+BEGIN_SRC 
 [manue1@slave01 hadoop]$ jps
@@ -399,8 +701,588 @@ manue1@master sbin]$ jps
 1516 Jps
        #+END_SRC
 
-  hadoop cluster状态展示界面
+  hadoop cluster状态展示界面 webhdfs
   http://master:50070/
+  curl "http://master:50070/webhdfs/v1/?op=liststatus&user.name=manue1"
+  
+  httpfs rest api 配置HA的时候找不到namenode可以采用httpfs
+  http://master:14000/
+  curl "http://master:14000/webhdfs/v1/?op=liststatus&user.name=manue1"
 
   yarn 管理界面
   http://master:8088
+
+* elasticstack 集群
+** elasticsearch-611
+   
+   1. 环境准备
+        
+     | hostname |            ip |            |
+     |----------+---------------+------------|
+     | master   | 192.168.56.10 | masternode |
+     |----------+---------------+------------|
+     | slave01  | 192.168.56.11 | datanode   |
+     |----------+---------------+------------|
+     | slave02  | 192.168.56.12 | datanode   |
+
+    - java 环境配置，关闭firewalld,主机名配置,官网下载elasticsearch-6.1.1.tar.gz
+
+    - 普通用户下安装es  username:manue1
+     
+    - 系统设置
+
+      sudo -s 切换到root下执行
+
+      #+BEGIN_SRC 
+
+sed -e '$a vm.max_map_count = 262144' -i /etc/sysctl.conf
+
+sysctl -p
+
+ 
+
+echo "ulimit -SHn 1048576" >> /etc/rc.local
+
+sed -e '$a DefaultLimitCORE=infinity\nDefaultLimitNOFILE=1048576\nDefaultLimitNPROC=1048576' -i /etc/systemd/system.conf
+
+cat >> /etc/security/limits.conf << EOF
+
+ *           soft   nofile       1048576
+
+ *           hard   nofile       1048576
+
+ *           soft   nproc        1048576
+
+ *           hard   nproc        1048576
+
+EOF
+
+sed -i 's/4096/1048576/' /etc/security/limits.d/20-nproc.conf
+
+sed -e '/root       soft    nproc     unlimited/a\*           soft   nofile       1048576\n*           hard   nofile       1048576' -i /etc/security/limits.d/20-nproc.conf
+      
+      #+END_SRC
+      修改系统配置文件后，重启系统生效
+      
+   2. 配置elasticsearch
+      
+     - elasticsearch.yml          # els的配置文件
+       #+BEGIN_SRC 
+cluster.name: manue1-es-cluster  #集群名称
+
+node.name: master-node           #节点名称
+
+node.data: false
+node.master: true  #建议直接不设置，默认两个都为true.
+
+path.data: /Home/Manue1/Opt/Elasticsearch-6.1.1/Els/Data  #数据存储目录
+
+path.logs: /home/manue1/opt/elasticsearch-6.1.1/els/log   #日志存储目录
+
+network.host: 192.168.56.10     #当前节点IP 安全起见，默认采用”0.0.0.0”，允许所有设备访问
+
+gateway.recover_after_nodes: 3  #值为n，网关控制在n个节点启动之后才恢复整个集群, 3节>点启动后1分钟
+gateway.recover_after_time: 1m
+
+indices.recovery.max_bytes_per_sec: 20mb  #恢复数据时,限制的宽带流量,如果是0就是无限制
+
+node.max_local_storage_nodes: 1                  #值为n，一个系统中最多启用节点个数为n
+
+http.port: 9200                 # 对外提供服务的端口，9300为集群服务的端口
+
+
+       #+END_SRC
+      
+     - jvm.options                # JVM相关的配置，内存大小等等
+       #+BEGIN_SRC 
+      -Xms128M
+      -Xmx128M
+
+       -Xmx1g与-Xms1gJVM的最大最小内存。如果太小会导致Elasticsearch刚刚启动就立刻停止。太大会拖慢系统本身
+       #+END_SRC
+
+     - log4j2.properties          # 日志系统定义
+
+     将配置好的elasticsearch 打包传到各个节点，需要注意的是，如果配置过程中运行产生的data/nodes/0 文件
+     一定要删掉，再打包使用，否则各个节点启动成功了，无法加入到集群，节点id冲突
+      #+BEGIN_SRC 
+      with the same id but is a different node instance
+      #+END_SRC
+       
+   3. 启动elasticsearch
+      
+
+      su – manue1
+
+      vi  /home/manue1/opt/elasticsearch-6.1.1/bin/elasticsearch
+      #+BEGIN_SRC 
+ES_HEAP_SIZE=128m
+MAX_OPEN_FILES=262144
+      #+END_SRC
+      
+     nohup ./bin/elasticsearch -d 
+
+     关闭 ps -ef |grep /elasticsearch|awk '{print $2}'|xargs kill -9
+** kibana
+
+   配置在es的非数据节点上: 192.168.56.10
+
+   修改 config/kibana.yml
+   #+BEGIN_SRC 
+server.host: "master"
+elasticsearch.url: "http://master:9200"
+   #+END_SRC
+
+   启动： nohup  bin/kibana  &
+
+   关闭: ps -ef |grep /kibana |awk '{print $2}'|xargs kill -9
+
+   ss -lnp | grep 5601
+
+** logstash
+   1. download
+      logstash-6.1.1.tar.gz
+   2. config
+      
+      - 创建logstash-conf 目录
+        beat的配置文件
+        vi metricbeat.conf
+        #+BEGIN_SRC 
+input {
+  beats {
+    port => 5044
+  }
+}
+
+# The filter part of this file is commented out to indicate that it is
+# optional.
+# filter {
+#
+# }
+
+output {
+  elasticsearch {
+    hosts => "localhost:9200"
+    manage_template => false
+    index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}" 
+  }
+}
+        
+        #+END_SRC
+        
+      - jvm.options
+        修改 xms xmx 最大最小jvm 为256M 比es测试集群吃内存多 
+
+      - logstash.yml
+   3. start logstash
+
+     -  bin/logstash -e 'input { stdin { } } output { stdout {} }'
+        测试启动
+
+     - ./bin/logstash -f logstash-conf/metricbeat.conf &
+
+       配置文件启动
+** beats
+*** topbeat
+    5.x版本后弃用了
+    1. 下载
+       topbeat-1.3.1-x86_64.tar.gz
+
+    2. 配置
+
+      - topbeat
+
+      - topbeat.template.json  
+        topbeat自带的模版，用来创建存放收集数据的索引结构
+
+      - topbeat.yml
+        #+BEGIN_SRC 
+input:
+  period: 10           #默认10秒收集一次
+  procs: [".*"]   #定义正则表达式，以匹配你所要监控的进程。默认是所有正在运行的进程都进行监控。
+  stats:
+    system: true
+    proc: true
+    filesystem: true
+output:
+  elasticsearch:
+    hosts: ["master:9200"]
+shipper:
+logging:
+  files:
+        #+END_SRC
+   
+
+    3. es导入模版
+       导入topbeat自带的模版，用来创建存放收集数据的索引结构
+
+       - Configuring Template Loading - supported for Elasticsearch output only
+         #+BEGIN_SRC 
+         ERR Failed to perform any bulk index operations: 406 Not Acceptable
+         错误应该是模版和6.0版本不匹配了，官网没有更新
+         再去官网查看，topbeat 从5.0 已经被 Metricbeat替换了
+         #+END_SRC
+
+       - Loading the Template Manually - required for Logstash output
+
+
+    4. kibana 
+
+    5. 启动topbeat节点
+
+       sudo ./topbeat -e -c topbeat.yml -d "publish"
+*** filebeat
+    1. download
+
+       filebeat-6.1.1-linux-x86_64.tar.gz
+
+       https://download.elastic.co/demos/logstash/gettingstarted/logstash-tutorial.log.gz
+       logstash-tutorial.log.gz apache 的日志文件样本
+
+    2. config
+       
+       - filebeat.yml
+         #+BEGIN_SRC 
+- type: log
+  # Change to true to enable this prospector configuration.
+  enabled: true
+  # Paths that should be crawled and fetched. Glob based paths.
+  paths:
+    - /var/log/*.log
+    - /home/manue1/opt/source/*.log
+    #- c:\programdata\elasticsearch\logs\*
+
+
+output.logstash:
+  # The Logstash hosts
+  hosts: ["master:5044"]
+
+         
+setup.kibana:
+
+  host: "master:5601"         
+
+         #+END_SRC
+         
+       - modules
+         
+         sudo chown -R root /home/manue1/opt/filebeat-6.1.1-linux-x86_64/module
+
+         sudo chown -R root /home/manue1/opt/filebeat-6.1.1-linux-x86_64/modules.d
+         
+         - Enable modules when you run Filebeatedit
+
+           sudo ./filebeat -e --modules system,nginx,mysql  
+         
+           ./filebeat -e --modules nginx -M "nginx.access.var.paths=[/var/log/nginx/access.log*]"
+           
+         - filebeat.yml
+
+           sudo ./filebeat modules list
+
+           sudo ./filebeat modules enable system 
+
+           #+BEGIN_SRC 
+默认配置读取所有enable
+filebeat.modules:
+- module: nginx
+- module: mysql
+- module: system
+           
+           #+END_SRC
+
+           
+
+         
+
+       - setup template
+         
+         for logstash manually setup
+         #+BEGIN_SRC 
+./filebeat setup --template -E output.logstash.enabled=false -E 'output.elasticsearch.hosts=["localhost:9200"]'
+         #+END_SRC
+
+       - setup kibana dashboards
+
+         #+BEGIN_SRC 
+         ./filebeat setup --dashboards
+         #+END_SRC
+
+       - start filebeat
+
+         sudo chown root filebeat.yml 
+
+         sudo -s
+
+         nohup /home/manue1/opt/filebeat-6.1.1-linux-x86_64/filebeat -e -c /home/manue1/opt/filebeat-6.1.1-linux-x86_64/filebeat.yml -d "publish" &
+
+         ps aux |grep beat
+
+*** metricbeat
+    
+    1. download
+       
+       metricbeat-6.1.1-linux-x86_64.tar.gz
+       
+    2. conf
+       
+       - metricbeat.yml
+         
+        1. 修改es和kibana的地址
+           
+           如果输出到logstash中，需要关闭直接写入es，并配置logstash监听5044端口
+           es也要手动加载template
+           #+BEGIN_SRC 
+output.logstash:
+  # The Logstash hosts
+  hosts: ["master:5044"]
+           #+END_SRC
+        
+        2. 配置template模版
+           - Configure template loading
+           - Load the template manually  
+             required for Logstash output
+             #+BEGIN_SRC 
+             
+             sudo ./metricbeat setup --template -E output.logstash.enabled=false -E 'output.elasticsearch.hosts=["master:9200"]'
+             #+END_SRC
+
+             
+       - modules.d 
+         目录下面可以配置多种模块
+         修改 logstash.yml.disabled 为 logstash.yml 启动模块
+
+       - kibana dashboard
+
+         ./metricbeat setup --dashboards
+         
+    3. start 
+       
+       sudo chown root metricbeat.yml 
+       sudo chown root modules.d/system.yml 
+       sudo ./metricbeat -e -c metricbeat.yml -d "publish"
+
+       ps aux |grep metricbeat
+
+
+    复制到不同节点部署
+*** packetbeat
+    1. download 
+       
+       packetbeat-6.1.1-linux-x86_64.tar.gz
+
+    2. config 
+       
+       - packetbeat.yml
+         
+         logstash & kibana 地址修改
+
+       - setup template
+         
+         ./packetbeat setup --template -E output.logstash.enabled=false -E 'output.elasticsearch.hosts=["master:9200"]'
+
+       - set up kibana dashboard
+
+         ./packetbeat setup --dashboards
+
+    3. start beat
+       
+       sudo chown root packetbeat.yml 
+
+       nohup /home/manue1/opt/packetbeat-6.1.1-linux-x86_64/packetbeat -e -c  /home/manue1/opt/packetbeat-6.1.1-linux-x86_64/packetbeat.yml -d "publish" &
+
+* hive 
+  
+  hadoop namenode上安装,datanode上无需安装
+  
+  1. download install
+
+     hive
+
+     http://mirrors.shuosc.org/apache/hive/stable-2/
+
+     * mysql 
+       
+       refer: http://blog.csdn.net/Nemo____/article/details/72897455
+       - remove mariadb
+         rpm -qa|grep mariadb         //查询出已安装的mariadb
+         rpm -e --nodeps 文件名      //卸载 ， 文件名为使用rpm -qa|grep mariadb 命令查出的所有文件
+         sudo  rpm -e --nodeps mariadb-libscc
+         
+       - install mariadb
+
+         https://www.cnblogs.com/starof/p/4680083.html 
+
+         yum install mariadb-server mariadb
+
+         systemctl start mariadb  #启动MariaDB
+
+         systemctl stop mariadb  #停止MariaDB
+         
+         systemctl restart mariadb  #重启MariaDB
+         
+         systemctl enable mariadb  #设置开机启动
+
+         mysql -uroot -p #NO PASSWORD
+
+         set password for 'root'@'localhost' =password('manue1');  # set new password
+
+         grant all privileges on *.* to root@'%'identified by 'manue1';  #远程连接设置
+
+         vi /etc/my.cnf
+         #+BEGIN_SRC 
+ # set utf8
+[mysql]
+default-character-set=utf8  # NO SPACE
+         #+END_SRC
+
+  2. config
+
+     https://cwiki.apache.org/confluence/display/Hive/GettingStarted
+    
+     http://blog.csdn.net/jssg_tzw/article/details/72354470
+
+    - vi .bashrc
+      # Hive Environment Variables
+      export HIVE_HOME=/home/manue1/opt/apache-hive-2.3.2-bin
+      PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$HIVE_HOME/bin:$PATH
+
+    - metastore conf
+      
+      #+BEGIN_SRC 
+mysql -h slave01 -uroot -p
+
+insert into mysql.user (Host,User,Password)values('localhost','hive',password('manue1'));
+
+create database hive;
+
+grant all privileges on hive.* to hive@'%'identified by 'manue1'; 
+
+flush privileges; 
+
+      
+      #+END_SRC
+
+    - hive-site.xml
+      
+      mv hive-default.xml hive-site.xml
+      
+      1. hdfs新建目录
+         #+BEGIN_SRC 
+ <name>hive.metastore.warehouse.dir</name>
+ <value>/user/hive/warehouse</value>
+ <name>hive.exec.scratchdir</name>
+<value>/tmp/hive</value>
+
+
+ 所以要在Hadoop集群新建/user/hive/warehouse目录，执行命令
+
+[manue1@master conf]$ hadoop fs -mkdir -p /user/hive/warehouse
+[manue1@master conf]$ hadoop fs -chmod -R 777 /user/hive/warehouse
+[manue1@master conf]$ hadoop fs -mkdir -p /tmp/hive
+[manue1@master conf]$ hadoop fs -chmod -R 777 /tmp/hive
+      #+END_SRC
+
+      2. mysql相关配置
+
+         https://dev.mysql.com/downloads/connector/j/5.1.html download
+
+         mv mysql-connector-java-5.1.45-bin.jar lib/
+
+         #+BEGIN_SRC 
+
+1. javax.jdo.option.ConnectionDriverName，将该name对应的value修改为MySQL驱动类路径：
+<property
+  <name>javax.jdo.option.ConnectionDriverName</name>
+  <value>com.mysql.jdbc.Driver</value>
+</property>  
+
+2. javax.jdo.option.ConnectionURL，将该name对应的value修改为MySQL的地址：
+ <name>javax.jdo.option.ConnectionURL</name>
+ <value>jdbc:mysql://192.168.56.101:3306/hive?createDatabaseIfNotExist=true</value>
+
+3.javax.jdo.option.ConnectionUserName，将对应的value修改为MySQL数据库登录名：
+<name>javax.jdo.option.ConnectionUserName</name>
+<value>hive</value>
+
+4.javax.jdo.option.ConnectionPassword，将对应的value修改为MySQL数据库的登录密码：
+<name>javax.jdo.option.ConnectionPassword</name>
+<value>*******</value>
+      
+      #+END_SRC
+
+         对mysql初始化
+
+         schematool -initSchema -dbType mysql
+
+      3. 替换${system
+         
+         ${system:java.io.tmpdir}替换为hive的临时目录
+         /home/manue1/opt/apache-hive-2.3.2-bin/iotmp
+
+         ${system:user.name}都替换为manue1
+
+         #+BEGIN_SRC 
+[manue1@master apache-hive-2.3.2-bin]$ mkdir iotmp
+[manue1@master apache-hive-2.3.2-bin]$ sudo chmod -R 777 iotmp
+
+:%s/${system:java.io.tmpdir}/\/home\/manue1\/opt\/apache-hive-2.3.2-bin\/iotmp/gg
+
+:%s/${system:user.name}/manue1/gg
+         #+END_SRC
+
+    - hive-env.sh
+
+      mv hive-env.sh.template hive-env.sh
+
+      #+BEGIN_SRC 
+export HADOOP_HOME=/home/manue1/opt/hadoop-2.7.5
+
+export HIVE_CONF_DIR=/home/manue1/opt/apache-hive-2.3.2-bin/conf
+
+export HIVE_AUX_JARS_PATH=/home/manue1/opt/apache-hive-2.3.2-bin/lib
+      
+      #+END_SRC
+      
+  3. start hive
+
+     hive --service hiveserver2 &
+
+     netstat -anp | grep 10000
+     
+     beeline 测试jdbc连接
+
+     beeline -u jdbc:hive2://master:10000 -n manue1 -p mmanue1
+
+     #+BEGIN_SRC 
+     bin/beeline
+     !connect jdbc:hive2://master:10000
+ hdfs支持的用户 
+Enter username for jdbc:hive2://master:10000: manue1
+Enter password for jdbc:hive2://master:10000: *****
+     
+     #+END_SRC
+     #+BEGIN_SRC 
+
+
+Connecting to jdbc:hive2://master:10000/default
+18/01/10 20:37:17 [main]: WARN jdbc.HiveConnection: Failed to connect to master:10000
+Error: Could not open client transport with JDBC Uri: jdbc:hive2://master:10000/default: Failed to open new session: java.lang.RuntimeException: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.security.authorize.AuthorizationException): User: manue1 is not allowed to impersonate anonymous (state=08S01,code=0)
+Beeline version 2.3.2 by Apache Hive
+beeline> 
+
+分析 ： 访问权限问题
+
+解决 ：在hdfs 的配置文件core-site.xml中加入如下配置，root 为位置填入  User:*  ，etc   hadoop.proxyuser.eamon.hosts
+
+<property>
+  <name>hadoop.proxyuser.manue1.hosts</name>
+  <value>*</value>
+ </property>
+ <property>
+  <name>hadoop.proxyuser.manue1.groups</name>
+  <value>*</value>
+</property>
+     
+
+     #+END_SRC
