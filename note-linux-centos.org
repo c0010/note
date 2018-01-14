@@ -8,6 +8,8 @@
 
     VBoxManage startvm Centos701 --type headless
 
+    VBoxManage controlvm ubuntu01 savestate # 保存当前状态关闭
+
   - 修改vms内存总量
 
     VBoxManage modifyvm Centos701 --memory 1024
@@ -19,6 +21,12 @@
   - 创建快照
     
     VBoxManage snapshot ubuntu01 take ubuntu_basic_ssh
+
+    VBoxManage snapshot ubuntu01 list
+
+    VBoxManage snapshot ubuntu01 delete ubuntu_basic
+
+    VBoxManage snapshot ubuntu01 restore ubuntu_basic_ssh
     
 
 
@@ -47,6 +55,7 @@ VBoxManage -convertSettingsIgnore 允许自动转换设置文件，但是不保�
 VBoxManage list vms|runningvms   显示列表虚拟机|正在运行的虚拟机  
                |ostypes|hostdvds virtualbox支持的系统类型|宿主机的光盘驱动器  
                |hostfloppies     宿主机的软盘驱动器  
+
                |hostifs|hostinfo 宿主机的网络接口|宿主机的信息  
                |hdds|dvds        已注册的虚拟硬盘|已注册的虚拟光盘  
                |floppies|usbhost 已注册的虚拟软盘|宿主机的USB设备  
