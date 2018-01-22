@@ -154,7 +154,7 @@ b.txt
 
   tcpdump tcp and not port 80
  
- 
+**** nc  scp  rsync 
 **** iptables
      linux 内核 通过netfilter模块 实现网络访问控制功能
      iptables --> netfilter模块
