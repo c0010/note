@@ -30,7 +30,6 @@
 
   - clone vm
 
-
     VBoxManage clonevm  Centos701 --snapshot  centos7_basic  --name Centos_basic
     
 
@@ -1516,3 +1515,4 @@ i love zbr
    
    #+END_SRC
 * spark
+  https://data-flair.training/blogs/install-apache-spark-multi-node-cluster/
