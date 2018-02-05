@@ -1523,4 +1523,19 @@ i love zbr
    
    #+END_SRC
 * spark
+** spark configural
+
   https://data-flair.training/blogs/install-apache-spark-multi-node-cluster/
+
+
+  - .bashrc
+    #+BEGIN_SRC 
+#SPARK_HOME Environment Variables
+export SPARK_HOME=/home/manue1/opt/spark-2.2.1-bin-hadoop2.7
+export PATH=$PATH:$SPARK_HOME/bin
+    #+END_SRC
+
+
+  - spark-env.sh
+
+    cp spark-env.sh.template spark-env.sh
