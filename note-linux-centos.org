@@ -1539,3 +1539,50 @@ export PATH=$PATH:$SPARK_HOME/bin
   - spark-env.sh
 
     cp spark-env.sh.template spark-env.sh
+
+    #+BEGIN_SRC 
+export JAVA_HOME=/home/manue1/opt/jdk8
+
+export SCALA_HOME=/home/manue1/opt/scala-2.11.7
+
+export HADOOP_HOME=/home/manue1/opt/hadoop-2.7.5
+
+export HADOOP_CONF_DIR=/home/manue1/opt/hadoop-2.7.5/etc/hadoop
+
+export SPARK_MASTER_IP=master
+
+export SPARK_WORKER_MEMORY=64m
+
+export SPARK_WORKER_CORES=1
+
+export SPARK_WORKER_INSTANCES=2
+
+变量说明
+JAVA_HOME：Java安装目录
+SCALA_HOME：Scala安装目录
+HADOOP_HOME：hadoop安装目录
+HADOOP_CONF_DIR：hadoop集群的配置文件的目录
+SPARK_MASTER_IP：spark集群的Master节点的ip地址
+SPARK_WORKER_MEMORY：每个worker节点能够最大分配给exectors的内存大小
+SPARK_WORKER_CORES：每个worker节点所占有的CPU核数目
+SPARK_WORKER_INSTANCES：每台机器上开启的worker节点的数目
+    
+    #+END_SRC
+
+
+  - slaves
+    #+BEGIN_SRC 
+master
+slave01
+slave02
+    #+END_SRC
+
+
+  slave sync
+
+  scp -r spark-2.2.1-bin-hadoop2.7/ manue1@192.168.1.109:/home/manue1/opt
+** spark start
+
+   nohup sh /home/manue1/opt/hadoop-2.7.5/sbin/start-all.sh &  #启动hdfs即可
+
+   $SPARK_HOME/sbin/start-all.sh
