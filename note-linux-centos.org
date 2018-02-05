@@ -18,11 +18,19 @@
 
     VBoxManage modifyhd Centos702.vdi --resize 7168
 
+    #+BEGIN_SRC 
+   
+如果创建过快照，快照的磁盘空间也需要修改
+VBoxManage modifyhd \{aea51811-5e79-46e9-b5ba-f66740e6f47b\}.vdi  --resize 10248
+    
+    #+END_SRC
+
   - 创建快照
     
     VBoxManage snapshot ubuntu01 take ubuntu_basic_ssh
 
-    c
+    VBoxManage snapshot ubuntu01 list
+
     VBoxManage snapshot ubuntu01 delete ubuntu_basic
 
     VBoxManage snapshot ubuntu01 restore ubuntu_basic_ssh
