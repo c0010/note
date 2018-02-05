@@ -1586,3 +1586,10 @@ slave02
    nohup sh /home/manue1/opt/hadoop-2.7.5/sbin/start-all.sh &  #启动hdfs即可
 
    $SPARK_HOME/sbin/start-all.sh
+
+
+   WebUI
+   http://master:8080/
+
+   spark-shell.sh 运行后可以访问后台执行的任务
+   http://master:4040/
