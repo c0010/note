@@ -22,8 +22,7 @@
     
     VBoxManage snapshot ubuntu01 take ubuntu_basic_ssh
 
-    VBoxManage snapshot ubuntu01 list
-
+    c
     VBoxManage snapshot ubuntu01 delete ubuntu_basic
 
     VBoxManage snapshot ubuntu01 restore ubuntu_basic_ssh
