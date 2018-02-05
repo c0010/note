@@ -279,25 +279,26 @@ VBoxManage convertdd        [-static] stdin <outputfile> <bytes> 将标准输入
 
    - LVM
      pv --> vg --> lv
-     参考: http://blog.sina.com.cn/s/blog_b77735d20101e5cn.html
+     参考:
+     http://blog.sina.com.cn/s/blog_b77735d20101e5cn.html
      http://aurthurxlc.github.io/Aurthur-2017/Centos-7-extend-lvm-volume.html
 
-#+BEGIN_SRC 
-  fdisk -l | grep sd
-  fdisk /dev/sda
-  partprobe
-  pvdisplay
-  pvcreate /dev/sda3
-  vgdisplay
-  vgextend centos /dev/sda3
-  lvdisplay
-  lvcreate -L 3.31G -n manue1 centos
-  mkfs.xfs /dev/centos/manue1
-  lvremove -f /dev/centos/manue1
-  lvextend -l +100%FREE /dev/centos/root
-  df -Th
-  xfs_growfs /dev/centos/root
-#+END_SRC
+     #+BEGIN_SRC 
+     fdisk -l | grep sd
+     fdisk /dev/sda
+     partprobe
+     pvdisplay
+     pvcreate /dev/sda3
+     vgdisplay
+     vgextend centos /dev/sda3
+     lvdisplay
+     #lvcreate -L 3.31G -n manue1 centos
+     #mkfs.xfs /dev/centos/manue1
+     #lvremove -f /dev/centos/manue1
+     lvextend -l +100%FREE /dev/centos/root
+     df -Th
+     xfs_growfs /dev/centos/root
+     #+END_SRC
 ** ip
   * 联网方式: 配置三张网卡
     virtualBox 中 NAT 和 Host-only 两种模式不能同时并存，测试只能联网的时候关掉另一张网卡
