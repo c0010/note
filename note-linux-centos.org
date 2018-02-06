@@ -504,101 +504,100 @@ export JAVA_HOME PATH
     #+END_SRC
     
 * hadoop 集群配置
-  
-   * hadoop hbase spark 版本选择
-     + hbase 支持 hadoop 版本对照表
+** hadoop hbase spark 版本选择
+   + hbase 支持 hadoop 版本对照表
    
-        The 1.2.x series is the current stable release line
-       
-        http://www-us.apache.org/dist/hbase/
-       
-        下面查看1.2.x 需要的hadoop版本
+      The 1.2.x series is the current stable release line
+     
+      http://www-us.apache.org/dist/hbase/
+     
+      下面查看1.2.x 需要的hadoop版本
    
-        http://hbase.apache.org/book.html#arch.overview
+      http://hbase.apache.org/book.html#arch.overview
    
-        crtl + F  "s" 搜索页面
+      crtl + F  "s" 搜索页面
    
-       选择 Hadoop-2.7.1+
-       
-     + spark 支持 hadoop
-       
-       http://spark.apache.org/downloads.html
-       
-       官方下载页面可以手动选择
+     选择 Hadoop-2.7.1+
+     
+   + spark 支持 hadoop
+     
+     http://spark.apache.org/downloads.html
+     
+     官方下载页面可以手动选择
    
-     + hive 支持 hadoop
-       
-       https://hive.apache.org/downloads.html
+   + hive 支持 hadoop
+     
+     https://hive.apache.org/downloads.html
    
-       稳定版下载地址
-       
-       http://mirrors.shuosc.org/apache/hive/stable-2/
+     稳定版下载地址
+     
+     http://mirrors.shuosc.org/apache/hive/stable-2/
    
-     + zookeeper
+   + zookeeper
        
        下载稳定版即可
        
        http://mirrors.shuosc.org/apache/zookeeper/stable/
 
-  1. 环境准备
-     三台vbox 虚拟centos7 配置 java scala 环境 关闭防火墙和selinux
+** 环境准备
+   三台vbox 虚拟centos7 配置 java scala 环境 关闭防火墙和selinux
+   
+   - cluster
+     | hostname |            ip |
+     |----------+---------------|
+     | master   | 192.168.56.10 |
+     |----------+---------------|
+     | slave01  | 192.168.56.11 |
+     |----------+---------------|
+     | slave02  | 192.168.56.12 |
+     |----------+---------------|
+
+   - disable ipv6
+
+     sudo vi /etc/sysctl.conf
      
-     - cluster
-       | hostname |            ip |
-       |----------+---------------|
-       | master   | 192.168.56.10 |
-       |----------+---------------|
-       | slave01  | 192.168.56.11 |
-       |----------+---------------|
-       | slave02  | 192.168.56.12 |
-       |----------+---------------|
+     添加下面内容
+     
+     #+BEGIN_SRC 
 
-     - disable ipv6
+# dable ipv6
+netpv6.conf.all.disable_ipv6 = 1
+netpv6.conf.default.disable_ipv6 = 1
+netpv6.conf.lo.disable_ipv6 = 1
+     
+     #+END_SRC
 
-       sudo vi /etc/sysctl.conf
-       
-       添加下面内容
-       
-       #+BEGIN_SRC 
+     解决master:50070 页面找不到live node 
 
-# disable ipv6
-net.ipv6.conf.all.disable_ipv6 = 1
-net.ipv6.conf.default.disable_ipv6 = 1
-net.ipv6.conf.lo.disable_ipv6 = 1
-       
-       #+END_SRC
+     解决 connection exception
+     
+     #+BEGIN_SRC 
+17//23 23:19:48 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+ls:all From slave01/127.0.0.1 to master:9000 failed on connection exception: java.net.ConnectException: 拒绝连接; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused
+     
+     #+END_SRC
 
-       解决master:50070 页面找不到live node 
+   - hostname & host
+     三台主机都要
+     修改主机名
+     修改/etc/hosts 互相添加hostname访问别名
+     注意； #127.0.0.1 master 这样的映射一定要注释掉,master:8088无法访问最终定位到这里了
+     #+BEGIN_SRC 
+#ceos7 cluster
+19268.56.10 master
+19268.56.11 slave01
+19268.56.12 slave02
+     #+END_SRC
 
-       解决 connection exception
-       
-       #+BEGIN_SRC 
-17/12/23 23:19:48 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-ls: Call From slave01/127.0.0.1 to master:9000 failed on connection exception: java.net.ConnectException: 拒绝连接; For more details see:  http://wiki.apache.org/hadoop/ConnectionRefused
-       
-       #+END_SRC
-
-     - hostname & host
-       三台主机都要
-       修改主机名
-       修改/etc/hosts 互相添加hostname访问别名
-       注意； #127.0.0.1 master 这样的映射一定要注释掉,master:8088无法访问最终定位到这里了
-       #+BEGIN_SRC 
-#centos7 cluster
-192.168.56.10 master
-192.168.56.11 slave01
-192.168.56.12 slave02
-       #+END_SRC
-
-     - 免登录验证
-       ssh-keygen -t rsa
-       ssh-copy-id -i ~/.ssh/id_rsa.pub manue1@slave01 
-       ssh-copy-id -i ~/.ssh/id_rsa.pub manue1@slave02 
-       ssh-copy-id -i ~/.ssh/id_rsa.pub manue1@master
-       
-     - download hadoop
+   - 免登录验证
+     ssh-keygen -t rsa
+     ssh-copy-id -i ~/.ssh/id_rsa.pub manue1@slave01 
+     ssh-copy-id -i ~/.ssh/id_rsa.pub manue1@slave02 
+     ssh-copy-id -i ~/.ssh/id_rsa.pub manue1@master
+     
+   - download hadoop
        tar -zxvf hadoop-2.7.5.tar.gz
-  2. 配置hadoop cluster
+** 配置hadoop cluster
      
     - hadoop_home
       三台节点都需要配置
@@ -719,6 +718,11 @@ export CATALINA_BASE=$HADOOP_HOME/share/hadoop/httpfs/tomcat #支持httpfs rest 
                 <name>yarn.nodemanager.aux-services</name>
                 <value>mapreduce_shuffle</value>
         </property>
+        <!--所有主机访问yarn管理界面-->
+        <property> 
+                <name>yarn.resourcemanager.webapp.address</name>
+                <value>0.0.0.0:8088</value>
+        </property>
 
 </configuration>
          
@@ -741,15 +745,15 @@ slave02
       tar -zcvf hadoop-2.7.5_conf_finshed.tar.gz hadoop-2.7.5/
 
       scp hadoop-2.7.5_conf_finshed.tar.gz manue1@slave02:/home/manue1/opt/
-  3. 启动hadoop
-     hdfs namenode -format #第一次启动要执行格式化，之后启动不用执行这个
-     start-dfs.sh
-     start-yarn.sh
-     mr-jobhistory-daemon.sh start historyserver  ??
-     httpfs.sh start
+** 启动hadoop
+   hdfs namenode -format #第一次启动要执行格式化，之后启动不用执行这个
+   start-dfs.sh
+   start-yarn.sh
+   mr-jobhistory-daemon.sh start historyserver  ??
+   httpfs.sh start
 
 
-     - master
+   - master
        #+BEGIN_SRC 
 manue1@master sbin]$ jps
 2034 NameNode
@@ -761,7 +765,7 @@ manue1@master sbin]$ jps
        
        #+END_SRC
        
-     - slaves
+   - slaves
        #+BEGIN_SRC 
 [manue1@slave01 hadoop]$ jps
 1360 DataNode
@@ -1593,3 +1597,7 @@ slave02
 
    spark-shell.sh 运行后可以访问后台执行的任务
    http://master:4040/
+
+   spark-submit yarn 管理方式
+   http://master:8088/
+   
