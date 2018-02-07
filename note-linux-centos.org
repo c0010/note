@@ -7,7 +7,7 @@
 * VboxManage
    
   - vms 基本信息
-
+    
     VBoxManage showvminfo Centos701
 
   - 无界面启动vms
