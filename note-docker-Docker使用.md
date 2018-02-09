@@ -39,6 +39,7 @@
 </div>
 </div>
 
+
 # Docker入门<a id="sec-1" name="sec-1"></a>
 
 杨保华 Docker技术入门与实战
@@ -103,13 +104,16 @@ docker rmi IMAGE[IMAGE..] #IMAGE可以是标签或者是ID
 ## 创建镜像<a id="sec-2-5" name="sec-2-5"></a>
 
 1.  基于已有image的容器创建
+    
     docker commit [OPTIONS] CONTAINER [REPOSITORY[: TAG]]
     
         docker commit -m "add a test" -a 'manue1' -p 836 centos_test:v1.0 
         
         -a 作者 -m  提交信息 -p 提交时暂停容器运行
 2.  基于本地模版导入
+    
     下载系统镜像模板
+    
     <https://openvz.org/Download/template/precreated>
     
     cat xx.tar.gz | docker import - ubuntu:16.04
@@ -123,8 +127,9 @@ docker load &#x2013;input ubuntu-16.04.tar
 
 ## 上传镜像<a id="sec-2-7" name="sec-2-7"></a>
 
-docker tag SOURCE<sub>IMAGE[</sub>:TAG] TARGET<sub>IMAGE[</sub>:TAG]
-docker push TARGET<sub>IMAGE[</sub>: TAG]
+docker tag SOURCE\_IMAGE[:TAG] TARGET\_IMAGE[:TAG]
+
+docker push TARGET\_IMAGE[: TAG]
 
     需要先修改本地仓库name为远程仓库名，必须先创建远程仓库manue1sec/test
     - docker tag 3a4 manue1sec/test:u_test
@@ -136,7 +141,7 @@ docker push TARGET<sub>IMAGE[</sub>: TAG]
 
 docker create -it ubuntu
 
-docker run -it ubuntu /bin/bash  创建并启动容器，-t启动一个虚拟终端，-i保持终端 -d 在后台守护运行
+docker run -it ubuntu /bin/bash  #创建并启动容器，-t启动一个虚拟终端，-i保持终端 -d 在后台守护运行
 
 ## 启动终止容器<a id="sec-3-2" name="sec-3-2"></a>
 
@@ -149,6 +154,7 @@ docker ps -a #显示所有容器
 ## 进入容器<a id="sec-3-3" name="sec-3-3"></a>
 
 docker attach 18a
+
 docker exec -ti 24c /bin/bash  (推荐)
 
 ## 删除容器<a id="sec-3-4" name="sec-3-4"></a>
@@ -157,7 +163,7 @@ docker rm 18a
 
 ## 导入和导出容器<a id="sec-3-5" name="sec-3-5"></a>
 
-docker export 18a > ubuntu<sub>container</sub>.tar  作为镜像
+docker export 18a > ubuntu\_container.tar  作为镜像
 
 docker import a.tar
 
@@ -166,8 +172,10 @@ docker import a.tar
 ## Docker install<a id="sec-4-1" name="sec-4-1"></a>
 
 1.  图解Docker
+    
     ![img](//7xpyfe.com1.z0.glb.clouddn.com/blog/20170607/115341763.png)
 2.  [官网文档](https://docs.docker.com/engine/installation/) 有详细说明
+    
     国内网速很慢，采用了阿里云的[镜像源](https://yq.aliyun.com/articles/7695)
     
         curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/intranet | sh -
@@ -188,7 +196,10 @@ docker import a.tar
 
 # common problem<a id="sec-5" name="sec-5"></a>
 
-1.  ImportError: No module named apt<sub>pkg</sub>
+1.  ImportError: No module named apt\_pkg
+    
     安装docker 执行 sudo add-apt-repository 的时候报错
+    
     Solve it by this:
-    /usr/lib/python3/dist-packages# cp apt<sub>pkg</sub>.cpython-34m-x86<sub>64</sub>-linux-gnu.so apt<sub>pkg</sub>.so
+    
+    /usr/lib/python3/dist-packages# cp apt\_pkg.cpython-34m-x86\_64-linux-gnu.so apt\_pkg.so
