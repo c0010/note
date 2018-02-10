@@ -1,3 +1,5 @@
+#+OPTIONS: toc:2
+#+OPTIONS: ^:nil
 * Docker入门
   杨保华 Docker技术入门与实战
 ** 初识Docker
@@ -57,6 +59,7 @@
    #+END_SRC
 ** 创建镜像
    1. 基于已有image的容器创建
+
       docker commit [OPTIONS] CONTAINER [REPOSITORY[: TAG]]
 
       #+BEGIN_SRC 
@@ -65,7 +68,9 @@
         -a 作者 -m  提交信息 -p 提交时暂停容器运行
       #+END_SRC
    2. 基于本地模版导入
+
       下载系统镜像模板
+
       https://openvz.org/Download/template/precreated
 
       cat xx.tar.gz | docker import - ubuntu:16.04
@@ -77,7 +82,9 @@
    docker load --input ubuntu-16.04.tar
 
 ** 上传镜像
+
    docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
+
    docker push TARGET_IMAGE[: TAG]
    #+BEGIN_SRC 
      需要先修改本地仓库name为远程仓库名，必须先创建远程仓库manue1sec/test
@@ -86,11 +93,9 @@
    #+END_SRC
 * Docker Container
 ** 创建容器
-     
      docker create -it ubuntu
 
-     docker run -it ubuntu /bin/bash  创建并启动容器，-t启动一个虚拟终端，-i保持终端 -d 在后台守护运行
-
+     docker run -it ubuntu /bin/bash  #创建并启动容器，-t启动一个虚拟终端，-i保持终端 -d 在后台守护运行
 ** 启动终止容器
      docker start d3e
 
@@ -99,6 +104,7 @@
      docker ps -a #显示所有容器
 ** 进入容器
      docker attach 18a
+
      docker exec -ti 24c /bin/bash  (推荐)
 ** 删除容器
      docker rm 18a
@@ -108,12 +114,16 @@
 
      docker import a.tar
 
+* Docker Data Volume
 * Docker use note
 ** Docker install
    1. 图解Docker
+
       [[http://7xpyfe.com1.z0.glb.clouddn.com/blog/20170607/115341763.png]]
    2. [[https://docs.docker.com/engine/installation/][官网文档]] 有详细说明
+
       国内网速很慢，采用了阿里云的[[https://yq.aliyun.com/articles/7695][镜像源]]
+
       : curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/intranet | sh -
 
       [[http://7xpyfe.com1.z0.glb.clouddn.com/blog/20170607/131800763.png]]
@@ -131,6 +141,9 @@
          
 * common problem
   1. ImportError: No module named apt_pkg
+
      安装docker 执行 sudo add-apt-repository 的时候报错
+
      Solve it by this:
+
      /usr/lib/python3/dist-packages# cp apt_pkg.cpython-34m-x86_64-linux-gnu.so apt_pkg.so
