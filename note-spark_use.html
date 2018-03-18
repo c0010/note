@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>note-spark_use</title>
+<!-- 2018-03-18 Sun 21:25 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="manue1" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">note-spark_use</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. what is spark</a></li>
+<li><a href="#sec-2">2. RDD</a>
+<ul>
+<li><a href="#sec-2-1">2.1. RDD基础</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. spark use</a>
+<ul>
+<li><a href="#sec-3-1">3.1. spark base</a></li>
+<li><a href="#sec-3-2">3.2. spark install</a></li>
+<li><a href="#sec-3-3">3.3. spark shell</a></li>
+<li><a href="#sec-3-4">3.4. idea spark scala</a></li>
+<li><a href="#sec-3-5">3.5. idea spark java</a></li>
+<li><a href="#sec-3-6">3.6. rdd &amp; dataframe</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. docker spark</a>
+<ul>
+<li><a href="#sec-4-1">4.1. docker for mac install spark 2.2.0 + hadoop 2.8.0</a></li>
+<li><a href="#sec-4-2">4.2. docker search spark</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. docker hbase</a></li>
+</ul>
+</div>
+</div>
+<p>
+Spark快速大数据分析[美] 卡劳（Holden Karau）
+</p>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> what is spark</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+spark 是一个用来实现快速而通用的集群计算的平台
+</p>
+<ul class="org-ul">
+<li>spark core
+</li>
+<li>spark sql
+</li>
+<li>spark streaming
+</li>
+<li>MLlib
+</li>
+<li>GraphX
+</li>
+<li>集群管理器
+<ul class="org-ul">
+<li>自带简易调度器，独立调度器
+</li>
+<li>Hadoop YARN
+</li>
+<li>Apache Mesos
+</li>
+</ul>
+</li>
+<li>Spark的存储层次
+<ul class="org-ul">
+<li>支持本地文件,HDFS,Hive,HBase
+</li>
+<li>文件格式:文本文件,SequenceFile,Avro,Parquet
+</li>
+</ul>
+</li>
+<li>shell
+spark shell 可用来与分布式存储在许多机器的内存或者硬盘上的数据进行交互
+python shell / scala shell
+</li>
+<li>SparkContext
+每个Sparkyingy
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> RDD</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+RDD(resilient distributed dataset)
+</p>
+</div>
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> RDD基础</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Spark中的RDD是一个不可变的分布式对象集合
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> spark use</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> spark base</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+rdd(resilient distributed dataset)
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> spark install</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+函数式编程
+shell下执行:paste
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> spark shell</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+bin/spark-shell
+</p>
+<ul class="org-ul">
+<li>创建RDD
+sc.parallelize()
+</li>
+<li>RDD操作
+<ul class="org-ul">
+<li>转化操作
+返回的是RDD
+map()
+filter()
+</li>
+<li>行动操作
+返回结果或把结果写入外部系统的操作,返回的是其他数据类型
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> idea spark scala</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+scala 项目手动打包
+删除scala 和spark的包
+</p>
+
+<p>
+执行中 spark-submit &#x2013;class com.nti.spark.SparkTags spark<sub>scala</sub><sub>jar</sub>.jar
+</p>
+
+<p>
+sbt 构建项目 需要等待sbt版本下载好才会生成src目录
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5"><span class="section-number-3">3.5</span> idea spark java</h3>
+<div class="outline-text-3" id="text-3-5">
+<ol class="org-ol">
+<li>jre 1.5 换成1.8
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-sec-3-6" class="outline-3">
+<h3 id="sec-3-6"><span class="section-number-3">3.6</span> rdd &amp; dataframe</h3>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> docker spark</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> docker for mac install spark 2.2.0 + hadoop 2.8.0</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+refer : <a href="http://blog.csdn.net/gogo_yao/article/details/76863201">http://blog.csdn.net/gogo_yao/article/details/76863201</a>
+</p>
+
+<ol class="org-ol">
+<li>启动容器
+docker run &#x2013;name centos-6 -tid centos:6 /bin/bash
+</li>
+<li>复制安装包到centos容器
+docker cp scala-2.12.3.tgz 23288ad95817:/
+docker cp jdk-8u144-linux-x64.rpm 23288ad95817:/
+docker cp spark-2.2.0-bin-without-hadoop.tgz 23288ad95817:/
+docker cp hadoop-2.8.0.tar.gz 23288ad95817:/root/.local
+</li>
+<li>进入容器
+docker exec -it 23288ad9581 /bin/bash
+hadoop spark install
+</li>
+<li>保存镜像
+docker commit -m "centos-6 with spark 2.2.0 and hadoop 2.8.0" 23288ad95817 centos:with-saprk-hadoop
+
+<p>
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+centos              with-saprk-hadoop   30333b7011ce        20 seconds ago      3.84GB
+</p>
+</li>
+<li>使用保存的镜像搭建集群
+
+<p>
+#端口50070和8088，8080是用来在浏览器中访问hadoop、yarn、spark的WEB界面，这里分别映射到物理机的50070和8088，8080端口。
+docker run -itd -P -p 50070:50070 -p 8088:8088 -p 8080:8080 &#x2013;name master -h master &#x2013;add-host slave01:172.17.0.4 &#x2013;add-host slave02:172.17.0.5 centos:with-saprk-hadoop
+docker run -itd -P &#x2013;name slave01 -h slave01 &#x2013;add-host master:172.17.0.3 &#x2013;add-host slave02:172.17.0.5  centos:with-saprk-hadoop
+docker run -itd -P &#x2013;name slave02 -h slave02 &#x2013;add-host master:172.17.0.3 &#x2013;add-host slave01:172.17.0.4  centos:with-saprk-hadoop
+</p>
+</li>
+<li>进入集群管理
+docker exec -it master /bin/bash
+
+<p>
+service sshd restart
+</p>
+
+<p>
+cd <i>root</i>.local/hadoop-2.8.0/sbin;sh start-all.sh   
+cd <i>root</i>.local/spark-2.2.0-bin-without-hadoop/sbin; sh start-all.sh
+</p>
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> docker search spark</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+docker pull sequenceiq/spark:1.6.0
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> docker hbase</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: manue1</p>
+<p class="date">Created: 2018-03-18 Sun 21:25</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
