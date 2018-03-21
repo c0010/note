@@ -41,7 +41,6 @@
    -Xmx和-Xms控制堆内存扩展
 
    OutOfMemoryError
-   
 5. Method Area
    此共享内存区,用来存放被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据
 
@@ -55,6 +54,22 @@
 
    运行时常量池: 编译期生成的各种字面量和符号引用
    
+**** jvm监控与故障处理工具
+1. jps jinfo
+   运行的使用jvm的进程
+2. jstat 
+   
+   jstat -gc 24612 250 10 250ms查询一次24612进程的gc情况，10次
+3. jstack
+
+4. jconsole
+   
+  内存监控 jstat 
+   
+  线程监控 jstack
+
+5. Visual VM
+
 *** 高效并发
 1. java内存模型
    存储设备 (内存) < 高速缓存  < 处理器 
