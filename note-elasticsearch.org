@@ -295,3 +295,7 @@
          等待ping响应的超时时间，默认值是3秒。如果网络缓慢或拥塞，建议略微调大这个值
 *** es pipeline
     https://www.felayman.com/articles/2017/11/24/1511527532643.html#b3_solo_h4_22
+*** es
+    https://blog.csdn.net/donghaixiaolongwang/article/category/6747676
+
+    Elasticsearch之四种查询类型和搜索原理
