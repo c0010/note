@@ -40,7 +40,7 @@ Spark快速大数据分析[美] 卡劳（Holden Karau）
        filter()
      + 行动操作
        返回结果或把结果写入外部系统的操作,返回的是其他数据类型
-   
+       
 ** idea spark scala
    scala 项目手动打包
    删除scala 和spark的包
