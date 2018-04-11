@@ -1,4 +1,97 @@
 * note-emacs
+  the learning environment is mac 
+** emacs tutorial
+   use c-h t open tutorial 
+
+   c - control  M - option
+
+   c-x c-c  quit emacs
+
+   c-g      quit current command
+
+   #+BEGIN_SRC 
+
+
+                             上一行 C-p
+                                  :
+                                  :
+            向左移 C-b .... 目前光标位置 .... 向右移 C-f
+                                  :
+                                  :
+                             下一行 C-n
+   
+   #+END_SRC
+
+
+ 
+   c-/ | c-x u     undo 
+
+   c-_      undo step by step
+
+   c-k      delete
+
+   c-x c-f  search file
+
+   c-x c-s  save file
+
+   c-x s    save more buffer
+ 
+   c-x c-b | c-x b  search buffer
+   
+   c-s     search forwards
+    
+   c-r     search backwards
+ 
+   c-h k ()  query shortcut description
+
+   c-h f ()  describe function
+   
+   c-h a     search for command g
+
+   M-x linum-mode   show line number
+** common shortcuts
+#+BEGIN_VERSE
+   ,bb  next buffer
+
+   ,xf  search file
+
+   ,xb  search buffer
+   ,kb  kill buffer
+
+   ,ov  my overview current buffer 
+   ,c>  org do demote
+   ,c<  org do promote 
+
+   <s+Tab  add source
+   <v+Tab  ignore blank line
+   <q+Tab  add indentation
+
+   F1  org agenda 
+
+   F2  add TODO 
+   c-c c-s add start time
+   c-c c-d add end time
+   c-c .   add time period
+   ++1d    every day do
+   c-x a   org agenda list
+
+   c-c | / |-  auto generate form
+   c-c -       add  horizontal line
+
+   ,x0  close the current window
+   ,x1  close othe windows
+   ,x3   ||
+   ,x2   =
+   , (12345)  switch window
+
+   spc ss create workspace
+   spc ll search workspace
+   
+
+#+END_VERSE
+   
+** emacs lisp
+
 ** orgmode
    1. alt键失灵问题,主要是因为xshell的配置问题
      文件-->属性-->终端-->键盘-->元(meta)键仿真 
