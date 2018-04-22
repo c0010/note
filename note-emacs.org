@@ -91,6 +91,70 @@
 #+END_VERSE
    
 ** emacs lisp
+*** casting spels emacs
+    a comic book : Emacs Lisp version 
+    http://www.lisperati.com/casting-spels-emacs/html/casting-spels-emacs-1.html
+
+    Emacs *scratch* buffer is Lisp interacion : c-x b *scratch*
+    
+
+    Emacs tutorial https://www.gnu.org/software/emacs/tour/
+    
+    
+    Emacs manual : https://www.gnu.org/software/emacs/manual/index.html
+
+    c-x c-e  : evaluable each expression (move the cursor to the end of each expression )
+
+    M-x top-level : clears out errors
+
+    M-x ielm  : ELISP>
+    
+    (setq eval-expression-print-length nil) : prevent emacs truncate messages
+
+    (require 'cl) : the library to make elisp run Common lisp command 
+
+    
+**** Syntax and Semantic
+
+
+any text you give elisp interprater has to be arranged into list ,can be nested into lists of
+lists,a list in elisp (bla bla bla (abc abc))
+
+elisp interprater uses two modes to read code:  Code mode / Data mode. 
+in data mode,you can put anything into your list ;
+in Code mode, your list need to be special type of list called a form :
+
+#+BEGIN_SRC 
+
+(foo bla bla bla)
+  ^          ^
+  |          |
+command     a form
+#+END_SRC
+
+**** Defining the data for our Game World
+in order to learn some more about forms,examples:
+#+BEGIN_SRC 
+(setq objects '(whiskey-bottle bucket frog chain))
+
+| code mode    | The single quote to 'flip' the compiler into Date mode |                                     |   |   |
+|--------------+--------------------------------------------------------+-------------------------------------+---+---|
+| setq objects | '                                                      | (whiskey-bottle bucket frog chain)) |   |   |
+|--------------+--------------------------------------------------------+-------------------------------------+---+---|
+
+#+END_SRC
+the command sets a variable to a value : the variable is objects and the value is a list 
+     
+**** Looking around in our game world
+The word defun means, as you might expect, that we're defining a function
+#+BEGIN_SRC 
+(defun describe-location (location map)
+    (second (assoc location map)))
+#+END_SRC
+The assoc command does this and then returns the data describing the living-room
+
+Then the command second trims out the second item in that list, which is the description of the living-room
+     
 ** orgmode
    1. alt键失灵问题,主要是因为xshell的配置问题
      文件-->属性-->终端-->键盘-->元(meta)键仿真 
