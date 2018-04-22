@@ -91,6 +91,8 @@
 #+END_VERSE
    
 ** emacs lisp
+*** blog
+    http://www.woola.net/detail/2016-08-18-elisp.html
 *** casting spels emacs
     a comic book : Emacs Lisp version 
     http://www.lisperati.com/casting-spels-emacs/html/casting-spels-emacs-1.html
@@ -155,6 +157,49 @@ The assoc command does this and then returns the data describing the living-room
 
 Then the command second trims out the second item in that list, which is the description of the living-room
      
+*** code
+    #+BEGIN_SRC elisp 
+
+(setq objects '(whiskey-bottle bucket frog chain))
+
+(setq object-locations '((whiskey-bottle living-room)
+                           (bucket living-room)
+                           (chain garden)
+                           (frog garden)))
+
+(setq location 'living-room)
+
+(setq map '((living-room (you are in the living room
+                of a wizards house - there is a wizard
+                snoring loudly on the couch -)
+                (west door garden)
+                (upstairs stairway attic))
+              (garden (you are in a beautiful garden -
+                there is a well in front of you -)
+                (east door living-room))
+              (attic (you are in the attic of the
+                wizards house - there is a giant
+                welding torch in the corner -)
+                (downstairs stairway living-room))))
+
+(defun describe-location (location map)
+    (second (assoc location map)))
+
+
+(describe-location 'living-room map)
+
+(message "hello world")
+
+(defun hello-world (name)
+ "say hello to user whose name is XX"
+   (message "hello , %s" name))
+
+(hello-world "manue1")
+
+(setq foo "i'm manue1")
+(message foo)
+    
+    #+END_SRC
 ** orgmode
    1. alt键失灵问题,主要是因为xshell的配置问题
      文件-->属性-->终端-->键盘-->元(meta)键仿真 
