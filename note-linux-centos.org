@@ -899,7 +899,7 @@ http.port: 9200                 # 对外提供服务的端口，9300为集群服
       #+BEGIN_SRC 
       with the same id but is a different node instance
       #+END_SRC
-       
+      
    3. 启动elasticsearch
       
       su – manue1
