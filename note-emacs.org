@@ -201,5 +201,11 @@ Then the command second trims out the second item in that list, which is the des
     
     #+END_SRC
 ** orgmode
-   1. alt键失灵问题,主要是因为xshell的配置问题
-     文件-->属性-->终端-->键盘-->元(meta)键仿真 
+- alt键失灵问题,主要是因为xshell的配置问题
+  文件-->属性-->终端-->键盘-->元(meta)键仿真 
+- [[http://www.github.com/nanue1][nanue1's github]]
+    - c-c c-l 
+      创建url
+    - c-c c-o
+      打开url
+      
