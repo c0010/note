@@ -802,6 +802,18 @@ manue1@master sbin]$ jps
      | slave01  | 192.168.56.11 | datanode   |
      |----------+---------------+------------|
      | slave02  | 192.168.56.12 | datanode   |
+      
+     -  生产环境配置: 
+
+        10节点 6个master候选节点
+
+        1节点 4G + lucene 3G = 8G
+
+        10T硬盘，最多存5T数据
+
+        4c + 8g + 1T * 10台 = 10T 
+        4c + 16g + 2T * 5台 = 10T
+        
 
     - java 环境配置，关闭firewalld,主机名配置,官网下载elasticsearch-6.1.1.tar.gz
 
@@ -871,7 +883,7 @@ http.port: 9200                 # 对外提供服务的端口，9300为集群服
 
 
        #+END_SRC
-      
+       
      - jvm.options                # JVM相关的配置，内存大小等等
        #+BEGIN_SRC 
       -Xms128M
@@ -887,7 +899,7 @@ http.port: 9200                 # 对外提供服务的端口，9300为集群服
       #+BEGIN_SRC 
       with the same id but is a different node instance
       #+END_SRC
-       
+      
    3. 启动elasticsearch
       
       su – manue1
@@ -901,6 +913,12 @@ MAX_OPEN_FILES=262144
      nohup ./bin/elasticsearch -d 
 
      关闭 ps -ef |grep elasticsearch|awk '{print $2}'|xargs kill -9
+
+   4. refer
+      https://blog.csdn.net/thomas0yang/article/details/55518105#%E5%86%85%E5%AD%98
+      https://www.elastic.co/guide/cn/elasticsearch/guide/cn/important-configuration-changes.html#_%E6%9C%80%E5%B0%8F%E4%B8%BB%E8%8A%82%E7%82%B9%E6%95%B0
+      https://zhuanlan.zhihu.com/p/35291900
+
 ** kibana
 
    配置在es的非数据节点上: 192.168.56.10

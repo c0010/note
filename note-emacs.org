@@ -122,7 +122,7 @@
 any text you give elisp interprater has to be arranged into list ,can be nested into lists of
 lists,a list in elisp (bla bla bla (abc abc))
 
-elisp interprater uses two modes to read code:  Code mode / Data mode. 
+elis: interprater uses two modes to read code:  Code mode / Data mode. 
 in data mode,you can put anything into your list ;
 in Code mode, your list need to be special type of list called a form :
 
