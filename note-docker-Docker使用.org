@@ -1,5 +1,7 @@
 #+OPTIONS: toc:2
 #+OPTIONS: ^:nil
+#+SETUPFILE: setup.org
+#+TITLE: docker 碎片记录
 * Docker入门
   杨保华 Docker技术入门与实战
 ** 初识Docker

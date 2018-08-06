@@ -1,5 +1,7 @@
 #+OPTIONS: toc:2
 #+OPTIONS: ^:nil
+#+SETUPFILE: setup.org
+#+TITLE: jvm 虚拟机学习
 * jvm
 ** Q & A
 - 垃圾回收器需要关注的内容：

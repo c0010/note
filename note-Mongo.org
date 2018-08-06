@@ -1,3 +1,6 @@
+
+#+SETUPFILE: setup.org
+#+TITLE: mongo 使用笔记
 * Mongo 使用笔记
 ** Mongo集群安装
 ** 常用命令

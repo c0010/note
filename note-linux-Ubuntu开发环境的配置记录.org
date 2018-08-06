@@ -1,3 +1,6 @@
+
+#+SETUPFILE: setup.org
+#+TITLE: ubuntu  note
 * Mint&Ubuntu install&config
  the new os should do this for update 
   - config software sources

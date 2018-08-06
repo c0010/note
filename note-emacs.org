@@ -1,3 +1,5 @@
+#+SETUPFILE: setup.org
+#+TITLE: emacs note
 * note-emacs
   the learning environment is mac 
 ** emacs tutorial

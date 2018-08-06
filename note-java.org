@@ -1,4 +1,8 @@
-* java
+
+#+OPTIONS: toc:2
+#+OPTIONS: ^:nil
+#+SETUPFILE: setup.org
+* java 基础碎片
 ** base
    overload  重载  类
    overriding  super hidden 重写 继承

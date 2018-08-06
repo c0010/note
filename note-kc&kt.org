@@ -1,5 +1,7 @@
 #+OPTIONS: toc:2
 #+OPTIONS: ^:nil
+#+SETUPFILE: setup.org
+#+TITLE:kyoto Cabinet & Tycoon kv 离线数据库
 ** kyoto Cabinet & Tycoon 
    官方地址：
 

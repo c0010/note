@@ -1,3 +1,6 @@
+
+#+SETUPFILE: setup.org
+#+TITLE: data structure
 * 严蔚敏数据结构Video
 ** 绪论
   1. 数据结构范畴 

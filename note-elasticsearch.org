@@ -1,3 +1,6 @@
+#+SETUPFILE: setup.org
+#+TITLE: elasticsearch 相关知识整理
+
 * note-elasticsearch-install&config
 ** install
  安装环境: VMware12: 三台 ubuntu 14.04 内存 1g

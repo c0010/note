@@ -1,3 +1,5 @@
+#+SETUPFILE: setup.org
+#+TITLE: mysql note
 * note-Mysql
 ** install mysql
    1. 检查系统中是否已经安装了 mysql
