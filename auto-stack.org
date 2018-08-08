@@ -61,3 +61,5 @@
 
 2. 前三热门板块
    http://data.eastmoney.com/bkzj/hy.html
+
+3. 单只股票所属板块跌幅
