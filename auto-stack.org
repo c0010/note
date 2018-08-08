@@ -43,14 +43,21 @@
   https://xueqiu.com/stock/quote_order.json?page=1&size=1000&order=desc&exchange=CN&stockType=sha&orderBy=percent&column=symbol,name
 
 ** 东方财富网
-     :      http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=3001012&sty=CTBF&st=z&sr=&p=&ps=&cb=var%20pie_data=&js=(x)&token=28758b27a75f62dc3065b81f7facb365&_=1497258906443
-  3. 和讯网
-  4. 腾讯财经
-  5. 招商证券
+     : http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=3001012&sty=CTBF&st=z&sr=&p=&ps=&cb=var%20pie_data=&js=(x)&token=28758b27a75f62dc3065b81f7facb365&_=1497258906443
+** 和讯网
+** 腾讯财经
+** 招商证券
      
 ** get
 
+实时数据获取
+
 1. 主力资金流向
+
    http://data.eastmoney.com/zjlx/list.html
+
+   http://data.eastmoney.com/zjlx/detail.html
+   http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=ct&st=(BalFlowNetRate)&sr=-1&p=1&ps=50&js=var FcQDTvYs={pages:(pc),date:%222014-10-22%22,data:[(x)]}&token=894050c76af8597a853f5b408b759f5d&cmd=C._AB&sty=DCFFITA&rt=51124918
+
 2. 前三热门板块
    http://data.eastmoney.com/bkzj/hy.html
