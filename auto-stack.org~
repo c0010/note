@@ -1,0 +1,53 @@
+* stock source
+1. 东方财富网
+     :      http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=3001012&sty=CTBF&st=z&sr=&p=&ps=&cb=var%20pie_data=&js=(x)&token=28758b27a75f62dc3065b81f7facb365&_=1497258906443
+** xueqiu
+
+
+| column         | description |
+|----------------+-------------|
+| symbol         | 股票代码    |
+|----------------+-------------|
+| name           |             |
+|----------------+-------------|
+| current        |             |
+|----------------+-------------|
+| chg            |             |
+|----------------+-------------|
+| percent        |             |
+|----------------+-------------|
+| last_close     |             |
+|----------------+-------------|
+| open           |             |
+|----------------+-------------|
+| low            |             |
+|----------------+-------------|
+| high           |             |
+|----------------+-------------|
+| volume         |             |
+|----------------+-------------|
+| amount         |             |
+|----------------+-------------|
+| market_capital |             |
+|----------------+-------------|
+| pe_ttm         |             |
+|----------------+-------------|
+| high52w        |             |
+|----------------+-------------|
+| low52w         |             |
+|----------------+-------------|
+| hasexist       |             |
+|----------------+-------------|
+
+
+- sza
+  https://xueqiu.com/stock/quote_order.json?page=1&size=1000&order=desc&exchange=CN&stockType=sza&orderBy=percent&column=symbol,name
+- cyb
+  https://xueqiu.com/stock/quote_order.json?page=1&size=1000&order=desc&exchange=CN&stockType=cyb&orderBy=percent&column=symbol,name
+- sha
+  https://xueqiu.com/stock/quote_order.json?page=1&size=1000&order=desc&exchange=CN&stockType=sha&orderBy=percent&column=symbol,name
+
+  3. 和讯网
+  4. 腾讯财经
+  5. 招商证券
+     
