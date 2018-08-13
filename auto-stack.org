@@ -43,7 +43,7 @@
   https://xueqiu.com/stock/quote_order.json?page=1&size=1000&order=desc&exchange=CN&stockType=sha&orderBy=percent&column=symbol,name
 
 ** 东方财富网
-     : http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=3001012&sty=CTBF&st=z&sr=&p=&ps=&cb=var%20pie_data=&js=(x)&token=28758b27a75f62dc3065b81f7facb365&_=1497258906443
+   : http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=CT&cmd=3001012&sty=CTBF&st=z&sr=&p=&ps=&cb=var%20pie_data=&js=(x)&token=28758b27a75f62dc3065b81f7facb365&_=1497258906443
 ** 和讯网
 ** 腾讯财经
 ** 招商证券
@@ -59,7 +59,59 @@
    http://data.eastmoney.com/zjlx/detail.html
    http://nufm.dfcfw.com/EM_Finance2014NumericApplication/JS.aspx?type=ct&st=(BalFlowNetRate)&sr=-1&p=1&ps=50&js=var FcQDTvYs={pages:(pc),date:%222014-10-22%22,data:[(x)]}&token=894050c76af8597a853f5b408b759f5d&cmd=C._AB&sty=DCFFITA&rt=51124918
 
-2. 前三热门板块
+   |  0 | 股票类型 无用       |   |
+   |----+---------------------+---|
+   |  1 | 股票名称            |   |
+   |  2 | 最新价格            |   |
+   |  3 | 今日涨跌幅          |   |
+   |  4 | 今日主力净流入资金  |   |
+   |  5 | 今日主力净流入占比  |   |
+   |  6 | 今日超大单净流 资金 |   |
+   |  7 | 占比                |   |
+   |  8 | 今日大单净流入      |   |
+   |  9 | 占比                |   |
+   | 10 | 今日中单净流入      |   |
+   | 11 | 占比                |   |
+   | 12 | 今日小单净流入      |   |
+   | 13 | 占比                |   |
+   | 14 | 日期                |   |
+   | 15 | weizhi              |   |
+   
+2. 单只股票主力 30 日主力 大单小单占比
+    http://ff.eastmoney.com/EM_CapitalFlowInterface/api/js?type=hff&rtntype=2&acces_token=1942f5da9b46b069953c873404aad4b5&js=({data:[(x)]})&cb=var%20zlzjLsData=&check=TMLBMSPROCR&id=3003102&style=top&num=31
+    
+    2018-08-13,3068.4965,32.3%,1705.6208,17.95%,1362.8757,14.34%,-1093.2954,-11.51%,-1975.201,-20.79%,5.28,10.0%
+    |  0 | 日期            |   |
+    |----+-----------------+---|
+    |  1 | 今日 主力资金   |   |
+    |  2 | 今日 主力占比   |   |
+    |  3 | 今日 超大单资金 |   |
+    |  4 | 今日占比        |   |
+    |  5 | 今日大单资金    |   |
+    |  6 | 今日占比        |   |
+    |  7 | 今日中单        |   |
+    |  8 | 占比            |   |
+    |  9 | 今日小单        |   |
+    | 10 | 占比            |   |
+3. 单股 k线 信息
+   http://pdfm2.eastmoney.com/EM_UBG_PDTI_Fast/api/js?id=3003102&TYPE=K&js=fsData((x))&rtntype=5&style=top&num=120&authorityType=fa
+   
+   2018-08-13,4.72,5.28,5.28,4.69,187158,95905294,12.29%,2.98"
+   
+   | 0 | 日期   |   |
+   |---+--------+---|
+   | 1 | 开盘   |   |
+   |---+--------+---|
+   | 2 | 收盘   |   |
+   |---+--------+---|
+   | 3 | 最高   |   |
+   | 4 | 最低   |   |
+   | 5 | 成交量 |   |
+   | 6 | 成交额 |   |
+   | 7 | 振幅   |   |
+   | 8 | 换手   |   |
+4. 前三热门板块
    http://data.eastmoney.com/bkzj/hy.html
-
-3. 单只股票所属板块跌幅
+5. 单只股票所属板块跌幅
+6. 筹码分布
+   http://quote.eastmoney.com/concept/sz002331.html#
